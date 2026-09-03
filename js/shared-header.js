@@ -23,16 +23,8 @@
 
     function getThemeIconMaskHtml(theme, assetBase) {
         var base = typeof assetBase === 'string' ? assetBase : '';
-        var isDark = theme === 'dark';
-        var svgFileName = isDark ? 'light-mode.svg' : 'dark-mode.svg';
-        var rawSvg = isDark
-            ? '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>'
-            : '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 12.99c-.56 6.06-5.93 10.52-11.99 9.96C4.95 22.39.49 17.02 1.05 10.96 1.54 5.68 5.72 1.49 11.01 1c-2.81 3.81-2.01 9.18 1.8 11.99 3.03 2.24 7.16 2.24 10.19 0Z"/></svg>';
-
-        var maskUrl = typeof window !== 'undefined' && window.location && window.location.protocol === 'file:'
-            ? 'data:image/svg+xml;utf8,' + encodeURIComponent(rawSvg)
-            : escapeHtml(base + 'svg/' + svgFileName);
-
+        var svgFileName = theme === 'dark' ? 'light-mode.svg' : 'dark-mode.svg';
+        var maskUrl = escapeHtml(base + 'svg/' + svgFileName);
         return '<span class="theme-icon icon-mask" style="mask-image: url(\'' + maskUrl + '\'); -webkit-mask-image: url(\'' + maskUrl + '\');"></span>';
     }
 
@@ -245,10 +237,7 @@
             '</div>';
 
         var assetBase = typeof opts.assetBase === 'string' ? opts.assetBase : '';
-        var rawLogoSvg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 15.55" width="24" height="15.55"><polygon points="16.3 0 16.07 0 8.19 15.55 11.81 15.55 18 3.34 16.3 0"/><polygon points="24 .48 20.38 .48 15.41 10.28 18.08 15.55 21.7 15.55 19.03 10.28 24 .48"/><polygon points="11.61 6.9 8.11 0 7.88 0 0 15.55 3.61 15.55 7.87 7.14 8.12 7.14 9.8 10.46 11.61 6.9"/></svg>';
-        var logoSvgMask = typeof window !== 'undefined' && window.location && window.location.protocol === 'file:'
-            ? 'data:image/svg+xml;utf8,' + encodeURIComponent(rawLogoSvg)
-            : escapeHtml(assetBase + 'svg/logo-MAX.svg');
+        var logoSvgUrl = escapeHtml(assetBase + 'svg/logo-MAX.svg');
 
         root.innerHTML = '' +
             '<div class="header-shell">' +
@@ -261,7 +250,7 @@
             '            </div>' +
             '        </div>' +
             '        <a class="header-home" id="headerHomeLink" href="' + homeHref + '" aria-label="' + escapeHtml(translate('header.homeAria', 'Quay v\u1ec1 trang ch\u1ee7')) + '">' +
-            '            <span class="header-logo icon-mask" style="mask-image: url(\'' + logoSvgMask + '\'); -webkit-mask-image: url(\'' + logoSvgMask + '\');"></span>' +
+            '            <span class="header-logo icon-mask" style="mask-image: url(\'' + logoSvgUrl + '\'); -webkit-mask-image: url(\'' + logoSvgUrl + '\');"></span>' +
             '        </a>' +
             '        <div class="header-right">' +
             '            <div class="menu-wrap">' +
