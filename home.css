@@ -421,9 +421,9 @@ body {
     display: grid;
     grid-template-columns: 60% 40%;
     gap: 0;
-    height: 540px;
-    min-height: 540px;
-    max-height: 540px;
+    height: 800px;
+    min-height: 800px;
+    max-height: 800px;
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius-md);
     background-color: var(--bg-100);
@@ -435,14 +435,17 @@ body {
 /* Left Column 60%: Main Spotlight */
 .showcase-main {
     position: relative;
+    display: block;
     height: 100%;
-    max-height: 540px;
+    max-height: 800px;
     border-right: 1px solid var(--border-color);
     background-color: var(--bg-100);
     overflow: hidden;
     cursor: pointer;
     user-select: none;
     box-sizing: border-box;
+    text-decoration: none;
+    color: inherit;
 }
 
 .showcase-cover-wrap,
@@ -574,18 +577,21 @@ body {
     grid-template-rows: 1fr 1fr;
     gap: 0;
     height: 100%;
-    max-height: 540px;
+    max-height: 800px;
     box-sizing: border-box;
 }
 
 .showcase-card {
     position: relative;
+    display: block;
     height: 100%;
     overflow: hidden;
     background-color: var(--bg-100);
     cursor: pointer;
     user-select: none;
     box-sizing: border-box;
+    text-decoration: none;
+    color: inherit;
     transition: background-color var(--transition-fast);
 }
 
@@ -641,8 +647,13 @@ body {
     color: var(--accent-primary);
 }
 
-/* Responsive */
-@media (max-width: 860px) {
+.showcase-card:hover .showcase-arrow {
+    color: var(--accent-primary);
+    transform: translateX(4px);
+}
+
+/* Responsive for Mobile: 3 rows of 1:1 squares (no 2-column structure) */
+@media (max-width: 767px) {
     .professions-showcase-wrap {
         grid-template-columns: 1fr;
         height: auto;
@@ -651,89 +662,50 @@ body {
     }
 
     .showcase-main {
-        height: 340px;
-        max-height: 340px;
+        width: 100%;
+        height: auto;
+        max-height: none;
+        aspect-ratio: 1 / 1;
         border-right: none;
         border-bottom: 1px solid var(--border-color);
     }
 
     .showcase-side {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr;
-        height: 200px;
-        max-height: 200px;
-    }
-
-    .showcase-card:first-child {
-        border-bottom: none;
-        border-right: 1px solid var(--border-color);
-    }
-}
-
-@media (max-width: 540px) {
-    .showcase-main {
-        height: 300px;
-        max-height: 300px;
-    }
-
-    .showcase-side {
-        grid-template-columns: 1fr;
-        grid-template-rows: 150px 150px;
+        display: flex;
+        flex-direction: column;
+        grid-template-columns: none;
+        grid-template-rows: none;
         height: auto;
         max-height: none;
     }
 
-    .showcase-card:first-child {
-        border-right: none;
-        border-bottom: 1px solid var(--border-color);
-    }
-}
-
-/* Responsive */
-@media (max-width: 860px) {
-    .professions-showcase-wrap {
-        grid-template-columns: 1fr;
-        height: auto;
-        min-height: 0;
-        max-height: none;
-    }
-
-    .showcase-main {
-        height: 340px;
-        max-height: 340px;
-        border-right: none;
-        border-bottom: 1px solid var(--border-color);
-    }
-
-    .showcase-side {
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr;
-        height: 200px;
-        max-height: 200px;
-    }
-
-    .showcase-card:first-child {
-        border-bottom: none;
-        border-right: 1px solid var(--border-color);
-    }
-}
-
-@media (max-width: 540px) {
-    .showcase-main {
-        height: 300px;
-        max-height: 300px;
-    }
-
-    .showcase-side {
-        grid-template-columns: 1fr;
-        grid-template-rows: 150px 150px;
+    .showcase-card {
+        width: 100%;
         height: auto;
         max-height: none;
+        aspect-ratio: 1 / 1;
     }
 
     .showcase-card:first-child {
         border-right: none;
         border-bottom: 1px solid var(--border-color);
+    }
+
+    .showcase-info,
+    .showcase-card-info {
+        padding: 20px 16px;
+    }
+
+    .showcase-vertical-title,
+    .showcase-card-vertical-title {
+        font-size: clamp(1.4rem, 5.5vw, 1.8rem);
+        letter-spacing: 0.14em;
+    }
+
+    .showcase-vertical-subtitle,
+    .showcase-card-vertical-subtitle {
+        font-size: clamp(0.68rem, 2.5vw, 0.75rem);
+        letter-spacing: 0.1em;
     }
 }
 

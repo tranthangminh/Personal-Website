@@ -58,8 +58,6 @@ if (typeof initSharedPage === 'function') {
     const showcaseMain = document.getElementById('showcaseMain');
     const showcaseCoverA = document.getElementById('showcaseCoverA');
     const showcaseCoverB = document.getElementById('showcaseCoverB');
-    const showcaseMainTitle = document.getElementById('showcaseMainTitle');
-    const showcaseMainBadge = document.getElementById('showcaseMainBadge');
     const card1 = document.getElementById('showcaseCard1');
     const card2 = document.getElementById('showcaseCard2');
 
@@ -122,9 +120,6 @@ if (typeof initSharedPage === 'function') {
         }
     };
 
-    let activeId = 'actor';
-    let sideSlot1Id = 'artist';
-    let sideSlot2Id = 'photographer';
     let activeMainLayer = 'A';
     let activeC1Layer = 'A';
     let activeC2Layer = 'A';
@@ -161,25 +156,25 @@ if (typeof initSharedPage === 'function') {
         return activeLayerName === 'A' ? 'B' : 'A';
     }
 
-    let currentStep = 0; // 0: Main, 1: Card 1, 2: Card 2
+    let currentStep = 0; // 0: Main (Diễn viên), 1: Card 1 (Họa sĩ), 2: Card 2 (Nhiếp ảnh)
 
     function startSlideshow() {
         stopSlideshow();
         currentStep = 0;
         slideshowInterval = setInterval(function () {
             if (currentStep === 0) {
-                // Ô 1 (Main spotlight 60%) đổi ảnh
-                const nextMainImg = getNextRandomImage(activeId, 'main');
+                // Diễn viên
+                const nextMainImg = getNextRandomImage('actor', 'main');
                 activeMainLayer = switchCover(showcaseCoverA, showcaseCoverB, activeMainLayer, nextMainImg);
             } else if (currentStep === 1) {
-                // Ô 2 (Card 1 Hàng trên) đổi ảnh sau 0.5s
-                const nextC1Img = getNextRandomImage(sideSlot1Id, 'c1');
+                // Họa sĩ
+                const nextC1Img = getNextRandomImage('artist', 'c1');
                 const c1A = document.getElementById('showcaseCard1CoverA');
                 const c1B = document.getElementById('showcaseCard1CoverB');
                 activeC1Layer = switchCover(c1A, c1B, activeC1Layer, nextC1Img);
             } else if (currentStep === 2) {
-                // Ô 3 (Card 2 Hàng dưới) đổi ảnh sau 0.5s
-                const nextC2Img = getNextRandomImage(sideSlot2Id, 'c2');
+                // Nhiếp ảnh
+                const nextC2Img = getNextRandomImage('photographer', 'c2');
                 const c2A = document.getElementById('showcaseCard2CoverA');
                 const c2B = document.getElementById('showcaseCard2CoverB');
                 activeC2Layer = switchCover(c2A, c2B, activeC2Layer, nextC2Img);
@@ -196,96 +191,26 @@ if (typeof initSharedPage === 'function') {
         }
     }
 
-    function renderShowcase() {
-        const mainData = professionsData[activeId];
-        showcaseMain.setAttribute('data-profession', mainData.id);
-        showcaseMain.setAttribute('aria-label', 'Mở trang chi tiết ' + mainData.title);
-        showcaseMainTitle.textContent = mainData.title;
-        showcaseMainBadge.textContent = mainData.badge;
-
-        // Immediately set initial covers
-        const initialMainImg = getNextRandomImage(activeId, 'main');
+    function initShowcase() {
+        // Khởi tạo ảnh ngẫu nhiên ban đầu cho cả 3 mục
+        const initialMainImg = getNextRandomImage('actor', 'main');
         activeMainLayer = switchCover(showcaseCoverA, showcaseCoverB, activeMainLayer, initialMainImg);
 
-        // Update Side Slot 1
-        const s1Data = professionsData[sideSlot1Id];
-        card1.setAttribute('data-profession', s1Data.id);
-        card1.setAttribute('aria-label', 'Chuyển mục ' + s1Data.title + ' thành tiêu điểm');
-        const c1Title = document.getElementById('showcaseCard1Title');
-        const c1Badge = document.getElementById('showcaseCard1Badge');
+        const initialC1Img = getNextRandomImage('artist', 'c1');
         const c1A = document.getElementById('showcaseCard1CoverA');
         const c1B = document.getElementById('showcaseCard1CoverB');
-        if (c1Title) c1Title.textContent = s1Data.title;
-        if (c1Badge) c1Badge.textContent = s1Data.sideBadge;
-        const initialC1Img = getNextRandomImage(sideSlot1Id, 'c1');
         activeC1Layer = switchCover(c1A, c1B, activeC1Layer, initialC1Img);
 
-        // Update Side Slot 2
-        const s2Data = professionsData[sideSlot2Id];
-        card2.setAttribute('data-profession', s2Data.id);
-        card2.setAttribute('aria-label', 'Chuyển mục ' + s2Data.title + ' thành tiêu điểm');
-        const c2Title = document.getElementById('showcaseCard2Title');
-        const c2Badge = document.getElementById('showcaseCard2Badge');
+        const initialC2Img = getNextRandomImage('photographer', 'c2');
         const c2A = document.getElementById('showcaseCard2CoverA');
         const c2B = document.getElementById('showcaseCard2CoverB');
-        if (c2Title) c2Title.textContent = s2Data.title;
-        if (c2Badge) c2Badge.textContent = s2Data.sideBadge;
-        const initialC2Img = getNextRandomImage(sideSlot2Id, 'c2');
         activeC2Layer = switchCover(c2A, c2B, activeC2Layer, initialC2Img);
 
         startSlideshow();
     }
 
-    function swapToSpotlight(newProfId, slotNum) {
-        if (newProfId === activeId) return;
-        const oldActive = activeId;
-        activeId = newProfId;
-        if (slotNum === 1) {
-            sideSlot1Id = oldActive;
-        } else {
-            sideSlot2Id = oldActive;
-        }
-        renderShowcase();
-    }
-
-    // Event listeners: CLICK ONLY (Hover removed as requested)
-    card1.addEventListener('click', function (e) {
-        e.preventDefault();
-        swapToSpotlight(sideSlot1Id, 1);
-    });
-    card1.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            swapToSpotlight(sideSlot1Id, 1);
-        }
-    });
-
-    card2.addEventListener('click', function (e) {
-        e.preventDefault();
-        swapToSpotlight(sideSlot2Id, 2);
-    });
-    card2.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            swapToSpotlight(sideSlot2Id, 2);
-        }
-    });
-
-    // Main spotlight click / keyboard -> Navigate to target page
-    showcaseMain.addEventListener('click', function () {
-        const dest = professionsData[activeId].href;
-        if (dest) window.location.href = dest;
-    });
-    showcaseMain.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            const dest = professionsData[activeId].href;
-            if (dest) window.location.href = dest;
-        }
-    });
-
-    // Start initial showcase
-    renderShowcase();
+    // Khởi động luân chuyển ảnh showcase
+    initShowcase();
 })();
 
 // Scroll Reveal Animations
