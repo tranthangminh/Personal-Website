@@ -214,16 +214,16 @@ body {
 }
 
 .product-download-icon {
-    width: 24px;
-    height: 24px;
-    min-width: 24px;
-    min-height: 24px;
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+    min-height: 16px;
     display: inline-block;
     background-color: currentColor;
     mask-image: url('svg/download.svg');
     -webkit-mask-image: url('svg/download.svg');
-    mask-size: 24px 24px;
-    -webkit-mask-size: 24px 24px;
+    mask-size: 16px 16px;
+    -webkit-mask-size: 16px 16px;
     mask-repeat: no-repeat;
     -webkit-mask-repeat: no-repeat;
     mask-position: center;
