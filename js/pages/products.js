@@ -1,4 +1,4 @@
-﻿'use strict';
+'use strict';
 
 if (typeof initSharedPage === 'function') {
     initSharedPage({
@@ -7,17 +7,7 @@ if (typeof initSharedPage === 'function') {
             rootId: 'sharedHeaderRoot',
             options: {
                 homeHref: 'index.html',
-                toolBaseHref: '',
-                professionItems: [
-                    { labelKey: 'header.profession.actor', label: 'Diễn Viên', href: 'actor.html' },
-                    { labelKey: 'header.profession.artist', label: 'Họa Sĩ', href: 'artist.html' },
-                    { labelKey: 'header.profession.photographer', label: 'Nhiếp Ảnh', href: 'photographer.html' }
-                ],
-                toolItems: [
-                    { labelKey: 'header.tool.chromeExtension', label: 'Chrome Extension', href: 'products.html?tab=chrome-extension' },
-                    { labelKey: 'header.tool.plugins', label: 'Plugins', href: 'products.html?tab=plugins' },
-                    { labelKey: 'header.tool.windowsApps', label: 'Windows Apps', href: 'products.html?tab=windows-apps' }
-                ]
+                toolBaseHref: ''
             }
         },
         contact: {

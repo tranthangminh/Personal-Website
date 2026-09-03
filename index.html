@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hồ Sơ Trần Thắng Minh</title>
+<link rel="icon" type="image/svg+xml" href="svg/logo-MAX-favicon.svg">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;700&family=Great+Vibes&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/theme.css?v=20260830-2">
@@ -36,9 +37,12 @@
 <main class="home-main">
     <section class="page hero-page">
         <div class="hero">
+            <div class="hero-bg-portfolio-wrap" aria-hidden="true">
+                <span class="hero-bg-portfolio-img icon-mask" style="mask-image: url('svg/porfolio.svg'); -webkit-mask-image: url('svg/porfolio.svg');"></span>
+            </div>
             <picture>
-                <source media="(orientation: portrait)" srcset="assets/images/MAX90376-mobile.jpg">
-                <img src="assets/images/MAX90376.jpg" alt="Ảnh mở đầu">
+                <source media="(orientation: portrait)" srcset="assets/images/MAX90376.png">
+                <img src="assets/images/MAX90376.png" class="hero-portrait-img" alt="Ảnh mở đầu">
             </picture>
             <div class="hero-overlay content-wrap">
                 <div class="hero-text-left reveal-up">
@@ -99,119 +103,55 @@
         </div>
     </section>
 
-    <section class="page actor-page">
-        <div class="content-wrap actor-page-wrap about-actor-wrap">
-            <aside class="actor-panel reveal-up">
-                <h2 class="actor-title reveal-up">VỀ DIỄN VIÊN</h2>
-                <p class="actor-summary reveal-up">
-                    Mình theo đuổi diễn xuất với trọng tâm là biểu cảm nhân vật, chiều sâu cảm xúc và khả năng kể chuyện bằng hình ảnh.
-                    Qua thời gian, mình đã tích lũy kinh nghiệm ở cả bối cảnh trong phòng chụp lẫn ngoài trời, từ các bộ ảnh mang màu sắc điện ảnh
-                    đến những ý tưởng thời trang thiên về thần thái trình diễn.
-                    <br><br>
-                    Định hướng của mình khá rõ ràng: giữ sự tự nhiên, giữ độ chính xác và để mỗi khung hình đều mang một cảm xúc riêng.
-                </p>
-            </aside>
-            <div class="about-actor-bottom">
-                <div class="about-actor-video reveal-up">
-                    <h3 class="about-actor-video-title" id="aboutActorVideoTitle">Trộm Vía</h3>
-                    <div class="about-actor-video-media">
-                        <a class="about-actor-video-frame" id="aboutActorVideoLink" href="https://www.youtube.com/watch?v=S-YVjeYC4T8" target="_blank" rel="noopener noreferrer" aria-label="Xem video diễn viên nổi bật trên YouTube">
-                            <img id="aboutActorVideoThumb" src="https://img.youtube.com/vi/S-YVjeYC4T8/hqdefault.jpg" alt="Ảnh xem trước video diễn viên số 1">
-                            <span class="about-actor-video-play" aria-hidden="true">
-                                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                            </span>
-                        </a>
-                        <div class="about-actor-video-controls">
-                            <button class="about-actor-video-nav" id="aboutActorVideoPrev" type="button" aria-label="Video trước">
-                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14.7 6.3-1.4-1.4L6.2 12l7.1 7.1 1.4-1.4L9 12l5.7-5.7Z"/></svg>
-                            </button>
-                            <button class="about-actor-video-nav" id="aboutActorVideoNext" type="button" aria-label="Video tiếp theo">
-                                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9.3 17.7 1.4 1.4 7.1-7.1-7.1-7.1-1.4 1.4L15 12l-5.7 5.7Z"/></svg>
-                            </button>
+    <section class="page professions-showcase-page" id="professionsShowcase">
+        <div class="content-wrap professions-showcase-wrap">
+            <!-- Left Column 60%: Main Showcase Spotlight -->
+            <article class="showcase-main reveal-up" id="showcaseMain" role="button" tabindex="0" aria-label="Mở trang chi tiết Diễn Viên" data-profession="actor">
+                <div class="showcase-cover-wrap">
+                    <div class="showcase-cover is-active" id="showcaseCoverA" style="background-image: url('assets/images/Actor/main-01.jpg');"></div>
+                    <div class="showcase-cover" id="showcaseCoverB"></div>
+                </div>
+                <div class="showcase-gradient-overlay" aria-hidden="true"></div>
+                <div class="showcase-info">
+                    <div class="showcase-header-group">
+                        <div class="showcase-vertical-title" id="showcaseMainTitle">DIỄN VIÊN</div>
+                        <div class="showcase-vertical-subtitle" id="showcaseMainBadge">TỪ NĂM 2021</div>
+                    </div>
+                    <div class="showcase-meta">
+                        <span class="showcase-arrow" aria-hidden="true">→</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Right Column 40%: 2 Secondary Cards -->
+            <div class="showcase-side">
+                <!-- Slot 1: Artist -->
+                <article class="showcase-card reveal-up" id="showcaseCard1" role="button" tabindex="0" data-profession="artist" aria-label="Chuyển mục Họa Sĩ thành tiêu điểm">
+                    <div class="showcase-card-cover-wrap">
+                        <div class="showcase-card-cover is-active" id="showcaseCard1CoverA" style="background-image: url('assets/images/2D/POSTER%203000x2100.jpg');"></div>
+                        <div class="showcase-card-cover" id="showcaseCard1CoverB"></div>
+                    </div>
+                    <div class="showcase-gradient-overlay" aria-hidden="true"></div>
+                    <div class="showcase-card-info">
+                        <div class="showcase-header-group">
+                            <div class="showcase-card-vertical-title" id="showcaseCard1Title">HỌA SĨ</div>
+                            <div class="showcase-card-vertical-subtitle" id="showcaseCard1Badge">2D/3D · TỪ 2017</div>
                         </div>
                     </div>
-                </div>
-                <div class="actor-grid">
-                    <figure class="actor-item reveal-up"><img src="assets/images/Actor/main-01.jpg" alt="Actor photo main-01"></figure>
-                    <figure class="actor-item reveal-up"><img src="assets/images/Actor/main-02.jpg" alt="Actor photo main-02"></figure>
-                    <figure class="actor-item reveal-up"><img src="assets/images/Actor/main-03.jpg" alt="Actor photo main-03"></figure>
-                    <figure class="actor-item reveal-up"><img src="assets/images/Actor/main-04.jpg" alt="Actor photo main-04"></figure>
-                    <figure class="actor-item reveal-up"><img src="assets/images/Actor/main-05.jpg" alt="Actor photo main-05"></figure>
-                    <figure class="actor-item reveal-up"><img src="assets/images/Actor/main-06.jpg" alt="Actor photo main-06"></figure>
-                    <figure class="actor-item reveal-up"><img src="assets/images/Actor/main-07.jpg" alt="Actor photo main-07"></figure>
-                    <figure class="actor-item reveal-up"><img src="assets/images/Actor/main-08.jpg" alt="Actor photo main-08"></figure>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="page actor-page photographer-page">
-        <div class="content-wrap actor-page-wrap">
-            <div class="actor-grid">
-                <figure class="actor-item reveal-up"><img src="assets/images/Photographer/492882309_9629082393805507_1623897313072216052_n.jpg" alt="Photographer photo 492882309"></figure>
-                <figure class="actor-item reveal-up"><img src="assets/images/Photographer/493035186_9629082260472187_7506881416910455410_n.jpg" alt="Photographer photo 493035186"></figure>
-                <figure class="actor-item reveal-up"><img src="assets/images/Photographer/634639525_1592246438580986_314220355362350662_n.jpg" alt="Photographer photo 634639525"></figure>
-                <figure class="actor-item reveal-up"><img src="assets/images/Photographer/634831512_1592246461914317_2306135710163945031_n.jpg" alt="Photographer photo 634831512"></figure>
-                <figure class="actor-item reveal-up"><img src="assets/images/Photographer/641223531_1599406594531637_830826064098492680_n.jpg" alt="Photographer photo 641223531"></figure>
-                <figure class="actor-item reveal-up"><img src="assets/images/Photographer/641540841_1599406521198311_4462437764122936934_n.jpg" alt="Photographer photo 641540841"></figure>
-                <figure class="actor-item reveal-up"><img src="assets/images/Photographer/MAX92387.jpg" alt="Photographer photo MAX92387"></figure>
-                <figure class="actor-item reveal-up"><img src="assets/images/Photographer/MAX92410.jpg" alt="Photographer photo MAX92410"></figure>
-                <figure class="actor-item reveal-up"><img src="assets/images/Photographer/MAX92429.jpg" alt="Photographer photo MAX92429"></figure>
-                <figure class="actor-item reveal-up"><img src="assets/images/Photographer/MAX92880.jpg" alt="Photographer photo MAX92880"></figure>
-                <figure class="actor-item reveal-up"><img src="assets/images/Photographer/MAX94862.jpg" alt="Photographer photo MAX94862"></figure>
-                <figure class="actor-item reveal-up"><img src="assets/images/Photographer/MAX94875.jpg" alt="Photographer photo MAX94875"></figure>
-                <figure class="actor-item reveal-up"><img src="assets/images/Photographer/MAX95265.jpg" alt="Photographer photo MAX95265"></figure>
-                <figure class="actor-item reveal-up"><img src="assets/images/Photographer/MAX95266.jpg" alt="Photographer photo MAX95266"></figure>
-            </div>
-            <aside class="actor-panel reveal-up">
-                <h2 class="actor-title reveal-up">VỀ NHIẾP ẢNH</h2>
-                <p class="actor-summary reveal-up">
-                    Khi làm nhiếp ảnh, mình tập trung vào không khí, bố cục và nhịp cảm xúc trong từng khung hình.
-                    Mình thích xây dựng những câu chuyện thị giác có chất điện ảnh nhưng vẫn giữ được sự tự nhiên và đời sống trong từng chi tiết.
-                    <br><br>
-                    Cách làm việc của mình là kết hợp giữa định hướng rõ ràng và sự ngẫu hứng, để mỗi buổi chụp vừa có cấu trúc, vừa giữ được cảm giác chân thật.
-                </p>
-            </aside>
-        </div>
-    </section>
-
-    <section class="page design-page" id="designPage">
-        <div class="content-wrap design-wrap">
-            <aside class="design-info reveal-up">
-                <h2 class="actor-title reveal-up">HỌA SĨ 2D/3D</h2>
-                <p class="actor-summary reveal-up">
-                    Mình làm việc ở cả 2 hướng 2D và 3D, tập trung vào bố cục hình ảnh, cảm xúc thị giác và tính ứng dụng trong quy trình thực tế.
-                    Quy trình luôn ưu tiên sự rõ ràng về ý tưởng, chất lượng thành phẩm và khả năng tái sử dụng cho nhiều dự án khác nhau.
-                </p>
-            </aside>
-            <div class="design-showcase">
-                <article class="design-column reveal-up">
-                    <h3>2D</h3>
-                    <div class="actor-grid">
-                        <figure class="actor-item reveal-up"><img src="assets/images/2D/221107_InvitationCard_HTMTY.jpg" alt="2D artwork 221107_InvitationCard_HTMTY"></figure>
-                        <figure class="actor-item reveal-up"><img src="assets/images/2D/230716_PosterK22_ver1.jpg" alt="2D artwork 230716_PosterK22_ver1"></figure>
-                        <figure class="actor-item reveal-up"><img src="assets/images/2D/240530_PosterMuon.jpg" alt="2D artwork 240530_PosterMuon"></figure>
-                        <figure class="actor-item reveal-up"><img src="assets/images/2D/Backdrop.jpg" alt="2D artwork Backdrop"></figure>
-                        <figure class="actor-item reveal-up"><img src="assets/images/2D/Backdrop_Expand_3000x1800.jpg" alt="2D artwork Backdrop_Expand_3000x1800"></figure>
-                        <figure class="actor-item reveal-up"><img src="assets/images/2D/Banner-01.jpg" alt="2D artwork Banner-01"></figure>
-                        <figure class="actor-item reveal-up"><img src="assets/images/2D/Cover FB chuan-01.jpg" alt="2D artwork Cover FB chuan-01"></figure>
-                        <figure class="actor-item reveal-up"><img src="assets/images/2D/DoiNhuY.jpg" alt="2D artwork DoiNhuY"></figure>
-                        <figure class="actor-item reveal-up"><img src="assets/images/2D/HaCao_Expand-01.jpg" alt="2D artwork HaCao_Expand-01"></figure>
-                        <figure class="actor-item reveal-up"><img src="assets/images/2D/nhanbia GoldenAleSHORT12.6_Expand.jpg" alt="2D artwork nhanbia GoldenAleSHORT12.6_Expand"></figure>
-                        <figure class="actor-item reveal-up"><img src="assets/images/2D/NoThan.jpg" alt="2D artwork NoThan"></figure>
-                        <figure class="actor-item reveal-up"><img src="assets/images/2D/PhamCongCucHoa.jpg" alt="2D artwork PhamCongCucHoa"></figure>
-                        <figure class="actor-item reveal-up"><img src="assets/images/2D/POSTER 3000x2100.jpg" alt="2D artwork POSTER 3000x2100"></figure>
-                        <figure class="actor-item reveal-up"><img src="assets/images/2D/Poster A4.jpg" alt="2D artwork Poster A4"></figure>
-                        <figure class="actor-item reveal-up"><img src="assets/images/2D/PosterChung.jpg" alt="2D artwork PosterChung"></figure>
-                        <figure class="actor-item reveal-up"><img src="assets/images/2D/PosterK18.jpg" alt="2D artwork PosterK18"></figure>
-                        <figure class="actor-item reveal-up"><img src="assets/images/2D/ThiHen.jpg" alt="2D artwork ThiHen"></figure>
-                    </div>
                 </article>
-                <article class="design-column reveal-up">
-                    <h3>3D</h3>
-                    <div class="actor-grid">
-                        <figure class="actor-item reveal-up"><img src="assets/images/3D/im-curious-why-the-fox-and-what-has-rammy-got-to-do-with-v0-r43xgx8hi2l81.webp" alt="3D artwork Fox scene"></figure>
-                        <figure class="actor-item reveal-up"><img src="assets/images/3D/marvels-spider-man-2-symbiote-nest-plant-sonic-bursts-1-1024x576.jpg" alt="3D artwork Symbiote nest scene"></figure>
+
+                <!-- Slot 2: Photographer -->
+                <article class="showcase-card reveal-up" id="showcaseCard2" role="button" tabindex="0" data-profession="photographer" aria-label="Chuyển mục Nhiếp Ảnh thành tiêu điểm">
+                    <div class="showcase-card-cover-wrap">
+                        <div class="showcase-card-cover is-active" id="showcaseCard2CoverA" style="background-image: url('assets/images/Photographer/MAX90056.jpg');"></div>
+                        <div class="showcase-card-cover" id="showcaseCard2CoverB"></div>
+                    </div>
+                    <div class="showcase-gradient-overlay" aria-hidden="true"></div>
+                    <div class="showcase-card-info">
+                        <div class="showcase-header-group">
+                            <div class="showcase-card-vertical-title" id="showcaseCard2Title">NHIẾP ẢNH</div>
+                            <div class="showcase-card-vertical-subtitle" id="showcaseCard2Badge">PORTRAIT · TỪ 2023</div>
+                        </div>
                     </div>
                 </article>
             </div>
