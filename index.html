@@ -5,28 +5,29 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Hồ Sơ Trần Thắng Minh</title>
 <link rel="icon" type="image/svg+xml" href="svg/logo-MAX-favicon.svg">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;700&family=Great+Vibes&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;600;700;800;900&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="common/theme.css?v=20260903-3">
 <link rel="stylesheet" href="common/shared-layout.css?v=20260903-3">
 <link rel="stylesheet" href="common/shared-header.css?v=20260903-3">
-<link rel="stylesheet" href="common/shared-footer.css?v=20260903-3">
+<link rel="stylesheet" href="common/shared-footer.css?v=20260904-1">
 <link rel="stylesheet" href="common/shared-book-now.css?v=20260903-3">
 <link rel="stylesheet" href="common/shared-surfaces.css?v=20260903-3">
 <link rel="stylesheet" href="common/shared-gallery.css?v=20260903-3">
 <link rel="stylesheet" href="common/shared-lightbox.css?v=20260903-3">
 <link rel="stylesheet" href="common/shared-welcome.css?v=20260903-3">
 <link rel="stylesheet" href="common/shared-mobile-type-scale.css?v=20260903-3">
-<link rel="stylesheet" href="home.css?v=20260903-3">
+<link rel="stylesheet" href="home.css?v=20260904-3">
 <script src="common/shared-utils.js?v=20260903-3"></script>
-<script src="common/shared-i18n.js?v=20260903-3"></script>
-<script src="common/i18n-vi.js?v=20260903-3"></script>
-<script src="common/i18n-en.js?v=20260903-3"></script>
-<script src="common/shared-header.js?v=20260903-3"></script>
+<script src="common/shared-i18n.js?v=20260904-1"></script>
+<script src="common/i18n-vi.js?v=20260904-1"></script>
+<script src="common/i18n-en.js?v=20260904-1"></script>
+<script src="common/shared-header.js?v=20260904-1"></script>
 <script src="common/shared-book-now.js?v=20260903-3"></script>
 <script src="common/shared-momentum.js?v=20260903-3"></script>
 <script src="common/shared-lightbox.js?v=20260903-3"></script>
-<script src="common/shared-contact.js?v=20260903-3"></script>
+<script src="common/shared-contact.js?v=20260904-1"></script>
 <script src="common/shared-welcome.js?v=20260903-3"></script>
 <script src="common/shared-page.js?v=20260903-3"></script>
 </head>
@@ -57,46 +58,126 @@
         </div>
     </section>
 
-    <section class="page intro-page">
-        <div class="intro-wrap">
-            <div class="intro-card">
-                <h2 class="intro-title reveal-up">THÔNG TIN CƠ BẢN</h2>
-                <p class="intro-subtitle reveal-up">
-                    Một vài thông tin nhanh về kinh nghiệm làm việc và năng lực kỹ thuật của mình.
-                </p>
-                <ul class="intro-list">
-                    <li class="reveal-up">
-                        <a class="intro-item-link" href="jobs/actor.html" aria-label="Mở trang Diễn Viên">
-                            <span class="intro-role"><span class="intro-icon">🎬</span>Diễn Viên</span>
-                            <span class="intro-years">Từ năm 2021</span>
+    <section class="page intro-page" id="introSection">
+        <div class="content-wrap">
+            <div class="intro-grid">
+                <!-- CỘT 1: LĨNH VỰC HOẠT ĐỘNG (5 MỤC) -->
+                <div class="intro-col intro-col-flow">
+                    <div class="intro-col-header">
+                        <span class="intro-col-badge">LĨNH VỰC HOẠT ĐỘNG</span>
+                    </div>
+                    <div class="intro-flow-list">
+                        <!-- 01: Diễn viên -->
+                        <a class="intro-flow-item reveal-up" href="jobs/actor.html">
+                            <span class="intro-flow-num">01</span>
+                            <div class="intro-flow-body">
+                                <h3 class="intro-flow-title">DIỄN VIÊN</h3>
+                                <p class="intro-flow-desc">Kịch nói, điện ảnh &amp; biểu diễn sân khấu</p>
+                            </div>
                         </a>
-                    </li>
-                    <li class="reveal-up">
-                        <a class="intro-item-link" href="jobs/artist.html" aria-label="Mở trang Họa Sĩ">
-                            <span class="intro-role"><span class="intro-icon">🎨</span>Họa Sĩ 2D/3D</span>
-                            <span class="intro-years">Từ năm 2017</span>
+
+                        <!-- 02: Họa sĩ -->
+                        <a class="intro-flow-item reveal-up" href="jobs/artist.html">
+                            <span class="intro-flow-num">02</span>
+                            <div class="intro-flow-body">
+                                <h3 class="intro-flow-title">HỌA SĨ 2D/3D</h3>
+                                <p class="intro-flow-desc">Thiết kế đồ họa, poster &amp; mô hình 3D</p>
+                            </div>
                         </a>
-                    </li>
-                    <li class="reveal-up">
-                        <a class="intro-item-link" href="jobs/photographer.html" aria-label="Mở trang Nhiếp Ảnh">
-                            <span class="intro-role"><span class="intro-icon">📷</span>Nhiếp Ảnh</span>
-                            <span class="intro-years">Từ năm 2023</span>
+
+                        <!-- 03: Nhiếp ảnh -->
+                        <a class="intro-flow-item reveal-up" href="jobs/photographer.html">
+                            <span class="intro-flow-num">03</span>
+                            <div class="intro-flow-body">
+                                <h3 class="intro-flow-title">NHIẾP ẢNH</h3>
+                                <p class="intro-flow-desc">Nhiếp ảnh chân dung &amp; nghệ thuật concept</p>
+                            </div>
                         </a>
-                    </li>
-                    <li class="reveal-up">
-                        <span class="intro-role"><span class="intro-icon">💼</span>Người Sáng Lập - Giám Đốc Điều Hành</span>
-                        <span class="intro-years">Tiệm nước hoa Harry Perfume</span>
-                    </li>
-                </ul>
-                <p class="intro-note reveal-up">
-                    Ngoài ra mình còn biết lập trình và đã tạo nhiều sản phẩm, công cụ phục vụ quy trình làm việc thực tế.
-                </p>
-                <div class="intro-tools reveal-up">
-                    <div class="intro-tools-title">SẢN PHẨM & NỀN TẢNG</div>
-                    <div class="intro-tags">
-                        <a class="intro-tag intro-tag-link" href="products.html?tab=chrome-extension" aria-label="Mở tab Chrome Extension trong trang Sản Phẩm">Chrome Extension</a>
-                        <a class="intro-tag intro-tag-link" href="products.html?tab=plugins" aria-label="Mở tab Plugins trong trang Sản Phẩm">Plugins</a>
-                        <a class="intro-tag intro-tag-link" href="products.html?tab=windows-apps" aria-label="Mở tab Windows Apps trong trang Sản Phẩm">Windows Apps</a>
+
+                        <!-- 04: Kinh doanh F&B -->
+                        <div class="intro-flow-item reveal-up">
+                            <span class="intro-flow-num">04</span>
+                            <div class="intro-flow-body">
+                                <h3 class="intro-flow-title">KINH DOANH F&amp;B</h3>
+                                <p class="intro-flow-desc">Mô hình ẩm thực, đồ uống &amp; vận hành quán</p>
+                            </div>
+                        </div>
+
+                        <!-- 05: Kinh doanh nước hoa -->
+                        <div class="intro-flow-item reveal-up">
+                            <span class="intro-flow-num">05</span>
+                            <div class="intro-flow-body">
+                                <h3 class="intro-flow-title">KINH DOANH NƯỚC HOA</h3>
+                                <p class="intro-flow-desc">Sáng lập &amp; điều hành thương hiệu Harry Perfume</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CỘT 2: KỸ NĂNG & CÔNG CỤ -->
+                <div class="intro-col intro-col-skills">
+                    <div class="intro-col-header">
+                        <span class="intro-col-badge">KỸ NĂNG &amp; CÔNG CỤ</span>
+                    </div>
+
+                    <!-- Lưới 10 Thẻ con chia 2 cột -->
+                    <div class="intro-skills-grid">
+                        <!-- Nhóm 1: Thiết kế & Sáng tạo -->
+                        <div class="intro-skills-subcol">
+                            <a class="skill-capsule-card reveal-up" href="products.html?tab=plugins">
+                                <span class="skill-capsule-icon" aria-hidden="true">🎨</span>
+                                <span class="skill-capsule-name">PHOTOSHOP</span>
+                            </a>
+                            <div class="skill-capsule-card reveal-up">
+                                <span class="skill-capsule-icon" aria-hidden="true">✒️</span>
+                                <span class="skill-capsule-name">ILLUSTRATOR</span>
+                            </div>
+                            <a class="skill-capsule-card reveal-up" href="products.html?tab=plugins">
+                                <span class="skill-capsule-icon" aria-hidden="true">🧊</span>
+                                <span class="skill-capsule-name">MAYA 3D</span>
+                            </a>
+                            <div class="skill-capsule-card reveal-up">
+                                <span class="skill-capsule-icon" aria-hidden="true">📷</span>
+                                <span class="skill-capsule-name">LIGHTROOM</span>
+                            </div>
+                            <a class="skill-capsule-card reveal-up" href="products.html?tab=books">
+                                <span class="skill-capsule-icon" aria-hidden="true">📖</span>
+                                <span class="skill-capsule-name">DỊCH SÁCH</span>
+                            </a>
+                        </div>
+
+                        <!-- Nhóm 2: Lập trình & Công nghệ -->
+                        <div class="intro-skills-subcol">
+                            <div class="skill-capsule-card reveal-up">
+                                <span class="skill-capsule-icon" aria-hidden="true">💻</span>
+                                <span class="skill-capsule-name">LẬP TRÌNH WEB</span>
+                            </div>
+                            <a class="skill-capsule-card reveal-up" href="products.html?tab=chrome-extension">
+                                <span class="skill-capsule-icon" aria-hidden="true">🧩</span>
+                                <span class="skill-capsule-name">TIỆN ÍCH CHROME</span>
+                            </a>
+                            <a class="skill-capsule-card reveal-up" href="products.html?tab=windows-apps">
+                                <span class="skill-capsule-icon" aria-hidden="true">🖥️</span>
+                                <span class="skill-capsule-name">ỨNG DỤNG WINDOWS</span>
+                            </a>
+                            <div class="skill-capsule-card reveal-up">
+                                <span class="skill-capsule-icon" aria-hidden="true">⚡</span>
+                                <span class="skill-capsule-name">TOOL TỰ ĐỘNG</span>
+                            </div>
+                            <a class="skill-capsule-card reveal-up" href="products.html?tab=plugins">
+                                <span class="skill-capsule-icon" aria-hidden="true">🎯</span>
+                                <span class="skill-capsule-name">CHEAT ENGINE</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Khối Viền Đỏ Nổi Bật Bên Dưới -->
+                    <div class="intro-featured-card reveal-up">
+                        <div class="intro-featured-icon" aria-hidden="true">🏆</div>
+                        <div class="intro-featured-info">
+                            <div class="intro-featured-title">DỰ ÁN TIÊU BIỂU</div>
+                            <div class="intro-featured-desc">Trọn bộ dịch thuật tác phẩm &ldquo;Công việc của người diễn viên&rdquo; (K. Stanislavski) &amp; Phần mềm POS Tính Tiền Nhanh.</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -104,6 +185,16 @@
     </section>
 
     <section class="page professions-showcase-page" id="professionsShowcase">
+        <div class="content-wrap">
+            <div class="section-title-bar reveal-up">
+                <h2 class="section-title-bar-heading">CÔNG VIỆC</h2>
+                <span class="section-title-bar-line" aria-hidden="true"></span>
+                <a class="section-title-bar-link" href="jobs.html">
+                    <span>XEM TẤT CẢ</span>
+                    <span class="section-title-bar-arrow" aria-hidden="true">&rarr;</span>
+                </a>
+            </div>
+        </div>
         <div class="content-wrap professions-showcase-wrap">
             <!-- Left Column 60%: Main Showcase (Diễn Viên) -->
             <a class="showcase-main reveal-up" id="showcaseMain" href="jobs/actor.html" aria-label="Mở trang Diễn Viên" data-profession="actor">
@@ -134,8 +225,8 @@
                     <div class="showcase-gradient-overlay" aria-hidden="true"></div>
                     <div class="showcase-card-info">
                         <div class="showcase-header-group">
-                            <div class="showcase-card-vertical-title" id="showcaseCard1Title">HỌA SĨ</div>
-                            <div class="showcase-card-vertical-subtitle" id="showcaseCard1Badge">2D/3D · TỪ 2017</div>
+                            <div class="showcase-card-vertical-title" id="showcaseCard1Title">HỌA SĨ 2D/3D</div>
+                            <div class="showcase-card-vertical-subtitle" id="showcaseCard1Badge">TỪ NĂM 2017</div>
                         </div>
                         <div class="showcase-meta">
                             <span class="showcase-arrow" aria-hidden="true">&rarr;</span>
@@ -153,7 +244,7 @@
                     <div class="showcase-card-info">
                         <div class="showcase-header-group">
                             <div class="showcase-card-vertical-title" id="showcaseCard2Title">NHIẾP ẢNH</div>
-                            <div class="showcase-card-vertical-subtitle" id="showcaseCard2Badge">PORTRAIT · TỪ 2023</div>
+                            <div class="showcase-card-vertical-subtitle" id="showcaseCard2Badge">TỪ NĂM 2023</div>
                         </div>
                         <div class="showcase-meta">
                             <span class="showcase-arrow" aria-hidden="true">&rarr;</span>
@@ -164,35 +255,97 @@
         </div>
     </section>
 
-    <section class="page artist-page" id="artistPage">
-        <div class="content-wrap artist-wrap">
-            <aside class="artist-info reveal-up">
-                <h2 class="actor-title reveal-up">LẬP TRÌNH & PHÁT TRIỂN SẢN PHẨM</h2>
-                <p class="actor-summary reveal-up">
-                    Mình từng học Đại học chuyên ngành Công nghệ thông tin trong 2 năm, nên có thể lập trình và phát triển sản phẩm phục vụ công việc thực tế.
-                    Các sản phẩm này giúp tối ưu thời gian thao tác, tự động hóa những bước lặp và làm quy trình làm việc ổn định hơn.
-                </p>
-                <ul class="intro-list artist-tool-list">
-                    <li class="reveal-up">
-                        <a class="intro-item-link" href="products.html?tab=chrome-extension" aria-label="Mở tab Chrome Extension trong trang Sản Phẩm">
-                            <span class="intro-role"><span class="intro-icon">🌐</span>Chrome Extension</span>
-                            <span class="intro-years">Bộ công cụ toàn năng MAX Design Power-Pack hỗ trợ tải tài nguyên và xử lý đồ họa.</span>
-                        </a>
-                    </li>
-                    <li class="reveal-up">
-                        <a class="intro-item-link" href="products.html?tab=plugins" aria-label="Mở tab Plugins trong trang Sản Phẩm">
-                            <span class="intro-role"><span class="intro-icon">🎨</span>Plugins</span>
-                            <span class="intro-years">Tạo script và plugin mở rộng cho Photoshop/Maya giúp tự động hóa quy trình.</span>
-                        </a>
-                    </li>
-                    <li class="reveal-up">
-                        <a class="intro-item-link" href="products.html?tab=windows-apps" aria-label="Mở tab Windows Apps trong trang Sản Phẩm">
-                            <span class="intro-role"><span class="intro-icon">💻</span>Windows Apps</span>
-                            <span class="intro-years">Phần mềm Auto Clicker by Max và các tiện ích Windows hỗ trợ thao tác tự động hiệu năng cao.</span>
-                        </a>
-                    </li>
-                </ul>
-            </aside>
+    <section class="page products-showcase-page" id="productsShowcase">
+        <div class="content-wrap">
+            <div class="section-title-bar reveal-up">
+                <h2 class="section-title-bar-heading">SẢN PHẨM</h2>
+                <span class="section-title-bar-line" aria-hidden="true"></span>
+                <a class="section-title-bar-link" href="products.html">
+                    <span>XEM TẤT CẢ</span>
+                    <span class="section-title-bar-arrow" aria-hidden="true">&rarr;</span>
+                </a>
+            </div>
+        </div>
+        <div class="content-wrap products-showcase-wrap reveal-up">
+            <!-- Col 1: Windows Apps -->
+            <div class="products-col">
+                <div class="products-col-head">
+                    <a class="products-col-title-link" href="products.html?tab=windows-apps">
+                        <span class="products-col-title">Windows Apps</span>
+                        <span class="products-col-arrow" aria-hidden="true">&rarr;</span>
+                    </a>
+                </div>
+                <div class="products-col-list">
+                    <a class="product-item-btn" href="products.html?tab=windows-apps">
+                        <img src="products/Windows Apps/Auto Clicker by Max.png" alt="Auto Clicker" class="product-item-btn-icon">
+                        <span class="product-item-btn-text">Auto Clicker by Max</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Col 2: Chrome Extension -->
+            <div class="products-col">
+                <div class="products-col-head">
+                    <a class="products-col-title-link" href="products.html?tab=chrome-extension">
+                        <span class="products-col-title">Chrome Extension</span>
+                        <span class="products-col-arrow" aria-hidden="true">&rarr;</span>
+                    </a>
+                </div>
+                <div class="products-col-list">
+                    <a class="product-item-btn" href="https://chromewebstore.google.com/detail/max-design-power-pack-col/adnlacngcngfpeellhmpbohaegpffmdp?authuser=0&hl=vi" target="_blank" rel="noopener noreferrer">
+                        <img src="svg/logo-MAX-favicon.svg" alt="MAX Logo" class="product-item-btn-icon">
+                        <span class="product-item-btn-text">MAX - Design Power-Pack</span>
+                    </a>
+                    <a class="product-item-btn" href="https://chromewebstore.google.com/detail/max-multi-chatai-multi-ac/jjhlbdhljmlnhbpkallgpikhaimoccmg?authuser=0&hl=vi" target="_blank" rel="noopener noreferrer">
+                        <img src="svg/logo-MAX-favicon.svg" alt="MAX Logo" class="product-item-btn-icon">
+                        <span class="product-item-btn-text">MAX - Multi Chat/AI &amp; Tab Manager</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Col 3: Books -->
+            <div class="products-col">
+                <div class="products-col-head">
+                    <a class="products-col-title-link" href="products.html?tab=books">
+                        <span class="products-col-title">Sách</span>
+                        <span class="products-col-arrow" aria-hidden="true">&rarr;</span>
+                    </a>
+                </div>
+                <div class="products-col-list">
+                    <a class="product-item-btn" href="products/Books/An%20Actor's%20Work%20-%20Part%201-translated%20(A5).pdf" target="_blank" rel="noopener noreferrer">
+                        <img src="products/Books/book-part-1.svg" alt="Book Part 1" class="product-item-btn-icon">
+                        <span class="product-item-btn-text">An Actor's Work - Part 1</span>
+                    </a>
+                    <a class="product-item-btn" href="products/Books/An%20Actor's%20Work%20-%20Part%202-translated%20(A5).pdf" target="_blank" rel="noopener noreferrer">
+                        <img src="products/Books/book-part-2.svg" alt="Book Part 2" class="product-item-btn-icon">
+                        <span class="product-item-btn-text">An Actor's Work - Part 2</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Col 4: Plugins -->
+            <div class="products-col">
+                <div class="products-col-head">
+                    <a class="products-col-title-link" href="products.html?tab=plugins">
+                        <span class="products-col-title">Plugins</span>
+                        <span class="products-col-arrow" aria-hidden="true">&rarr;</span>
+                    </a>
+                </div>
+                <div class="products-col-list">
+                    <a class="product-item-btn" href="products/plugin-photoshop.html">
+                        <img src="svg/photoshop.svg" alt="Photoshop" class="product-item-btn-icon">
+                        <span class="product-item-btn-text">Layer Export, Rename &amp; Sort</span>
+                    </a>
+                    <a class="product-item-btn" href="products/plugin-maya.html">
+                        <img src="products/Plugins/maya.png" alt="Maya" class="product-item-btn-icon">
+                        <span class="product-item-btn-text">Tool Maya</span>
+                    </a>
+                    <a class="product-item-btn" href="products/plugin-cheat-engine.html">
+                        <img src="svg/cheat-engine.svg" alt="Cheat Engine" class="product-item-btn-icon">
+                        <span class="product-item-btn-text">My Cheat Tables</span>
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 </main>
@@ -200,7 +353,7 @@
 <div id="sharedContactRoot"></div>
 <div id="sharedBookNowRoot"></div>
 <div id="sharedLightboxRoot"></div>
-<script src="home.js?v=20260903-3"></script>
+<script src="home.js?v=20260904-1"></script>
 </body>
 </html>
 

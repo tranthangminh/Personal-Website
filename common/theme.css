@@ -20,12 +20,18 @@
   --border-radius-lg: 8px;
   --border-radius-full: 9999px;
 
-  /* Typography Font Sizes */
-  --font-xs: 10px;
-  --font-sm: 11px;
-  --font-md: 12px;
-  --font-lg: 14px;
-  --font-xl: 16px;
+  /* Typography Font Families */
+  --font-primary:   'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-secondary: 'Barlow Condensed', 'Montserrat', sans-serif;
+
+  /* Typography Font Sizes (Chuẩn Design System) */
+  --font-xs:  11px;  /* Micro text: badge, tag cực nhỏ */
+  --font-sm:  12px;  /* Small text: nút bấm sản phẩm, ghi chú phụ */
+  --font-md:  14px;  /* Normal text: chữ đọc mô tả, link điều hướng */
+  --font-lg:  16px;  /* Large text: text nổi bật, body lớn */
+  --font-xl:  18px;  /* Sub-heading: tiêu đề 4 cột Sản Phẩm */
+  --font-2xl: 24px;  /* Section heading: CÔNG VIỆC, SẢN PHẨM */
+  --font-3xl: 32px;  /* Display heading: tiêu đề Hero / Trang */
 
   /* Motion & Animation Transitions */
   --transition-speed: 0.2s;
@@ -71,24 +77,24 @@
   --text-secondary: #bbbbbb;
   --text-tertiary:  #888888;
   --text-disabled:  #474747;
-  --text-on-accent: #0f0f0f;
+  --text-on-accent: #ffffff;
 
-  /* 🎯 GENERIC SEMANTIC ACCENT TOKENS */
-  --accent-primary:         var(--c-cyan);
-  --accent-primary-hover:   #5fb8a;
-  --accent-secondary:       var(--c-purple);
-  --accent-secondary-hover: #60a5fa;
-  --accent-subtle:          var(--c-cyan-bg);
+  /* 🎯 GENERIC SEMANTIC ACCENT TOKENS (DARK THEME) - BOLD CRIMSON RED */
+  --accent-primary:         #e50914;
+  --accent-primary-hover:   #ff2a35;
+  --accent-secondary:       #b91c1c;
+  --accent-secondary-hover: #e50914;
+  --accent-subtle:          rgba(229, 9, 20, 0.16);
+  --accent-glow:            rgba(229, 9, 20, 0.4);
 
   /* Gradients */
-  --accent-gradient: linear-gradient(135deg, var(--accent-primary) 0%, #00f2fe 40%, var(--accent-secondary) 100%);
-  --accent-gradient-hover: linear-gradient(135deg, #38f9ff 0%, #60a5fa 100%);
+  --accent-gradient: linear-gradient(135deg, #e50914 0%, #b91c1c 100%);
+  --accent-gradient-hover: linear-gradient(135deg, #ff2a35 0%, #dc2626 100%);
   --danger-gradient: linear-gradient(135deg, var(--c-red) 0%, #dc2626 100%);
 
   /* Semantic State Tokens */
   --accent-warning: var(--c-yellow);
   --accent-danger:  var(--c-red);
-  --accent-danger-hover: #f87171;
 
   /* Borders & Outlines (Màu đặc HEX) */
   --border-color: #3a3a3a;
@@ -99,7 +105,7 @@
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.4);
   --shadow-lg: 0 12px 28px rgba(0, 0, 0, 0.45);
-  --shadow-accent: 0 0 12px rgba(6, 182, 212, 0.35);
+  --shadow-accent: 0 0 16px rgba(229, 9, 20, 0.45);
   --shadow-danger: 0 0 12px rgba(239, 68, 68, 0.35);
 }
 
@@ -143,15 +149,16 @@
   --text-disabled:  #cbd5e1;
   --text-on-accent: #ffffff;
 
-  /* 🎯 GENERIC SEMANTIC ACCENT TOKENS (LIGHT THEME) */
-  --accent-primary:         var(--c-cyan);
-  --accent-primary-hover:   #0369a1;
-  --accent-secondary:       var(--c-purple);
-  --accent-secondary-hover: #1d4ed8;
-  --accent-subtle:          var(--c-cyan-bg);
+  /* 🎯 GENERIC SEMANTIC ACCENT TOKENS (LIGHT THEME) - CRIMSON RED */
+  --accent-primary:         #dc2626;
+  --accent-primary-hover:   #b91c1c;
+  --accent-secondary:       #991b1b;
+  --accent-secondary-hover: #7f1d1d;
+  --accent-subtle:          rgba(220, 38, 38, 0.12);
+  --accent-glow:            rgba(220, 38, 38, 0.3);
 
   /* Gradients */
-  --accent-gradient: linear-gradient(135deg, var(--accent-primary) 20%, var(--accent-secondary) 150%);
+  --accent-gradient: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
 
   /* Semantic State Tokens */
   --accent-warning: var(--c-yellow);
@@ -166,4 +173,5 @@
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
   --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.16);
+  --shadow-accent: 0 0 14px rgba(220, 38, 38, 0.35);
 }

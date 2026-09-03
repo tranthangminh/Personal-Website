@@ -38,10 +38,10 @@
                 photographer: 'Photographer'
             },
             tool: {
-                chromeExtension: 'Chrome Extension',
-                plugins: 'Plugins',
                 windowsApps: 'Windows Apps',
+                chromeExtension: 'Chrome Extension',
                 books: 'Books',
+                plugins: 'Plugins',
                 photoshop: 'Photoshop Tool',
                 maya: 'Maya Tool',
                 cheatEngine: 'Cheat Engine Tool'
@@ -112,10 +112,10 @@
             summary: 'A portfolio of Windows apps, Chrome extensions, and creative plugins built to optimize design workflows and automation.',
             tabs: {
                 all: 'All',
-                chromeExtension: 'Chrome Extension',
-                plugins: 'Plugins',
                 windowsApps: 'Windows Apps',
-                books: 'Books'
+                chromeExtension: 'Chrome Extension',
+                books: 'Books',
+                plugins: 'Plugins'
             },
             viewAction: 'View Details',
             emptyNotice: 'More products in this category are coming soon...'

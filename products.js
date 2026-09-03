@@ -128,31 +128,62 @@ function initProductDownloadCounters() {
 
         if (!productId || !countEl) return;
 
-        // 1. Read cached count from localStorage immediately
-        try {
-            var cached = localStorage.getItem(getStorageKey(productId));
-            if (cached !== null) {
-                updateCountUI(countEl, cached);
-            }
-        } catch (e) {}
+        var chromeId = btn.getAttribute('data-chrome-id');
 
-        // 2. Fetch latest global count from API
-        var apiKey = getApiKey(productId);
-        if (typeof fetch === 'function') {
-            fetch(API_BASE + '/get/' + encodeURIComponent(apiKey))
-                .then(function (res) {
-                    if (!res.ok) return null;
-                    return res.json();
-                })
-                .then(function (data) {
-                    if (data && typeof data.value === 'number') {
-                        updateCountUI(countEl, data.value);
-                        try {
-                            localStorage.setItem(getStorageKey(productId), String(data.value));
-                        } catch (e) {}
-                    }
-                })
-                .catch(function () {});
+        if (chromeId) {
+            // 1. Read cached user count from localStorage
+            try {
+                var cachedChrome = localStorage.getItem('tranthangminh_chrome_users_' + chromeId);
+                if (cachedChrome !== null) {
+                    updateCountUI(countEl, cachedChrome);
+                }
+            } catch (e) {}
+
+            // 2. Fetch live user count from Chrome Web Store (via Shields.io JSON API)
+            if (typeof fetch === 'function') {
+                fetch('https://img.shields.io/chrome-web-store/users/' + encodeURIComponent(chromeId) + '.json')
+                    .then(function (res) {
+                        if (!res.ok) return null;
+                        return res.json();
+                    })
+                    .then(function (data) {
+                        if (data && (data.value || data.message)) {
+                            var users = data.value || data.message;
+                            updateCountUI(countEl, users);
+                            try {
+                                localStorage.setItem('tranthangminh_chrome_users_' + chromeId, String(users));
+                            } catch (e) {}
+                        }
+                    })
+                    .catch(function () {});
+            }
+        } else {
+            // 1. Read cached count from localStorage immediately
+            try {
+                var cached = localStorage.getItem(getStorageKey(productId));
+                if (cached !== null) {
+                    updateCountUI(countEl, cached);
+                }
+            } catch (e) {}
+
+            // 2. Fetch latest global count from API
+            var apiKey = getApiKey(productId);
+            if (typeof fetch === 'function') {
+                fetch(API_BASE + '/get/' + encodeURIComponent(apiKey))
+                    .then(function (res) {
+                        if (!res.ok) return null;
+                        return res.json();
+                    })
+                    .then(function (data) {
+                        if (data && typeof data.value === 'number') {
+                            updateCountUI(countEl, data.value);
+                            try {
+                                localStorage.setItem(getStorageKey(productId), String(data.value));
+                            } catch (e) {}
+                        }
+                    })
+                    .catch(function () {});
+            }
         }
 
         // 3. Handle Download Action
@@ -162,27 +193,30 @@ function initProductDownloadCounters() {
                 e.stopPropagation();
             }
 
-            // A. Optimistically increment count on UI
-            var currentVal = parseInt(countEl.textContent, 10) || 0;
-            var nextVal = currentVal + 1;
-            updateCountUI(countEl, nextVal);
-            try {
-                localStorage.setItem(getStorageKey(productId), String(nextVal));
-            } catch (err) {}
+            if (!chromeId) {
+                // A. Optimistically increment count on UI for downloadable products
+                var currentVal = parseInt(countEl.textContent, 10) || 0;
+                var nextVal = currentVal + 1;
+                updateCountUI(countEl, nextVal);
+                try {
+                    localStorage.setItem(getStorageKey(productId), String(nextVal));
+                } catch (err) {}
 
-            // B. Send hit to API in background to persist globally
-            if (typeof fetch === 'function') {
-                fetch(API_BASE + '/hit/' + encodeURIComponent(apiKey))
-                    .then(function (res) { return res.json(); })
-                    .then(function (data) {
-                        if (data && typeof data.value === 'number') {
-                            updateCountUI(countEl, data.value);
-                            try {
-                                localStorage.setItem(getStorageKey(productId), String(data.value));
-                            } catch (err) {}
-                        }
-                    })
-                    .catch(function () {});
+                // B. Send hit to API in background to persist globally
+                var apiKey = getApiKey(productId);
+                if (typeof fetch === 'function') {
+                    fetch(API_BASE + '/hit/' + encodeURIComponent(apiKey))
+                        .then(function (res) { return res.json(); })
+                        .then(function (data) {
+                            if (data && typeof data.value === 'number') {
+                                updateCountUI(countEl, data.value);
+                                try {
+                                    localStorage.setItem(getStorageKey(productId), String(data.value));
+                                } catch (err) {}
+                            }
+                        })
+                        .catch(function () {});
+                }
             }
 
             // C. Trigger download or open store page

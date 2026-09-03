@@ -5,26 +5,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sản Phẩm - Trần Thắng Minh</title>
 <link rel="icon" type="image/svg+xml" href="svg/logo-MAX-favicon.svg">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;600;700;800;900&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="common/theme.css?v=20260903-3">
 <link rel="stylesheet" href="common/shared-layout.css?v=20260903-3">
 <link rel="stylesheet" href="common/shared-header.css?v=20260903-3">
-<link rel="stylesheet" href="common/shared-footer.css?v=20260903-3">
+<link rel="stylesheet" href="common/shared-footer.css?v=20260904-1">
 <link rel="stylesheet" href="common/shared-book-now.css?v=20260903-3">
 <link rel="stylesheet" href="common/shared-surfaces.css?v=20260903-3">
 <link rel="stylesheet" href="common/shared-gallery.css?v=20260903-3">
 <link rel="stylesheet" href="common/shared-lightbox.css?v=20260903-3">
 <link rel="stylesheet" href="common/shared-mobile-type-scale.css?v=20260903-3">
-<link rel="stylesheet" href="products.css?v=20260903-3">
+<link rel="stylesheet" href="products.css?v=20260904-2">
 <script src="common/shared-utils.js?v=20260903-3"></script>
-<script src="common/shared-i18n.js?v=20260903-3"></script>
-<script src="common/i18n-vi.js?v=20260903-3"></script>
-<script src="common/i18n-en.js?v=20260903-3"></script>
-<script src="common/shared-header.js?v=20260903-3"></script>
+<script src="common/shared-i18n.js?v=20260904-1"></script>
+<script src="common/i18n-vi.js?v=20260904-1"></script>
+<script src="common/i18n-en.js?v=20260904-1"></script>
+<script src="common/shared-header.js?v=20260904-1"></script>
 <script src="common/shared-book-now.js?v=20260903-3"></script>
 <script src="common/shared-momentum.js?v=20260903-3"></script>
 <script src="common/shared-lightbox.js?v=20260903-3"></script>
-<script src="common/shared-contact.js?v=20260903-3"></script>
+<script src="common/shared-contact.js?v=20260904-1"></script>
 <script src="common/shared-welcome.js?v=20260903-3"></script>
 <script src="common/shared-page.js?v=20260903-3"></script>
 </head>
@@ -41,35 +43,76 @@
 
         <div class="products-switch" role="tablist" aria-label="Chọn danh mục sản phẩm">
             <button class="products-switch-btn is-active" type="button" data-product-tab="all" aria-pressed="true" data-i18n="productsPage.tabs.all">Tất Cả</button>
-            <button class="products-switch-btn" type="button" data-product-tab="chrome-extension" aria-pressed="false" data-i18n="productsPage.tabs.chromeExtension">Chrome Extension</button>
-            <button class="products-switch-btn" type="button" data-product-tab="plugins" aria-pressed="false" data-i18n="productsPage.tabs.plugins">Plugins</button>
             <button class="products-switch-btn" type="button" data-product-tab="windows-apps" aria-pressed="false" data-i18n="productsPage.tabs.windowsApps">Windows Apps</button>
-            <button class="products-switch-btn" type="button" data-product-tab="books" aria-pressed="false" data-i18n="productsPage.tabs.books">Books</button>
+            <button class="products-switch-btn" type="button" data-product-tab="chrome-extension" aria-pressed="false" data-i18n="productsPage.tabs.chromeExtension">Chrome Extension</button>
+            <button class="products-switch-btn" type="button" data-product-tab="books" aria-pressed="false" data-i18n="productsPage.tabs.books">Sách</button>
+            <button class="products-switch-btn" type="button" data-product-tab="plugins" aria-pressed="false" data-i18n="productsPage.tabs.plugins">Plugins</button>
         </div>
 
         <div class="products-sections">
+            <!-- Windows Apps Category -->
+            <section class="products-category-section" data-product-section="windows-apps">
+                <div class="section-title-bar reveal-up">
+                    <h2 class="section-title-bar-heading" data-i18n="productsPage.tabs.windowsApps">Windows Apps</h2>
+                    <span class="section-title-bar-line" aria-hidden="true"></span>
+                </div>
+                <div class="products-grid">
+                    <a class="product-card" href="products/Windows%20Apps/Auto%20Clicker%20by%20Max.exe" download="Auto Clicker by Max.exe">
+                        <div class="product-card-media">
+                            <img src="products/Windows Apps/Auto Clicker by Max.png" alt="Auto Clicker by Max Preview" loading="lazy">
+                        </div>
+                        <div class="product-card-body">
+                            <div class="product-card-head">
+                                <span class="product-card-badge">01</span>
+                                <div class="product-card-meta">
+                                    <h3 class="product-card-title">Auto Clicker by Max</h3>
+                                    <span class="product-card-tag">Windows App</span>
+                                </div>
+                            </div>
+                            <p class="product-card-desc">
+                                Phần mềm Windows tự động click chuột theo tọa độ và kịch bản phím tắt tùy chỉnh, tối ưu thao tác lặp lại với hiệu năng cao và độ trễ cực thấp.
+                            </p>
+                            <div class="product-card-footer">
+                                <span class="product-download-btn" role="button" tabindex="0" data-product-id="winapp-autoclicker" data-download-url="products/Windows Apps/Auto Clicker by Max.exe" data-download-name="Auto Clicker by Max.exe" data-direct-download="true" title="Tải về Auto Clicker by Max (.exe)" aria-label="Tải về Auto Clicker by Max">
+                                    <span class="product-download-icon" aria-hidden="true"></span>
+                                    <span class="product-download-count">0</span>
+                                    <span class="product-download-unit">lần</span>
+                                </span>
+                                <span class="product-card-arrow" aria-hidden="true">&rarr;</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
             <!-- Chrome Extension Category -->
             <section class="products-category-section" data-product-section="chrome-extension">
-                <div class="products-category-head">
-                    <h2 class="products-category-title" data-i18n="productsPage.tabs.chromeExtension">Chrome Extension</h2>
+                <div class="section-title-bar reveal-up">
+                    <h2 class="section-title-bar-heading" data-i18n="productsPage.tabs.chromeExtension">Chrome Extension</h2>
+                    <span class="section-title-bar-line" aria-hidden="true"></span>
                 </div>
                 <div class="products-grid">
                     <a class="product-card" href="https://chromewebstore.google.com/detail/max-design-power-pack-col/adnlacngcngfpeellhmpbohaegpffmdp?authuser=0&hl=vi" target="_blank" rel="noopener noreferrer">
                         <div class="product-card-media">
-                            <span class="product-card-badge">01</span>
-                            <span class="product-download-btn" role="button" tabindex="0" data-product-id="chrome-powerpack" data-download-url="https://chromewebstore.google.com/detail/max-design-power-pack-col/adnlacngcngfpeellhmpbohaegpffmdp?authuser=0&hl=vi" data-direct-download="false" title="Tải về MAX - Design Power-Pack" aria-label="Tải về MAX - Design Power-Pack">
-                                <span class="product-download-icon" aria-hidden="true"></span>
-                                <span class="product-download-count">0</span>
-                            </span>
                             <img src="https://lh3.googleusercontent.com/CvRSxs2RoIdBd7HlEpsDwV5TU6hvG8x_HcuTUkqVaLIHIMF39wWQak9_kzarvwEHJgBrJP1X4LlSP9ipNCyFa107=s1280-w1280-h800" alt="MAX - Design Power-Pack Preview" loading="lazy" onerror="this.onerror=null;this.src='products/Chrome Extension/Main1.png';">
                         </div>
                         <div class="product-card-body">
-                            <h3 class="product-card-title">MAX - Design Power-Pack</h3>
-                            <span class="product-card-tag">Chrome Extension</span>
+                            <div class="product-card-head">
+                                <span class="product-card-badge">01</span>
+                                <div class="product-card-meta">
+                                    <h3 class="product-card-title">MAX - Design Power-Pack</h3>
+                                    <span class="product-card-tag">Chrome Extension</span>
+                                </div>
+                            </div>
                             <p class="product-card-desc">
-                                Bộ công cụ toàn diện cho Designer: Color Picker & Studio, Screen Grabber & Video Recorder, và Multimedia Asset Downloader.
+                                Bộ công cụ toàn diện cho Designer: Color Picker &amp; Studio, Screen Grabber &amp; Video Recorder, và Multimedia Asset Downloader.
                             </p>
                             <div class="product-card-footer">
+                                <span class="product-download-btn" role="button" tabindex="0" data-product-id="chrome-powerpack" data-chrome-id="adnlacngcngfpeellhmpbohaegpffmdp" data-download-url="https://chromewebstore.google.com/detail/max-design-power-pack-col/adnlacngcngfpeellhmpbohaegpffmdp?authuser=0&hl=vi" data-direct-download="false" title="Xem trên Chrome Web Store (46 người dùng)" aria-label="Xem trên Chrome Web Store - 46 người dùng">
+                                    <span class="product-download-icon" aria-hidden="true"></span>
+                                    <span class="product-download-count">46</span>
+                                    <span class="product-download-unit">người dùng</span>
+                                </span>
                                 <span class="product-card-arrow" aria-hidden="true">&rarr;</span>
                             </div>
                         </div>
@@ -77,116 +120,25 @@
 
                     <a class="product-card" href="https://chromewebstore.google.com/detail/max-multi-chatai-multi-ac/jjhlbdhljmlnhbpkallgpikhaimoccmg?authuser=0&hl=vi" target="_blank" rel="noopener noreferrer">
                         <div class="product-card-media">
-                            <span class="product-card-badge">02</span>
-                            <span class="product-download-btn" role="button" tabindex="0" data-product-id="chrome-multichat" data-download-url="https://chromewebstore.google.com/detail/max-multi-chatai-multi-ac/jjhlbdhljmlnhbpkallgpikhaimoccmg?authuser=0&hl=vi" data-direct-download="false" title="Tải về MAX - Multi Chat/AI & Tab Manager" aria-label="Tải về MAX - Multi Chat/AI & Tab Manager">
-                                <span class="product-download-icon" aria-hidden="true"></span>
-                                <span class="product-download-count">0</span>
-                            </span>
-                            <img src="https://lh3.googleusercontent.com/kGFs9bjw5AKdEa2knbVemNqPZWOnUzk5So9orUsTo_aH2y75wdmowFdnjUdqq6HByEWw1qeKUk1Vpy6WF6pM1CYofg=s1280-w1280-h800" alt="MAX - Multi Chat/AI, Multi Account & Tab Manager Preview" loading="lazy">
+                            <img src="https://lh3.googleusercontent.com/kGFs9bjw5AKdEa2knbVemNqPZWOnUzk5So9orUsTo_aH2y75wdmowFdnjUdqq6HByEWw1qeKUk1Vpy6WF6pM1CYofg=s1280-w1280-h800" alt="MAX - Multi Chat/AI, Multi Account &amp; Tab Manager Preview" loading="lazy">
                         </div>
                         <div class="product-card-body">
-                            <h3 class="product-card-title">MAX - Multi Chat/AI & Tab Manager</h3>
-                            <span class="product-card-tag">Chrome Extension</span>
+                            <div class="product-card-head">
+                                <span class="product-card-badge">02</span>
+                                <div class="product-card-meta">
+                                    <h3 class="product-card-title">MAX - Multi Chat/AI &amp; Tab Manager</h3>
+                                    <span class="product-card-tag">Chrome Extension</span>
+                                </div>
+                            </div>
                             <p class="product-card-desc">
                                 Tập trung tất cả ứng dụng nhắn tin, đa tài khoản AI và website tùy chỉnh vào một không gian làm việc duy nhất, vượt giới hạn thời gian thực.
                             </p>
                             <div class="product-card-footer">
-                                <span class="product-card-arrow" aria-hidden="true">&rarr;</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </section>
-
-            <!-- Plugins Category -->
-            <section class="products-category-section" data-product-section="plugins">
-                <div class="products-category-head">
-                    <h2 class="products-category-title" data-i18n="productsPage.tabs.plugins">Plugins</h2>
-                </div>
-                <div class="products-grid">
-                    <a class="product-card" href="products/plugin-photoshop.html">
-                        <div class="product-card-media">
-                            <span class="product-card-badge">01</span>
-                            <span class="product-download-btn" role="button" tabindex="0" data-product-id="plugin-photoshop" data-download-url="products/Plugins/Layer Export, Rename & Sort/com.max.layerxrs_PS.ccx" data-download-name="com.max.layerxrs_PS.ccx" data-direct-download="true" title="Tải về Layer Export, Rename & Sort (.ccx)" aria-label="Tải về Layer Export, Rename & Sort">
-                                <span class="product-download-icon" aria-hidden="true"></span>
-                                <span class="product-download-count">0</span>
-                            </span>
-                            <img src="products/Plugins/photoshop.png" alt="Layer Export, Rename & Sort Preview" loading="lazy">
-                        </div>
-                        <div class="product-card-body">
-                            <h3 class="product-card-title">Layer Export, Rename & Sort</h3>
-                            <span class="product-card-tag">Photoshop Plugin</span>
-                            <p class="product-card-desc">
-                                Panel tiện ích tự động hóa quy trình xuất layer hàng loạt, đổi tên thông minh theo số thứ tự và sắp xếp cấu trúc layer chuẩn xác trong Photoshop.
-                            </p>
-                            <div class="product-card-footer">
-                                <span class="product-card-arrow" aria-hidden="true">&rarr;</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a class="product-card" href="products/plugin-maya.html">
-                        <div class="product-card-media">
-                            <span class="product-card-badge">02</span>
-                            <span class="product-download-btn" role="button" tabindex="0" data-product-id="plugin-maya" data-download-url="products/plugin-maya.html" data-direct-download="false" title="Xem chi tiết & Tải Tool Maya" aria-label="Xem chi tiết & Tải Tool Maya">
-                                <span class="product-download-icon" aria-hidden="true"></span>
-                                <span class="product-download-count">0</span>
-                            </span>
-                            <img src="products/Plugins/maya.png" alt="Tool Maya Preview" loading="lazy">
-                        </div>
-                        <div class="product-card-body">
-                            <h3 class="product-card-title">Tool Maya</h3>
-                            <span class="product-card-tag">Maya Plugin</span>
-                            <p class="product-card-desc">
-                                Bộ script và công cụ hỗ trợ dựng hình 3D, dọn scene tự động, chuẩn hóa tên object và tối ưu hóa luồng làm việc kỹ thuật trong Autodesk Maya.
-                            </p>
-                            <div class="product-card-footer">
-                                <span class="product-card-arrow" aria-hidden="true">&rarr;</span>
-                            </div>
-                        </div>
-                    </a>
-
-                    <a class="product-card" href="products/plugin-cheat-engine.html">
-                        <div class="product-card-media">
-                            <span class="product-card-badge">03</span>
-                            <img src="products/Plugins/cheat-engine.png" alt="My Cheat Tables Preview" loading="lazy">
-                        </div>
-                        <div class="product-card-body">
-                            <h3 class="product-card-title">My Cheat Tables</h3>
-                            <span class="product-card-tag">Cheat Engine</span>
-                            <p class="product-card-desc">
-                                Thư viện 70+ bảng Cheat Table (.CT) tự viết cho các tựa game Steam và PC, hỗ trợ tìm kiếm theo tên game và tải trực tiếp nhanh chóng.
-                            </p>
-                            <div class="product-card-footer">
-                                <span class="product-card-arrow" aria-hidden="true">&rarr;</span>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </section>
-
-            <!-- Windows Apps Category -->
-            <section class="products-category-section" data-product-section="windows-apps">
-                <div class="products-category-head">
-                    <h2 class="products-category-title" data-i18n="productsPage.tabs.windowsApps">Windows Apps</h2>
-                </div>
-                <div class="products-grid">
-                    <a class="product-card" href="products/Windows%20Apps/Auto%20Clicker%20by%20Max.exe" download="Auto Clicker by Max.exe">
-                        <div class="product-card-media">
-                            <span class="product-card-badge">01</span>
-                            <span class="product-download-btn" role="button" tabindex="0" data-product-id="winapp-autoclicker" data-download-url="products/Windows Apps/Auto Clicker by Max.exe" data-download-name="Auto Clicker by Max.exe" data-direct-download="true" title="Tải về Auto Clicker by Max (.exe)" aria-label="Tải về Auto Clicker by Max">
-                                <span class="product-download-icon" aria-hidden="true"></span>
-                                <span class="product-download-count">0</span>
-                            </span>
-                            <img src="products/Windows Apps/Auto Clicker by Max.png" alt="Auto Clicker by Max Preview" loading="lazy">
-                        </div>
-                        <div class="product-card-body">
-                            <h3 class="product-card-title">Auto Clicker by Max</h3>
-                            <span class="product-card-tag">Windows App</span>
-                            <p class="product-card-desc">
-                                Phần mềm Windows tự động click chuột theo tọa độ và kịch bản phím tắt tùy chỉnh, tối ưu thao tác lặp lại với hiệu năng cao và độ trễ cực thấp.
-                            </p>
-                            <div class="product-card-footer">
+                                <span class="product-download-btn" role="button" tabindex="0" data-product-id="chrome-multichat" data-chrome-id="jjhlbdhljmlnhbpkallgpikhaimoccmg" data-download-url="https://chromewebstore.google.com/detail/max-multi-chatai-multi-ac/jjhlbdhljmlnhbpkallgpikhaimoccmg?authuser=0&hl=vi" data-direct-download="false" title="Xem trên Chrome Web Store (6 người dùng)" aria-label="Xem trên Chrome Web Store - 6 người dùng">
+                                    <span class="product-download-icon" aria-hidden="true"></span>
+                                    <span class="product-download-count">6</span>
+                                    <span class="product-download-unit">người dùng</span>
+                                </span>
                                 <span class="product-card-arrow" aria-hidden="true">&rarr;</span>
                             </div>
                         </div>
@@ -196,26 +148,32 @@
 
             <!-- Books Category -->
             <section class="products-category-section" data-product-section="books">
-                <div class="products-category-head">
-                    <h2 class="products-category-title" data-i18n="productsPage.tabs.books">Books</h2>
+                <div class="section-title-bar reveal-up">
+                    <h2 class="section-title-bar-heading" data-i18n="productsPage.tabs.books">Sách</h2>
+                    <span class="section-title-bar-line" aria-hidden="true"></span>
                 </div>
                 <div class="products-grid">
                     <a class="product-card" href="products/Books/An%20Actor's%20Work%20-%20Part%201-translated%20(A5).pdf" target="_blank" rel="noopener noreferrer">
                         <div class="product-card-media">
-                            <span class="product-card-badge">01</span>
-                            <span class="product-download-btn" role="button" tabindex="0" data-product-id="book-actor-work-1" data-download-url="products/Books/An Actor's Work - Part 1-translated (A5).pdf" data-download-name="An Actor's Work - Part 1-translated (A5).pdf" data-direct-download="true" title="Tải về Ebook PDF - An Actor's Work Part 1" aria-label="Tải về An Actor's Work Part 1">
-                                <span class="product-download-icon" aria-hidden="true"></span>
-                                <span class="product-download-count">0</span>
-                            </span>
                             <img src="products/Books/book-part-1.svg" alt="An Actor's Work - Part 1 Preview" loading="lazy">
                         </div>
                         <div class="product-card-body">
-                            <h3 class="product-card-title">An Actor's Work - Part 1</h3>
-                            <span class="product-card-tag">Ebook / PDF</span>
+                            <div class="product-card-head">
+                                <span class="product-card-badge">01</span>
+                                <div class="product-card-meta">
+                                    <h3 class="product-card-title">An Actor's Work - Part 1</h3>
+                                    <span class="product-card-tag">Ebook / PDF</span>
+                                </div>
+                            </div>
                             <p class="product-card-desc">
                                 Bản dịch tiếng Việt tác phẩm kinh điển của K. Stanislavski về kỹ thuật diễn xuất và quá trình trải nghiệm tâm lý sáng tạo nhân vật.
                             </p>
                             <div class="product-card-footer">
+                                <span class="product-download-btn" role="button" tabindex="0" data-product-id="book-actor-work-1" data-download-url="products/Books/An Actor's Work - Part 1-translated (A5).pdf" data-download-name="An Actor's Work - Part 1-translated (A5).pdf" data-direct-download="true" title="Tải về Ebook PDF - An Actor's Work Part 1" aria-label="Tải về An Actor's Work Part 1">
+                                    <span class="product-download-icon" aria-hidden="true"></span>
+                                    <span class="product-download-count">0</span>
+                                    <span class="product-download-unit">lần</span>
+                                </span>
                                 <span class="product-card-arrow" aria-hidden="true">&rarr;</span>
                             </div>
                         </div>
@@ -223,18 +181,105 @@
 
                     <a class="product-card" href="products/Books/An%20Actor's%20Work%20-%20Part%202-translated%20(A5).pdf" target="_blank" rel="noopener noreferrer">
                         <div class="product-card-media">
-                            <span class="product-card-badge">02</span>
-                            <span class="product-download-btn" role="button" tabindex="0" data-product-id="book-actor-work-2" data-download-url="products/Books/An Actor's Work - Part 2-translated (A5).pdf" data-download-name="An Actor's Work - Part 2-translated (A5).pdf" data-direct-download="true" title="Tải về Ebook PDF - An Actor's Work Part 2" aria-label="Tải về An Actor's Work Part 2">
-                                <span class="product-download-icon" aria-hidden="true"></span>
-                                <span class="product-download-count">0</span>
-                            </span>
                             <img src="products/Books/book-part-2.svg" alt="An Actor's Work - Part 2 Preview" loading="lazy">
                         </div>
                         <div class="product-card-body">
-                            <h3 class="product-card-title">An Actor's Work - Part 2</h3>
-                            <span class="product-card-tag">Ebook / PDF</span>
+                            <div class="product-card-head">
+                                <span class="product-card-badge">02</span>
+                                <div class="product-card-meta">
+                                    <h3 class="product-card-title">An Actor's Work - Part 2</h3>
+                                    <span class="product-card-tag">Ebook / PDF</span>
+                                </div>
+                            </div>
                             <p class="product-card-desc">
                                 Phần 2 tập trung vào kỹ thuật hiện thực hóa hình thể, giọng nói, nhịp điệu và sự hóa thân trọn vẹn vào nhân vật trên sân khấu &amp; điện ảnh.
+                            </p>
+                            <div class="product-card-footer">
+                                <span class="product-download-btn" role="button" tabindex="0" data-product-id="book-actor-work-2" data-download-url="products/Books/An Actor's Work - Part 2-translated (A5).pdf" data-download-name="An Actor's Work - Part 2-translated (A5).pdf" data-direct-download="true" title="Tải về Ebook PDF - An Actor's Work Part 2" aria-label="Tải về An Actor's Work Part 2">
+                                    <span class="product-download-icon" aria-hidden="true"></span>
+                                    <span class="product-download-count">0</span>
+                                    <span class="product-download-unit">lần</span>
+                                </span>
+                                <span class="product-card-arrow" aria-hidden="true">&rarr;</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Plugins Category -->
+            <section class="products-category-section" data-product-section="plugins">
+                <div class="section-title-bar reveal-up">
+                    <h2 class="section-title-bar-heading" data-i18n="productsPage.tabs.plugins">Plugins</h2>
+                    <span class="section-title-bar-line" aria-hidden="true"></span>
+                </div>
+                <div class="products-grid">
+                    <a class="product-card" href="products/plugin-photoshop.html">
+                        <div class="product-card-media">
+                            <img src="products/Plugins/photoshop.png" alt="Layer Export, Rename &amp; Sort Preview" loading="lazy">
+                        </div>
+                        <div class="product-card-body">
+                            <div class="product-card-head">
+                                <span class="product-card-badge">01</span>
+                                <div class="product-card-meta">
+                                    <h3 class="product-card-title">Layer Export, Rename &amp; Sort</h3>
+                                    <span class="product-card-tag">Photoshop Plugin</span>
+                                </div>
+                            </div>
+                            <p class="product-card-desc">
+                                Panel tiện ích tự động hóa quy trình xuất layer hàng loạt, đổi tên thông minh theo số thứ tự và sắp xếp cấu trúc layer chuẩn xác trong Photoshop.
+                            </p>
+                            <div class="product-card-footer">
+                                <span class="product-download-btn" role="button" tabindex="0" data-product-id="plugin-photoshop" data-download-url="products/Plugins/Layer Export, Rename &amp; Sort/com.max.layerxrs_PS.ccx" data-download-name="com.max.layerxrs_PS.ccx" data-direct-download="true" title="Tải về Layer Export, Rename &amp; Sort (.ccx)" aria-label="Tải về Layer Export, Rename &amp; Sort">
+                                    <span class="product-download-icon" aria-hidden="true"></span>
+                                    <span class="product-download-count">0</span>
+                                    <span class="product-download-unit">lần</span>
+                                </span>
+                                <span class="product-card-arrow" aria-hidden="true">&rarr;</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a class="product-card" href="products/plugin-maya.html">
+                        <div class="product-card-media">
+                            <img src="products/Plugins/maya.png" alt="Tool Maya Preview" loading="lazy">
+                        </div>
+                        <div class="product-card-body">
+                            <div class="product-card-head">
+                                <span class="product-card-badge">02</span>
+                                <div class="product-card-meta">
+                                    <h3 class="product-card-title">Tool Maya</h3>
+                                    <span class="product-card-tag">Maya Plugin</span>
+                                </div>
+                            </div>
+                            <p class="product-card-desc">
+                                Bộ script và công cụ hỗ trợ dựng hình 3D, dọn scene tự động, chuẩn hóa tên object và tối ưu hóa luồng làm việc kỹ thuật trong Autodesk Maya.
+                            </p>
+                            <div class="product-card-footer">
+                                <span class="product-download-btn" role="button" tabindex="0" data-product-id="plugin-maya" data-download-url="products/plugin-maya.html" data-direct-download="false" title="Xem chi tiết &amp; Tải Tool Maya" aria-label="Xem chi tiết &amp; Tải Tool Maya">
+                                    <span class="product-download-icon" aria-hidden="true"></span>
+                                    <span class="product-download-count">0</span>
+                                    <span class="product-download-unit">lần</span>
+                                </span>
+                                <span class="product-card-arrow" aria-hidden="true">&rarr;</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a class="product-card" href="products/plugin-cheat-engine.html">
+                        <div class="product-card-media">
+                            <img src="products/Plugins/cheat-engine.png" alt="My Cheat Tables Preview" loading="lazy">
+                        </div>
+                        <div class="product-card-body">
+                            <div class="product-card-head">
+                                <span class="product-card-badge">03</span>
+                                <div class="product-card-meta">
+                                    <h3 class="product-card-title">My Cheat Tables</h3>
+                                    <span class="product-card-tag">Cheat Engine</span>
+                                </div>
+                            </div>
+                            <p class="product-card-desc">
+                                Thư viện 70+ bảng Cheat Table (.CT) tự viết cho các tựa game Steam và PC, hỗ trợ tìm kiếm theo tên game và tải trực tiếp nhanh chóng.
                             </p>
                             <div class="product-card-footer">
                                 <span class="product-card-arrow" aria-hidden="true">&rarr;</span>

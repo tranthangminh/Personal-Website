@@ -81,12 +81,12 @@ if (typeof initSharedPage === 'function') {
                 'jobs/actor/main-08.jpg'
             ],
             sideCover: 'jobs/actor/main-01.jpg',
-            sideBadge: 'ACTOR · TỪ 2021'
+            sideBadge: 'TỪ NĂM 2021'
         },
         artist: {
             id: 'artist',
-            title: 'HỌA SĨ',
-            badge: '2D/3D · TỪ NĂM 2017',
+            title: 'HỌA SĨ 2D/3D',
+            badge: 'TỪ NĂM 2017',
             href: 'jobs/artist.html',
             images: [
                 'jobs/artist-2D/POSTER%203000x2100.jpg',
@@ -99,12 +99,12 @@ if (typeof initSharedPage === 'function') {
                 'jobs/artist-3D/Down_Right_Fierce_Pathfinder.jpg'
             ],
             sideCover: 'jobs/artist-2D/POSTER%203000x2100.jpg',
-            sideBadge: '2D/3D · TỪ 2017'
+            sideBadge: 'TỪ NĂM 2017'
         },
         photographer: {
             id: 'photographer',
             title: 'NHIẾP ẢNH',
-            badge: 'PORTRAIT · TỪ NĂM 2023',
+            badge: 'TỪ NĂM 2023',
             href: 'jobs/photographer.html',
             images: [
                 'jobs/photographer/MAX90056.jpg',
@@ -116,7 +116,7 @@ if (typeof initSharedPage === 'function') {
                 'jobs/photographer/492882309_9629082393805507_1623897313072216052_n.jpg'
             ],
             sideCover: 'jobs/photographer/MAX90056.jpg',
-            sideBadge: 'PORTRAIT · TỪ 2023'
+            sideBadge: 'TỪ NĂM 2023'
         }
     };
 

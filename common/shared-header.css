@@ -120,7 +120,7 @@
     background: transparent;
     color: var(--text-primary);
     padding: 6px 0;
-    font-size: 16px;
+    font-size: var(--font-lg);
     font-weight: 700;
     line-height: 1;
     cursor: pointer;
@@ -150,7 +150,7 @@
     flex-direction: column;
     align-items: center;
     gap: 4px;
-    font-size: 11px;
+    font-size: var(--font-xs);
     font-weight: 700;
     line-height: 1;
     letter-spacing: 0.08em;
@@ -353,7 +353,7 @@
     }
 
     .lang-btn {
-        font-size: 10px;
+        font-size: var(--font-xs);
         gap: 3px;
     }
 

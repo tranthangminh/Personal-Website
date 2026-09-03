@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-primary);
 }
 
 :root {
@@ -18,26 +18,112 @@
 
 .page-breadcrumb {
     margin: 0;
-    font-weight: 700;
+    font-size: var(--font-xs);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+    user-select: none;
+    line-height: 1;
 }
 
-.page-breadcrumb-link {
-    color: inherit;
-    text-decoration: none;
-    transition: opacity var(--transition-normal);
+.page-breadcrumb-current {
+    color: var(--text-primary);
+    font-weight: 600;
 }
 
-.page-breadcrumb-link:hover {
-    opacity: 0.7;
-}
-
-.page-breadcrumb-sep {
-    opacity: 0.5;
+.page-breadcrumb-separator {
     margin: 0 6px;
+    color: var(--text-disabled);
+}
+
+/* Base interactive button polish */
+button,
+a.product-card-action,
+.product-category-tab {
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast), background-color var(--transition-fast);
+}
+
+button:focus-visible,
+a:focus-visible {
+    outline: 2px solid var(--accent-primary);
+    outline-offset: 2px;
+}
+
+/* ==========================================================================
+   Reusable Section Title Bar Component
+   ========================================================================== */
+.section-title-bar {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+.section-title-bar-heading {
+    margin: 0;
+    font-family: var(--font-secondary);
+    font-size: var(--font-2xl);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-primary);
+    white-space: nowrap;
+    line-height: 1;
+}
+
+.section-title-bar-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border-color);
+    min-width: 24px;
+    opacity: 0.8;
+}
+
+.section-title-bar-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-secondary);
+    font-size: var(--font-md);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-secondary);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color var(--transition-fast);
+    line-height: 1;
+}
+
+.section-title-bar-link:hover {
+    color: var(--accent-primary);
+}
+
+.section-title-bar-arrow {
+    font-size: var(--font-md);
+    line-height: 1;
+    transition: transform var(--transition-fast);
+}
+
+.section-title-bar-link:hover .section-title-bar-arrow {
+    transform: translateX(4px);
 }
 
 @media (max-width: 768px) {
-    :root {
-        --content-pad: 16px;
+    .section-title-bar {
+        gap: 12px;
+        margin-bottom: 16px;
+    }
+
+    .section-title-bar-heading {
+        font-size: var(--font-xl);
+        letter-spacing: 0.04em;
+    }
+
+    .section-title-bar-link {
+        font-size: var(--font-sm);
     }
 }
+

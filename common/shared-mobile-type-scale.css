@@ -15,6 +15,6 @@
     }
 
     .menu-btn {
-        font-size: 12px;
+        font-size: var(--font-sm);
     }
 }

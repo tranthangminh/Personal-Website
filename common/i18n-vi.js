@@ -38,10 +38,10 @@
                 photographer: 'Nhiếp Ảnh'
             },
             tool: {
-                chromeExtension: 'Chrome Extension',
-                plugins: 'Plugins',
                 windowsApps: 'Windows Apps',
-                books: 'Books',
+                chromeExtension: 'Chrome Extension',
+                books: 'Sách',
+                plugins: 'Plugins',
                 photoshop: 'Tool Photoshop',
                 maya: 'Tool Maya',
                 cheatEngine: 'Tool Cheat Engine'
@@ -112,10 +112,10 @@
             summary: 'Bộ sưu tập các ứng dụng Windows, tiện ích mở rộng Chrome Extension và Plugins hỗ trợ thiết kế, đồ họa và tự động hóa quy trình làm việc.',
             tabs: {
                 all: 'Tất Cả',
-                chromeExtension: 'Chrome Extension',
-                plugins: 'Plugins',
                 windowsApps: 'Windows Apps',
-                books: 'Sách / Books'
+                chromeExtension: 'Chrome Extension',
+                books: 'Sách',
+                plugins: 'Plugins'
             },
             viewAction: 'Xem chi tiết',
             emptyNotice: 'Đang cập nhật thêm sản phẩm trong danh mục này...'
