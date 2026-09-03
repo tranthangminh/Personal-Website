@@ -1,6 +1,4 @@
-'use strict';
-
-const container = document.querySelector('.container');
+﻿'use strict';
 
 if (typeof initSharedPage === 'function') {
     initSharedPage({
@@ -32,12 +30,7 @@ if (typeof initSharedPage === 'function') {
         lightbox: {
             rootId: 'sharedLightboxRoot'
         },
-        headerMenus: {
-            onHomeClick: function (event) {
-                event.preventDefault();
-                animateToPage(0, 560);
-            }
-        },
+        headerMenus: {},
         welcomeBehavior: {
             showFrames: 1,
             hideAfter: 1000
@@ -52,37 +45,24 @@ if (typeof initSharedPage === 'function') {
         },
         bookNowBehavior: {
             buttonId: 'bookNowButton',
-            scrollContainer: '.container',
             hideWhenVisible: 'contactSection',
             visibilityThreshold: 0.45
         }
     });
 }
 
-const pages = Array.from(document.querySelectorAll('.page'));
-const dots = Array.from(document.querySelectorAll('.snap-dot'));
+// Actor Video Carousel
 const aboutActorVideoLink = document.getElementById('aboutActorVideoLink');
 const aboutActorVideoThumb = document.getElementById('aboutActorVideoThumb');
 const aboutActorVideoPrev = document.getElementById('aboutActorVideoPrev');
 const aboutActorVideoNext = document.getElementById('aboutActorVideoNext');
 const aboutActorVideoTitle = document.getElementById('aboutActorVideoTitle');
 let aboutActorVideoRenderToken = 0;
-let isPageAnimating = false;
-let pageAnimationFrame = null;
-let activeTargetIndex = null;
-const wheelNotchDelta = 100;
-const wheelNotchesPerPage = 3;
-const wheelGestureIdleMs = 220;
-let wheelGestureDirection = 0;
-let wheelGestureNotches = 0;
-let wheelGestureBaseIndex = 0;
-let wheelGestureLastTime = 0;
-const bookNowButton = document.getElementById('bookNowButton');
 
 const aboutActorVideos = [
     { id: 'S-YVjeYC4T8', title: 'Trộm Vía', embeddable: false },
-    { id: '9WZ0-d3x1QU', title: 'Sư phụ - NPC game logic', embeddable: true },
-    { id: 'r7RW-Ppiqv8', title: 'Clip nổi bật', embeddable: true }
+    { id: '9WZ0-d3x1QU', title: 'Sư phụ - NPC game logic', embeddable: false },
+    { id: 'r7RW-Ppiqv8', title: 'Clip nổi bật', embeddable: false }
 ];
 let aboutActorVideoIndex = 0;
 let isVideoPlayingInline = false;
@@ -228,192 +208,27 @@ if (aboutActorVideoLink && aboutActorVideoThumb) {
     }
 }
 
-function updateSnapIndicator() {
-    const containerTop = container.getBoundingClientRect().top;
-    let activeIndex = 0;
-    let closestDistance = Number.POSITIVE_INFINITY;
-
-    pages.forEach(function (page, index) {
-        const distance = Math.abs(page.getBoundingClientRect().top - containerTop);
-        if (distance < closestDistance) {
-            closestDistance = distance;
-            activeIndex = index;
-        }
-    });
-
-    dots.forEach(function (dot, index) {
-        dot.classList.toggle('active', index === activeIndex);
-    });
-
-    if (bookNowButton) {
-        bookNowButton.classList.toggle('hidden', activeIndex === pages.length - 1);
-    }
-
-    if (activeIndex !== 2 && isVideoPlayingInline) {
-        stopInlineVideo();
-    }
-
-    applyPageRevealStates(activeIndex);
-}
-
-function getActivePageIndex() {
-    const containerTop = container.getBoundingClientRect().top;
-    let activeIndex = 0;
-    let closestDistance = Number.POSITIVE_INFINITY;
-
-    pages.forEach(function (page, index) {
-        const distance = Math.abs(page.getBoundingClientRect().top - containerTop);
-        if (distance < closestDistance) {
-            closestDistance = distance;
-            activeIndex = index;
-        }
-    });
-
-    return activeIndex;
-}
-
-function animateToPage(targetIndex, duration) {
-    if (activeTargetIndex === targetIndex && isPageAnimating) {
-        return;
-    }
-
-    if (pageAnimationFrame) {
-        cancelAnimationFrame(pageAnimationFrame);
-        pageAnimationFrame = null;
-    }
-
-    const startY = container.scrollTop;
-    const targetY = Math.max(0, pages[targetIndex].offsetTop);
-    const distance = targetY - startY;
-    const startTime = performance.now();
-
-    if (Math.abs(distance) < 1) {
-        updateSnapIndicator();
-        return;
-    }
-
-    isPageAnimating = true;
-    activeTargetIndex = targetIndex;
-
-    function easeOutCubic(t) {
-        return 1 - Math.pow(1 - t, 3);
-    }
-
-    function frame(now) {
-        const elapsed = now - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        const eased = easeOutCubic(progress);
-
-        container.scrollTop = startY + distance * eased;
-        updateSnapIndicator();
-
-        if (progress < 1) {
-            pageAnimationFrame = requestAnimationFrame(frame);
-            return;
-        }
-
-        isPageAnimating = false;
-        activeTargetIndex = null;
-        pageAnimationFrame = null;
-    }
-
-    pageAnimationFrame = requestAnimationFrame(frame);
-}
-
-function jumpToHashPage(useAnimation) {
-    if (!window.location.hash) {
-        return;
-    }
-
-    const target = document.getElementById(window.location.hash.slice(1));
-    if (!target) {
-        return;
-    }
-
-    const targetPage = target.classList.contains('page') ? target : target.closest('.page');
-    const targetIndex = pages.indexOf(targetPage);
-    if (targetIndex === -1) {
-        return;
-    }
-
-    if (useAnimation) {
-        animateToPage(targetIndex, 850);
-        return;
-    }
-
-    container.scrollTop = Math.max(0, targetPage.offsetTop);
-    updateSnapIndicator();
-}
-
-container.addEventListener('wheel', function (event) {
-    if (Math.abs(event.deltaY) < 1) {
-        return;
-    }
-
-    event.preventDefault();
-
-    const direction = event.deltaY > 0 ? 1 : -1;
-    const now = performance.now();
-    const isNewGesture = direction !== wheelGestureDirection || (now - wheelGestureLastTime) > wheelGestureIdleMs;
-
-    if (isNewGesture) {
-        wheelGestureDirection = direction;
-        wheelGestureNotches = 0;
-        wheelGestureBaseIndex = activeTargetIndex !== null ? activeTargetIndex : getActivePageIndex();
-    }
-
-    wheelGestureLastTime = now;
-    wheelGestureNotches += Math.abs(event.deltaY) / wheelNotchDelta;
-
-    const pagesToMove = Math.max(1, Math.ceil(wheelGestureNotches / wheelNotchesPerPage));
-    const targetIndex = Math.max(0, Math.min(pages.length - 1, wheelGestureBaseIndex + (direction * pagesToMove)));
-
-    if (targetIndex === activeTargetIndex) {
-        return;
-    }
-
-    animateToPage(targetIndex, 850);
-}, { passive: false });
-
-dots.forEach(function (dot, index) {
-    dot.addEventListener('click', function () {
-        animateToPage(index, 850);
-    });
-});
-
+// Scroll Reveal Animations
 const revealElements = Array.from(document.querySelectorAll('.reveal-up'));
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-function applyPageRevealStates(activeIndex) {
-    pages.forEach(function (page, index) {
-        page.classList.remove('page-before', 'page-active', 'page-after');
-        if (index < activeIndex) {
-            page.classList.add('page-before');
-            return;
-        }
-        if (index > activeIndex) {
-            page.classList.add('page-after');
-            return;
-        }
-        page.classList.add('page-active');
+if (prefersReducedMotion || typeof IntersectionObserver === 'undefined') {
+    revealElements.forEach(function (el) {
+        el.classList.add('is-visible');
     });
-}
+} else if (revealElements.length) {
+    const revealObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+            }
+        });
+    }, {
+        threshold: 0.15,
+        rootMargin: '0px 0px -40px 0px'
+    });
 
-if (!prefersReducedMotion && revealElements.length) {
     revealElements.forEach(function (element) {
-        const page = element.closest('.page');
-        const siblings = page ? Array.from(page.querySelectorAll('.reveal-up')) : [];
-        const indexInPage = Math.max(0, siblings.indexOf(element));
-        const delay = Math.min((indexInPage % 8) * 35, 245);
-        element.style.transitionDelay = delay + 'ms';
+        revealObserver.observe(element);
     });
 }
-
-container.addEventListener('scroll', updateSnapIndicator);
-updateSnapIndicator();
-requestAnimationFrame(function () {
-    jumpToHashPage(false);
-});
-window.addEventListener('hashchange', function () {
-    jumpToHashPage(true);
-});

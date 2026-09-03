@@ -9,8 +9,6 @@
     --content-max: 1024px;
     --content-pad: 24px;
     --header-h: 56px;
-    --text-black: #333333;
-    --text-soft-white: #f2efe8;
 }
 
 .content-wrap {
@@ -26,7 +24,7 @@
 .page-breadcrumb-link {
     color: inherit;
     text-decoration: none;
-    transition: opacity 0.2s ease;
+    transition: opacity var(--transition-normal);
 }
 
 .page-breadcrumb-link:hover {

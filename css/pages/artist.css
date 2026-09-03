@@ -1,10 +1,7 @@
-﻿body {
-    background:
-        radial-gradient(circle at 14% 16%, rgba(181, 83, 9, 0.11), transparent 36%),
-        radial-gradient(circle at 84% 18%, rgba(21, 94, 117, 0.12), transparent 34%),
-        radial-gradient(circle at 18% 84%, rgba(127, 29, 29, 0.08), transparent 30%),
-        linear-gradient(145deg, #f9f7f2 0%, #f4efe7 48%, #f5f9fb 100%);
-    color: var(--text-black);
+body {
+    background: var(--bg-100);
+    background-color: var(--bg-100);
+    color: var(--text-primary);
     min-height: 100vh;
 }
 
@@ -23,10 +20,9 @@
 .artist-intro-card {
     display: grid;
     gap: 18px;
-    --surface-padding: 22px 20px;
-    --surface-bg: rgba(255, 255, 255, 0.78);
-    --surface-shadow: 0 14px 34px rgba(15, 23, 42, 0.08);
-    --surface-backdrop-filter: blur(6px);
+    padding: 22px 20px;
+    background: var(--bg-primary);
+    box-shadow: var(--shadow-lg);
 }
 
 .artist-section-title {
@@ -37,7 +33,7 @@
 .artist-summary {
     margin: 0;
     line-height: 1.7;
-    color: rgba(51, 51, 51, 0.86);
+    color: var(--text-secondary);
 }
 
 .artist-switch {
@@ -49,38 +45,32 @@
 
 .artist-switch-btn {
     width: 100%;
-    border: 1px solid rgba(51, 51, 51, 0.12);
-    background: rgba(255, 255, 255, 0.82);
-    color: #333;
-    min-height: 42px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-elevated);
+    color: var(--text-primary);
+    min-height: var(--btn-height-lg);
     padding: 10px 18px;
-    border-radius: 999px;
+    border-radius: var(--border-radius-full);
     font: inherit;
     font-weight: 700;
     cursor: pointer;
-    transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    transition: transform var(--transition-normal), background-color var(--transition-normal), color var(--transition-normal), border-color var(--transition-normal);
 }
 
 .artist-switch-btn:hover {
     transform: translateY(-1px);
-    border-color: rgba(51, 51, 51, 0.22);
+    border-color: var(--border-hover);
 }
 
 .artist-switch-btn.is-active {
-    background: linear-gradient(145deg, #171717 0%, #2b2b2b 100%);
-    color: #fff;
-    border-color: transparent;
+    background: var(--accent-primary);
+    color: var(--text-on-accent);
+    border-color: var(--accent-primary);
 }
 
 .artist-gallery {
-    --masonry-column-width: 225px;
-    --masonry-column-gap: 14px;
-    --masonry-item-gap: 14px;
-    --masonry-card-radius: 16px;
-    --masonry-card-border: 1px solid rgba(51, 51, 51, 0.08);
-    --masonry-card-bg: rgba(255, 255, 255, 0.78);
-    --masonry-card-shadow: 0 12px 28px rgba(15, 23, 42, 0.12);
-    --masonry-mobile-gap: 7px;
+    column-width: 225px;
+    column-gap: 14px;
 }
 
 @media (max-width: 768px) {
@@ -90,8 +80,7 @@
     }
 
     .artist-intro-card {
-        --surface-padding: 18px 16px;
+        padding: 18px 16px;
         gap: 14px;
     }
-
 }

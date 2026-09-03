@@ -1,19 +1,10 @@
 .surface-card {
-    --surface-border: 1px solid rgba(51, 51, 51, 0.1);
-    --surface-radius: 18px;
-    --surface-padding: 22px 20px;
-    --surface-bg: rgba(255, 255, 255, 0.74);
-    --surface-shadow: 0 14px 34px rgba(15, 23, 42, 0.08);
-    --surface-backdrop-filter: blur(6px);
-    --surface-color: inherit;
-    border: var(--surface-border);
-    border-radius: var(--surface-radius);
-    padding: var(--surface-padding);
-    background: var(--surface-bg);
-    box-shadow: var(--surface-shadow);
-    backdrop-filter: var(--surface-backdrop-filter);
-    -webkit-backdrop-filter: var(--surface-backdrop-filter);
-    color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    padding: 22px 20px;
+    background: var(--bg-primary);
+    box-shadow: var(--shadow-lg);
+    color: var(--text-primary);
 }
 
 .surface-card--scroll {
@@ -28,8 +19,8 @@
 }
 
 .surface-card--dark {
-    --surface-border: 1px solid rgba(83, 96, 108, 0.28);
-    --surface-bg: linear-gradient(165deg, #53606c, #2d343c);
-    --surface-shadow: 0 18px 38px rgba(45, 52, 60, 0.28);
-    --surface-color: #fff;
+    border: 1px solid var(--border-color);
+    background: var(--bg-elevated);
+    box-shadow: var(--shadow-lg);
+    color: var(--text-primary);
 }

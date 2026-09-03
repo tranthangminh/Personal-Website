@@ -1,0 +1,984 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="46">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>16287</ID>
+      <Description>"◀️ Enable this checkbox to UPDATE or DOWNLOAD more game tables"</Description>
+      <Options moManualExpandCollapse="1" moAllowManualCollapseAndExpand="1"/>
+      <LastState/>
+      <Color>BF40BF</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>[ENABLE]
+{$lua}
+shellExecute("https://drive.google.com/drive/folders/1psd4TzcmHOUAO7NIBKI0lf47hKGp-qkK?usp=drive_link")
+shellExecute("https://github.com/tranthangminh/Cheat-Engine-Tables-for-Games")
+{$asm}
+
+[DISABLE]
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>16288</ID>
+          <Description>"◀️ Author: Max Chen (Trần Thắng Minh)"</Description>
+          <Options moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1"/>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>16289</ID>
+              <Description>"◀️ Facebook"</Description>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+
+{$lua}
+shellExecute("https://www.facebook.com/maxiechen/")
+
+{$asm}
+[DISABLE]
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>16290</ID>
+              <Description>"◀️ Reddit"</Description>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+
+{$lua}
+shellExecute("https://www.reddit.com/user/maxiechen96/")
+
+{$asm}
+[DISABLE]
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>16291</ID>
+              <Description>"◀️ Discord"</Description>
+              <LastState/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>[ENABLE]
+
+{$lua}
+shellExecute("https://discord.com/users/@maxiechen")
+
+{$asm}
+[DISABLE]
+</AssemblerScript>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>16282</ID>
+      <Description>"◀️ IMPORTANT: Enable this checkbox to ACTIVE Mono features FIRST"</Description>
+      <Options moAlwaysHideChildren="1" moManualExpandCollapse="1" moAllowManualCollapseAndExpand="1"/>
+      <LastState/>
+      <Color>BF40BF</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>//Active Mono Features
+
+[ENABLE]
+
+{$lua}
+activateMono()
+{$asm}
+
+[DISABLE]
+{$lua}
+activateMono()
+{$asm}
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>16283</ID>
+          <Description>"Active Mono (Menu bar ➜ Mono ➜ Active mono features)"</Description>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>16284</ID>
+          <Description>"Make sure you have Cheat Engine 7.4 or later"</Description>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>16285</ID>
+          <Description>"◀️ Enable checkbox to Download the latest version from: https://www.cheatengine.org/"</Description>
+          <LastState/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>[ENABLE]
+
+{$lua}
+shellExecute("https://www.cheatengine.org/")
+
+{$asm}
+[DISABLE]
+</AssemblerScript>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>16292</ID>
+      <Description>"Activate Cheats     ──────────────────────────────────────────────────────────────"</Description>
+      <Options moManualExpandCollapse="1" moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1" moAllowManualCollapseAndExpand="1"/>
+      <LastState Activated="1"/>
+      <Color>40BF40</Color>
+      <VariableType>Auto Assembler Script</VariableType>
+      <AssemblerScript>//Active Mono Features
+
+[ENABLE]
+
+{$lua}
+activateMono()
+{$asm}
+
+[DISABLE]
+{$lua}
+activateMono()
+{$asm}
+</AssemblerScript>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>5</ID>
+          <Description>"HP won't reduce"</Description>
+          <LastState/>
+          <Color>40BF40</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : SteamWorld Dig
+  Version: 
+  Date   : 2026-04-15
+  Author : Max
+
+  This script does blah blah blah
+}
+
+define(address,SteamWorldDig.exe.text+4E68F)
+define(bytes,D9 93 64 01 00 00)
+
+[ENABLE]
+
+assert(address,bytes)
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  //fst dword ptr [ebx+00000164]
+  jmp return
+
+address:
+  jmp newmem
+  nop
+return:
+
+[DISABLE]
+
+address:
+  db bytes
+  // fst dword ptr [ebx+00000164]
+
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: SteamWorldDig.exe.text+4E68F
+
+SteamWorldDig.exe.text+4E66F: DC 0D 58 BA 38 00  - fmul qword ptr [SteamWorldDig.exe.rdata+32A58]
+SteamWorldDig.exe.text+4E675: D9 5D A4           - fstp dword ptr [ebp-5C]
+SteamWorldDig.exe.text+4E678: D9 EE              - fldz 
+SteamWorldDig.exe.text+4E67A: D9 83 64 01 00 00  - fld dword ptr [ebx+00000164]
+SteamWorldDig.exe.text+4E680: D9 45 A4           - fld dword ptr [ebp-5C]
+SteamWorldDig.exe.text+4E683: D9 C0              - fld st(0)
+SteamWorldDig.exe.text+4E685: DE EA              - fsubp st(2),st(0)
+SteamWorldDig.exe.text+4E687: D9 C9              - fxch st(1)
+SteamWorldDig.exe.text+4E689: D9 5D 98           - fstp dword ptr [ebp-68]
+SteamWorldDig.exe.text+4E68C: D9 45 98           - fld dword ptr [ebp-68]
+// ---------- INJECTING HERE ----------
+SteamWorldDig.exe.text+4E68F: D9 93 64 01 00 00  - fst dword ptr [ebx+00000164]
+// ---------- DONE INJECTING  ----------
+SteamWorldDig.exe.text+4E695: D9 C9              - fxch st(1)
+SteamWorldDig.exe.text+4E697: D8 DA              - fcomp st(0),st(2)
+SteamWorldDig.exe.text+4E699: DF E0              - fnstsw ax
+SteamWorldDig.exe.text+4E69B: F6 C4 41           - test ah,41
+SteamWorldDig.exe.text+4E69E: 0F 85 4E 01 00 00  - jne SteamWorldDig.exe.text+4E7F2
+SteamWorldDig.exe.text+4E6A4: DD D9              - fstp st(1)
+SteamWorldDig.exe.text+4E6A6: D8 1D 0C BB 38 00  - fcomp dword ptr [SteamWorldDig.exe.rdata+32B0C]
+SteamWorldDig.exe.text+4E6AC: DF E0              - fnstsw ax
+SteamWorldDig.exe.text+4E6AE: F6 C4 41           - test ah,41
+SteamWorldDig.exe.text+4E6B1: 75 21              - jne SteamWorldDig.exe.text+4E6D4
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>4</ID>
+          <Description>"Light won't reduce"</Description>
+          <LastState Activated="1"/>
+          <Color>40BF40</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : SteamWorld Dig
+  Version: 
+  Date   : 2026-04-15
+  Author : Max
+
+  This script does blah blah blah
+}
+
+define(address,"SteamWorldDig.exe"+43013)
+define(bytes,D9 9B 6C 01 00 00)
+
+[ENABLE]
+
+assert(address,bytes)
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  //fstp dword ptr [ebx+0000016C]
+  jmp return
+
+address:
+  jmp newmem
+  nop
+return:
+
+[DISABLE]
+
+address:
+  db bytes
+  // fstp dword ptr [ebx+0000016C]
+
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: SteamWorldDig.exe.text+42013
+
+SteamWorldDig.exe.text+41FEF: 80 38 00           - cmp byte ptr [eax],00
+SteamWorldDig.exe.text+41FF2: 0F 85 B9 00 00 00  - jne SteamWorldDig.exe.text+420B1
+SteamWorldDig.exe.text+41FF8: D8 93 6C 01 00 00  - fcom dword ptr [ebx+0000016C]
+SteamWorldDig.exe.text+41FFE: DF E0              - fnstsw ax
+SteamWorldDig.exe.text+42000: F6 C4 05           - test ah,05
+SteamWorldDig.exe.text+42003: 7A 2D              - jp SteamWorldDig.exe.text+42032
+SteamWorldDig.exe.text+42005: 8B 4C 24 28        - mov ecx,[esp+28]
+SteamWorldDig.exe.text+42009: D9 83 6C 01 00 00  - fld dword ptr [ebx+0000016C]
+SteamWorldDig.exe.text+4200F: 8B 11              - mov edx,[ecx]
+SteamWorldDig.exe.text+42011: D8 22              - fsub dword ptr [edx]
+// ---------- INJECTING HERE ----------
+SteamWorldDig.exe.text+42013: D9 9B 6C 01 00 00  - fstp dword ptr [ebx+0000016C]
+// ---------- DONE INJECTING  ----------
+SteamWorldDig.exe.text+42019: D9 93 F8 01 00 00  - fst dword ptr [ebx+000001F8]
+SteamWorldDig.exe.text+4201F: D8 93 6C 01 00 00  - fcom dword ptr [ebx+0000016C]
+SteamWorldDig.exe.text+42025: DF E0              - fnstsw ax
+SteamWorldDig.exe.text+42027: F6 C4 41           - test ah,41
+SteamWorldDig.exe.text+4202A: 75 06              - jne SteamWorldDig.exe.text+42032
+SteamWorldDig.exe.text+4202C: D9 93 6C 01 00 00  - fst dword ptr [ebx+0000016C]
+SteamWorldDig.exe.text+42032: D8 9B 6C 01 00 00  - fcomp dword ptr [ebx+0000016C]
+SteamWorldDig.exe.text+42038: DF E0              - fnstsw ax
+SteamWorldDig.exe.text+4203A: F6 C4 01           - test ah,01
+SteamWorldDig.exe.text+4203D: 75 74              - jne SteamWorldDig.exe.text+420B3
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>16310</ID>
+          <Description>"Tools won't reduce"</Description>
+          <LastState Activated="1"/>
+          <Color>40BF40</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : SteamWorld Dig
+  Version: 
+  Date   : 2026-04-15
+  Author : Max
+
+  This script does blah blah blah
+}
+
+define(address,"SteamWorldDig.exe"+EBBFB)
+define(bytes,FF 48 1C 75 0A)
+
+[ENABLE]
+
+assert(address,bytes)
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  sub [eax+1C],0
+  jne SteamWorldDig.exe.text+EAC0A
+  jmp return
+
+address:
+  jmp newmem
+return:
+
+[DISABLE]
+
+address:
+  db bytes
+  // dec [eax+1C]
+  // jne SteamWorldDig.exe.text+EAC0A
+
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: SteamWorldDig.exe.text+EABFB
+
+SteamWorldDig.exe.text+EABE2: 51              - push ecx
+SteamWorldDig.exe.text+EABE3: 52              - push edx
+SteamWorldDig.exe.text+EABE4: E8 C7 26 F2 FF  - call SteamWorldDig.exe.text+D2B0
+SteamWorldDig.exe.text+EABE9: 83 C4 08        - add esp,08
+SteamWorldDig.exe.text+EABEC: 50              - push eax
+SteamWorldDig.exe.text+EABED: 8D 45 FC        - lea eax,[ebp-04]
+SteamWorldDig.exe.text+EABF0: 50              - push eax
+SteamWorldDig.exe.text+EABF1: 8B CB           - mov ecx,ebx
+SteamWorldDig.exe.text+EABF3: E8 C8 2A F2 FF  - call SteamWorldDig.exe.text+D6C0
+SteamWorldDig.exe.text+EABF8: 8B 45 FC        - mov eax,[ebp-04]
+// ---------- INJECTING HERE ----------
+SteamWorldDig.exe.text+EABFB: FF 48 1C        - dec [eax+1C]
+// ---------- DONE INJECTING  ----------
+SteamWorldDig.exe.text+EABFE: 75 0A           - jne SteamWorldDig.exe.text+EAC0A
+SteamWorldDig.exe.text+EAC00: 50              - push eax
+SteamWorldDig.exe.text+EAC01: 8D 4D FC        - lea ecx,[ebp-04]
+SteamWorldDig.exe.text+EAC04: 51              - push ecx
+SteamWorldDig.exe.text+EAC05: E8 56 05 00 00  - call SteamWorldDig.exe.text+EB160
+SteamWorldDig.exe.text+EAC0A: 5B              - pop ebx
+SteamWorldDig.exe.text+EAC0B: 8B E5           - mov esp,ebp
+SteamWorldDig.exe.text+EAC0D: 5D              - pop ebp
+SteamWorldDig.exe.text+EAC0E: C3              - ret 
+SteamWorldDig.exe.text+EAC0F: CC              - int 3 
+}
+</AssemblerScript>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>16303</ID>
+          <Description>"Get Stats (real-time)     ・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・"</Description>
+          <LastState Activated="1"/>
+          <Color>40BF40</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : SteamWorld Dig
+  Date   : 2026-04-15
+  Author : Max Chen (Trần Thắng Minh) - Contact me:
+    🌐Facebook  : https://www.facebook.com/maxiechen
+    🌐Reddit    : https://www.reddit.com/user/maxiechen96
+    🌐Discord   : https://discord.com/users/@maxiechen
+
+  Update Here
+    ☁️GoogleDrive: https://drive.google.com/drive/folders/1psd4TzcmHOUAO7NIBKI0lf47hKGp-qkK?usp=drive_link
+    ☁️Github     : https://github.com/tranthangminh/Cheat-Engine-Tables-for-Games
+}
+
+
+
+//HP:   SteamWorldDig.exe.text+BA7F1: D9 87 64 01 00 00 - fld dword ptr [edi+00000164]
+define(addressHP,SteamWorldDig.exe.text+BA7F1)
+//define(bytesHP,D9 87 64 01 00 00)
+
+//Cash:   SteamWorldDig.exe.text+D3C75: 8B 97 E0 04 00 00 - mov edx,[edi+000004E0]
+define(addressCash,SteamWorldDig.exe.text+D3C75)
+//define(bytesCash,8B 97 E0 04 00 00)
+
+//Tool:   SteamWorldDig.exe.text+EAB98: 8B 40 1C - mov eax,[eax+1C]
+define(addressTool,SteamWorldDig.exe.text+EAB98)
+//define(bytesTool,8B 40 1C 8B E5)
+
+//Depth:   SteamWorldDig.exe.text+D39A9: 39 83 DC 01 00 00 - cmp [ebx+000001DC],eax
+define(addressDepth,SteamWorldDig.exe.text+D39A9)
+//define(bytesDepth,39 83 DC 01 00 00)
+
+
+
+
+
+
+[ENABLE]
+
+//──────────────────────────────────────── HP:   SteamWorldDig.exe.text+BA7F1: D9 87 64 01 00 00 - fld dword ptr [edi+00000164]
+//assert(addressHP,bytesHP)
+alloc(newmemHP,$1000)
+
+alloc(HP,8)
+registersymbol(HP)
+
+label(codeHP)
+label(returnHP)
+
+newmemHP:
+
+codeHP:
+  mov [HP],edi //Save esi address into HP
+  fld dword ptr [edi+00000164]
+  jmp returnHP
+
+addressHP:
+  jmp newmemHP
+  nop
+returnHP:
+
+//──────────────────────────────────────── Cash:   SteamWorldDig.exe.text+D3C75: 8B 97 E0 04 00 00 - mov edx,[edi+000004E0]
+//assert(addressCash,bytesCash)
+alloc(newmemCash,$1000)
+
+alloc(Cash,8)
+registersymbol(Cash)
+
+label(codeCash)
+label(returnCash)
+
+newmemCash:
+
+codeCash:
+  mov [Cash],edi //Save edi address into Cash
+  mov edx,[edi+000004E0]
+  jmp returnCash
+
+addressCash:
+  jmp newmemCash
+  nop
+returnCash:
+
+//──────────────────────────────────────── Tool:   SteamWorldDig.exe.text+EAB98: 8B 40 1C - mov eax,[eax+1C]
+//assert(addressTool,bytesTool)
+alloc(newmemTool,$1000)
+
+alloc(Tool,8)
+registersymbol(Tool)
+
+label(codeTool)
+label(returnTool)
+
+newmemTool:
+
+codeTool:
+  mov [Tool],eax //Save eax address into Tool
+  mov eax,[eax+1C]
+  mov esp,ebp
+  jmp returnTool
+
+addressTool:
+  jmp newmemTool
+returnTool:
+
+//──────────────────────────────────────── Depth:   SteamWorldDig.exe.text+D39A9: 39 83 DC 01 00 00 - cmp [ebx+000001DC],eax
+//assert(addressDepth,bytesDepth)
+alloc(newmemDepth,$1000)
+
+alloc(Depth,8)
+registersymbol(Depth)
+
+label(codeDepth)
+label(returnDepth)
+
+newmemDepth:
+
+codeDepth:
+  mov [Depth],eax //Save eax address into Depth
+  cmp [ebx+000001DC],eax
+  jmp returnDepth
+
+addressDepth:
+  jmp newmemDepth
+  nop
+returnDepth:
+
+
+
+
+
+
+
+[DISABLE]
+
+//──────────────────── HP:   SteamWorldDig.exe.text+BA7F1: D9 87 64 01 00 00 - fld dword ptr [edi+00000164]
+addressHP:
+  //db bytesHP
+  fld dword ptr [edi+00000164]
+
+dealloc(newmemHP)
+dealloc(HP)
+unregistersymbol(HP)
+
+//──────────────────── Cash:   SteamWorldDig.exe.text+D3C75: 8B 97 E0 04 00 00 - mov edx,[edi+000004E0]
+addressCash:
+  //db bytesCash
+  mov edx,[edi+000004E0]
+
+dealloc(newmemCash)
+dealloc(Cash)
+unregistersymbol(Cash)
+
+//──────────────────── Tool:   SteamWorldDig.exe.text+EAB98: 8B 40 1C - mov eax,[eax+1C]
+addressTool:
+  //db bytesTool
+  mov eax,[eax+1C]
+  mov esp,ebp
+
+dealloc(newmemTool)
+dealloc(Tool)
+unregistersymbol(Tool)
+
+//──────────────────── Depth:   SteamWorldDig.exe.text+D39A9: 39 83 DC 01 00 00 - cmp [ebx+000001DC],eax
+addressDepth:
+  //db bytesDepth
+  cmp [ebx+000001DC],eax
+
+dealloc(newmemDepth)
+dealloc(Depth)
+unregistersymbol(Depth)
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>1</ID>
+              <Description>"HP"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>40BFBF</Color>
+              <VariableType>Float</VariableType>
+              <Address>HP</Address>
+              <Offsets>
+                <Offset>164</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>16326</ID>
+              <Description>"Steam Jump"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>40BFBF</Color>
+              <VariableType>Float</VariableType>
+              <Address>HP</Address>
+              <Offsets>
+                <Offset>168</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>3</ID>
+              <Description>"Light"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>40BFBF</Color>
+              <VariableType>Float</VariableType>
+              <Address>HP</Address>
+              <Offsets>
+                <Offset>16C</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>16307</ID>
+              <Description>"Cash"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>40BFBF</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>Cash</Address>
+              <Offsets>
+                <Offset>4E0</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>16308</ID>
+              <Description>"Orbs"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>40BFBF</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>Cash</Address>
+              <Offsets>
+                <Offset>4E4</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>16309</ID>
+              <Description>"Tools"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>40BFBF</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>Tool</Address>
+              <Offsets>
+                <Offset>1C</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>2</ID>
+              <Description>"Depth"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>40BFBF</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>Depth</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>16299</ID>
+          <Description>"Get Stats (trigger required)     ・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・"</Description>
+          <LastState Activated="1"/>
+          <Color>40BF40</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : SteamWorld Dig
+  Date   : 2026-04-16
+  Author : Max Chen (Trần Thắng Minh) - Contact me:
+    🌐Facebook  : https://www.facebook.com/maxiechen
+    🌐Reddit    : https://www.reddit.com/user/maxiechen96
+    🌐Discord   : https://discord.com/users/@maxiechen
+
+  Update Here
+    ☁️GoogleDrive: https://drive.google.com/drive/folders/1psd4TzcmHOUAO7NIBKI0lf47hKGp-qkK?usp=drive_link
+    ☁️Github     : https://github.com/tranthangminh/Cheat-Engine-Tables-for-Games
+}
+
+
+
+//EXP:   SteamWorldDig.exe.text+B6851: 8B 93 90 00 00 00 - mov edx,[ebx+00000090]
+define(addressEXP,SteamWorldDig.exe.text+B6851)
+//define(bytesEXP,8B 93 90 00 00 00)
+
+//CrankysUpgrades:   SteamWorldDig.exe.text+C70A8: 8B 48 1C - mov ecx,[eax+1C]
+define(addressCrankysUpgrades,SteamWorldDig.exe.text+C70A8)
+//define(bytesCrankysUpgrades,8B 48 1C EB 02)
+
+
+
+
+
+
+[ENABLE]
+
+//──────────────────────────────────────── EXP:   SteamWorldDig.exe.text+B6851: 8B 93 90 00 00 00 - mov edx,[ebx+00000090]
+//assert(addressEXP,bytesEXP)
+alloc(newmemEXP,$1000)
+
+alloc(EXP,8)
+registersymbol(EXP)
+
+label(codeEXP)
+label(returnEXP)
+
+newmemEXP:
+
+codeEXP:
+  mov [EXP],ebx //Save ebx address into EXP
+  mov edx,[ebx+00000090]
+  jmp returnEXP
+
+addressEXP:
+  jmp newmemEXP
+  nop
+returnEXP:
+
+//──────────────────────────────────────── CrankysUpgrades:   SteamWorldDig.exe.text+C70A8: 8B 48 1C - mov ecx,[eax+1C]
+//assert(addressCrankysUpgrades,bytesCrankysUpgrades)
+alloc(newmemCrankysUpgrades,$1000)
+
+alloc(CrankysUpgrades,8)
+registersymbol(CrankysUpgrades)
+
+label(codeCrankysUpgrades)
+label(returnCrankysUpgrades)
+
+newmemCrankysUpgrades:
+
+codeCrankysUpgrades:
+  mov [CrankysUpgrades],eax //Save eax address into CrankysUpgrades
+  mov ecx,[eax+1C]
+  jmp SteamWorldDig.exe.text+C70AF
+  jmp returnCrankysUpgrades
+
+addressCrankysUpgrades:
+  jmp newmemCrankysUpgrades
+returnCrankysUpgrades:
+
+
+
+
+
+
+
+[DISABLE]
+
+//──────────────────── EXP:   SteamWorldDig.exe.text+B6851: 8B 93 90 00 00 00 - mov edx,[ebx+00000090]
+addressEXP:
+  //db bytesEXP
+  mov edx,[ebx+00000090]
+
+dealloc(newmemEXP)
+dealloc(EXP)
+unregistersymbol(EXP)
+
+//──────────────────── CrankysUpgrades:   SteamWorldDig.exe.text+C70A8: 8B 48 1C - mov ecx,[eax+1C]
+addressCrankysUpgrades:
+  //db bytesCrankysUpgrades
+  mov ecx,[eax+1C]
+  jmp SteamWorldDig.exe.text+C70AF
+
+dealloc(newmemCrankysUpgrades)
+dealloc(CrankysUpgrades)
+unregistersymbol(CrankysUpgrades)
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>16320</ID>
+              <Description>"Lamp"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>40BFBF</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>CrankysUpgrades</Address>
+              <Offsets>
+                <Offset>1C</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>16323</ID>
+              <Description>"Teleporter"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>40BFBF</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>CrankysUpgrades</Address>
+              <Offsets>
+                <Offset>AC</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>16321</ID>
+              <Description>"Ladder"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>40BFBF</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>CrankysUpgrades</Address>
+              <Offsets>
+                <Offset>3AC</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>16322</ID>
+              <Description>"Lv Armor (HP)"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>40BFBF</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>CrankysUpgrades</Address>
+              <Offsets>
+                <Offset>-44</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>16313</ID>
+              <Description>"Lv Coal Lantern (Light)"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>40BFBF</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>CrankysUpgrades</Address>
+              <Offsets>
+                <Offset>-14</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>16325</ID>
+              <Description>"Lv Pouch (Inventory)"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>40BFBF</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>CrankysUpgrades</Address>
+              <Offsets>
+                <Offset>13C</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>16324</ID>
+              <Description>"Lv Pickexe (DMG)"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>40BFBF</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>CrankysUpgrades</Address>
+              <Offsets>
+                <Offset>46C</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>16327</ID>
+              <Description>"Lv Damaging Pickaxe (DMG)"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>40BFBF</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>CrankysUpgrades</Address>
+              <Offsets>
+                <Offset>3D3424</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>16328</ID>
+              <Description>"Lv Tank (Steam)"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>40BFBF</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>CrankysUpgrades</Address>
+              <Offsets>
+                <Offset>3D4594</Offset>
+              </Offsets>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>16312</ID>
+              <Description>"EXP (Change Map)"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>40BFBF</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>EXP</Address>
+              <Offsets>
+                <Offset>90</Offset>
+              </Offsets>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>77</ID>
+          <Description>"Memory Viewer     ──────────────────────────────────────────────────────────────────────────────────"</Description>
+          <Options moAlwaysHideChildren="1" moManualExpandCollapse="1" moAllowManualCollapseAndExpand="1"/>
+          <LastState Value="" RealAddress="00000000"/>
+          <Color>BF4040</Color>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>16293</ID>
+              <Description>"Cranky's Upgrades"</Description>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>BF4040</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>SteamWorldDig.exe.text+C70A8</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>Change of fstp dword ptr [ebx+0000016C]</Description>
+      <AddressString>SteamWorldDig.exe+43013</AddressString>
+      <Before>
+        <Byte>00</Byte>
+        <Byte>8B</Byte>
+        <Byte>11</Byte>
+        <Byte>D8</Byte>
+        <Byte>22</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>9B</Byte>
+        <Byte>6C</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>D9</Byte>
+        <Byte>93</Byte>
+        <Byte>F8</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of dec [eax+1C]</Description>
+      <AddressString>SteamWorldDig.exe+EBBFB</AddressString>
+      <Before>
+        <Byte>F2</Byte>
+        <Byte>FF</Byte>
+        <Byte>8B</Byte>
+        <Byte>45</Byte>
+        <Byte>FC</Byte>
+      </Before>
+      <Actual>
+        <Byte>FF</Byte>
+        <Byte>48</Byte>
+        <Byte>1C</Byte>
+      </Actual>
+      <After>
+        <Byte>75</Byte>
+        <Byte>0A</Byte>
+        <Byte>50</Byte>
+        <Byte>8D</Byte>
+        <Byte>4D</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+  <LuaScript>GameName = "SteamWorld Dig"
+
+if syntaxcheck then return end
+
+
+
+
+-- Title + Author
+getMainForm().Caption = GameName.." | Created by Max (Tran Thang Minh)" --input GameName here
+
+
+
+
+-- Activate Mono Features
+function activateMono()
+
+  --if getOpenedProcessID() == 0 then
+      OpenProcess(GameName..".exe")--------------------------------------input GameName.exe here
+  --end
+
+  if getOpenedProcessID() == 0 then
+      showMessage(GameName.." not found")
+      return
+  end
+
+  -- check menu Mono có tồn tại không
+  if getMainForm().miMono ~= nil then
+    mono_initialize()
+    if monopipe==nil then
+      LaunchMonoDataCollector()
+    end
+  end
+end
+
+
+
+
+
+-- Toggle Compact / Full
+function toggleView(sender)
+  local f = getMainForm()
+  local state = (sender.Caption == "Compact View Mode")
+
+  f.Panel5.Visible = state
+  f.Splitter1.Visible = state
+  sender.Caption = state and "Full View Mode" or "Compact View Mode"
+end
+
+
+
+
+
+-- Check if menu already exists
+local parent = getMainForm().Menu.Items
+local exists = false
+
+for i=0,parent.Count-1 do
+  if parent[i].Caption == "Compact View Mode" or parent[i].Caption == "Full View Mode" then
+    exists = true
+    break
+  end
+end
+
+
+
+
+
+-- Create menu if not exists
+if not exists then
+  local m = createMenuItem(parent)
+  m.Caption = "Full View Mode"
+  m.OnClick = toggleView
+  parent.add(m)
+end
+
+</LuaScript>
+</CheatTable>

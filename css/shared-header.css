@@ -18,7 +18,7 @@
     min-height: var(--header-h);
     margin-top: 0 !important;
     transform: none !important;
-    background: var(--header-shell-scrolled-bg, #000);
+    background: var(--bg-100);
 }
 
 .header {
@@ -30,7 +30,9 @@
 }
 
 .header-left {
-    justify-self: start;
+    display: flex;
+    align-items: center;
+    gap: 14px;
 }
 
 .header-right {
@@ -40,24 +42,96 @@
     justify-self: end;
 }
 
+/* Master Mask Icon (.icon-mask) */
+.icon-mask {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background-color: currentColor;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    flex-shrink: 0;
+    pointer-events: none;
+    transition: background-color var(--transition-normal);
+}
+
+.theme-switch {
+    display: inline-flex;
+    align-items: center;
+}
+
+.theme-btn {
+    border: none;
+    background: transparent;
+    color: var(--text-primary);
+    padding: 0;
+    min-width: var(--btn-height-sm);
+    min-height: var(--btn-height-sm);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 1;
+    transition: opacity var(--transition-normal), color var(--transition-normal), transform var(--transition-fast);
+}
+
+.theme-btn:hover {
+    color: var(--accent-primary);
+    transform: scale(1.1);
+}
+
+.theme-icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: currentColor;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    flex-shrink: 0;
+    pointer-events: none;
+    transition: background-color var(--transition-normal);
+}
+
 .menu-wrap {
     position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.menu-wrap::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    height: 12px;
 }
 
 .menu-btn {
     border: none;
     background: transparent;
-    color: var(--header-menu-btn-color, var(--text-soft-white));
-    padding: 0;
+    color: var(--text-primary);
+    padding: 6px 0;
     font-size: 16px;
     font-weight: 700;
     line-height: 1;
     cursor: pointer;
-    transition: opacity 0.2s ease, color 0.2s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    transition: opacity var(--transition-normal), color var(--transition-normal);
 }
 
 .menu-btn:hover {
-    opacity: 0.78;
+    color: var(--accent-primary);
 }
 
 .lang-switch {
@@ -69,9 +143,9 @@
 .lang-btn {
     border: none;
     background: transparent;
-    color: var(--header-menu-btn-color, var(--text-soft-white));
+    color: var(--text-primary);
     padding: 0;
-    min-width: 28px;
+    min-width: var(--btn-height-sm);
     display: inline-flex;
     flex-direction: column;
     align-items: center;
@@ -82,14 +156,14 @@
     letter-spacing: 0.08em;
     cursor: pointer;
     opacity: 0.6;
-    transition: opacity 0.2s ease, color 0.2s ease;
+    transition: opacity var(--transition-normal), color var(--transition-normal);
 }
 
 .lang-btn:hover {
-    opacity: 0.85;
+    opacity: 1;
 }
 
-.lang-btn.is-active {
+.lang-btn.active {
     opacity: 1;
 }
 
@@ -104,47 +178,59 @@
 .lang-flag {
     position: relative;
     display: block;
-    width: 18px;
-    height: 12px;
-    border-radius: 2px;
-    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.18);
+    width: 20px;
+    height: 13px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
     overflow: hidden;
 }
 
-.lang-flag--vi {
+.lang-flag--vi,
+.lang-flag--vn {
     background: #d62828;
 }
 
-.lang-flag--vi::before {
+.lang-flag--vi::before,
+.lang-flag--vn::before {
     content: "";
     position: absolute;
     left: 50%;
     top: 50%;
-    width: 7px;
-    height: 7px;
+    width: 8px;
+    height: 8px;
     background: #f4d35e;
-    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 92%, 50% 70%, 21% 92%, 32% 57%, 2% 35%, 39% 35%);
+    clip-path: polygon(
+        50% 0%,
+        61% 35%,
+        98% 35%,
+        68% 57%,
+        79% 91%,
+        50% 70%,
+        21% 91%,
+        32% 57%,
+        2% 35%,
+        39% 35%
+    );
     transform: translate(-50%, -50%);
 }
 
-.lang-flag--en {
-    background:
-        linear-gradient(180deg,
-            #b22234 0 14.28%,
-            #ffffff 14.28% 28.56%,
-            #b22234 28.56% 42.84%,
-            #ffffff 42.84% 57.12%,
-            #b22234 57.12% 71.4%,
-            #ffffff 71.4% 85.68%,
-            #b22234 85.68% 100%);
+.lang-flag--en,
+.lang-flag--us {
+    background: repeating-linear-gradient(
+        to bottom,
+        #b22234 0px,
+        #b22234 1px,
+        #ffffff 1px,
+        #ffffff 2px
+    );
 }
 
-.lang-flag--en::before {
+.lang-flag--en::before,
+.lang-flag--us::before {
     content: "";
     position: absolute;
     left: 0;
     top: 0;
-    width: 8px;
+    width: 9px;
     height: 7px;
     background: #3c3b6e;
 }
@@ -154,7 +240,7 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    color: var(--header-home-color, var(--text-soft-white));
+    color: var(--text-primary);
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -162,37 +248,53 @@
     line-height: 1;
     opacity: 1;
     pointer-events: auto;
-    transition: color 0.25s ease;
+    transition: color var(--transition-normal);
     z-index: 1250;
-}
-
-.header-home svg {
-    display: block;
-    width: 36px;
-    height: 36px;
-    fill: currentColor;
-    filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.35));
+    padding: 4px;
 }
 
 .header-home:hover {
-    color: #fff;
+    color: var(--accent-primary);
+}
+
+.header-logo {
+    display: inline-block;
+    width: 36px;
+    height: 24px;
+    background-color: currentColor;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+    flex-shrink: 0;
+    transition: background-color var(--transition-normal), transform var(--transition-normal);
+}
+
+.header-home:hover .header-logo {
+    background-color: var(--accent-primary);
+    transform: scale(1.06);
 }
 
 .menu-list {
     list-style: none;
-    margin-top: 8px;
-    background-color: rgba(0, 0, 0, 0.9);
-    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.96) 0%, rgba(0, 0, 0, 0.82) 55%, rgba(0, 0, 0, 0.65) 100%);
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    border-radius: 10px;
+    margin: 8px 0 0;
+    padding: 0;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
     overflow: hidden;
     min-width: 180px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+    box-shadow: var(--shadow-lg);
     position: absolute;
-    right: 0;
     top: 100%;
     z-index: 1300;
-    backdrop-filter: blur(3px);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px);
+    transition: opacity var(--transition-fast), transform var(--transition-fast), visibility var(--transition-fast);
+    pointer-events: none;
 }
 
 .header-left .menu-list {
@@ -205,10 +307,20 @@
     left: auto;
 }
 
+.menu-wrap:hover .menu-list,
+.menu-wrap:focus-within .menu-list,
+.menu-list.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
 .menu-list li {
-    padding: 10px 12px;
-    color: var(--header-text-color, var(--text-soft-white));
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 10px 14px;
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color var(--transition-fast), color var(--transition-fast);
 }
 
 .menu-list a {
@@ -218,7 +330,8 @@
 }
 
 .menu-list li:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--bg-tertiary);
+    color: var(--accent-primary);
 }
 
 .menu-list li:last-child {
@@ -230,6 +343,7 @@
 }
 
 @media (max-width: 768px) {
+    .header-left,
     .header-right {
         gap: 10px;
     }
@@ -246,5 +360,10 @@
     .lang-flag {
         width: 16px;
         height: 11px;
+    }
+
+    .theme-icon {
+        width: 18px;
+        height: 18px;
     }
 }

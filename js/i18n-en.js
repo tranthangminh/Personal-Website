@@ -1,4 +1,4 @@
-﻿(function () {
+(function () {
     'use strict';
 
     if (!window.sharedI18n || typeof window.sharedI18n.registerTranslations !== 'function') {
@@ -20,20 +20,28 @@
                 title: 'Artist - Tran Thang Minh'
             },
             tools: {
-                title: 'Tools - Tran Thang Minh'
+                title: 'Products - Tran Thang Minh'
+            },
+            products: {
+                title: 'Products - Tran Thang Minh'
             }
         },
         header: {
             professions: 'Professions',
-            tools: 'Tools',
+            tools: 'Products',
             homeAria: 'Go to homepage',
             languageAria: 'Switch language',
+            themeAria: 'Toggle theme',
             profession: {
                 actor: 'Actor',
                 artist: 'Artist',
                 photographer: 'Photographer'
             },
             tool: {
+                chromeExtension: 'Chrome Extension',
+                plugins: 'Plugins',
+                windowsApps: 'Windows Apps',
+                books: 'Books',
                 photoshop: 'Photoshop Tool',
                 maya: 'Maya Tool',
                 cheatEngine: 'Cheat Engine Tool'
@@ -75,7 +83,7 @@
             },
             photoshop: {
                 previewLabel: 'Preview',
-                overviewTitle: 'Tool Overview',
+                overviewTitle: 'Product Overview',
                 overviewBody: 'Layer Export, Rename & Sort is a Photoshop utility panel built to speed up repetitive layer workflows. It helps you export selected layers into multiple file formats, rename layers in bulk, and sort layers by name without breaking your flow inside Photoshop.',
                 downloadLabel: 'Download Layer Export, Rename & Sort .CCX',
                 installationTitle: 'Installation Guide',
@@ -96,6 +104,21 @@
                 sortTitle: 'Sort',
                 sortBody: 'Sort layers alphabetically to keep your document organized and easier to manage. You can choose different sorting scopes, such as top-level layers, all layers recursively, or layers inside a selected group, and then sort them in either A to Z or Z to A order.'
             }
+        },
+        productsPage: {
+            title: 'Products',
+            breadcrumbHome: 'Home',
+            breadcrumbProducts: 'Products',
+            summary: 'A portfolio of Windows apps, Chrome extensions, and creative plugins built to optimize design workflows and automation.',
+            tabs: {
+                all: 'All',
+                chromeExtension: 'Chrome Extension',
+                plugins: 'Plugins',
+                windowsApps: 'Windows Apps',
+                books: 'Books'
+            },
+            viewAction: 'View Details',
+            emptyNotice: 'More products in this category are coming soon...'
         },
         welcome: {
             home: {

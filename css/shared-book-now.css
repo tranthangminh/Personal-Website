@@ -1,41 +1,32 @@
-:root {
-    --book-now-bottom-gap: 14px;
-    --book-now-lift: 56px;
-    --book-now-hidden-shift: 20px;
-    --book-now-mobile-bottom-gap: 12px;
-    --book-now-mobile-lift: 30px;
-    --book-now-mobile-hidden-shift: 18px;
-}
-
 .book-now-btn {
     position: fixed;
-    --book-now-shift-y: 0px;
     left: 50%;
-    bottom: calc(var(--book-now-bottom-gap) + var(--book-now-lift) + env(safe-area-inset-bottom, 0px));
-    transform: translateX(-50%) translateY(var(--book-now-shift-y));
+    bottom: calc(70px + env(safe-area-inset-bottom, 0px));
+    transform: translateX(-50%) translateY(0);
     opacity: 1;
     z-index: 1400;
     overflow: hidden;
     border: none;
-    border-radius: 999px;
+    border-radius: var(--border-radius-full);
     padding: 13px 23px;
-    background: linear-gradient(145deg, rgba(17, 17, 17, 0.95), rgba(40, 40, 40, 0.95));
-    color: #fff;
+    background: var(--accent-primary);
+    color: var(--text-on-accent);
     font-weight: 700;
     letter-spacing: 0.04em;
     cursor: pointer;
     will-change: transform, opacity;
-    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--shadow-md);
     transition:
         transform 0.34s cubic-bezier(0.22, 1, 0.36, 1),
         opacity 0.24s ease,
-        box-shadow 0.2s ease,
-        background-color 0.2s ease;
+        box-shadow var(--transition-normal),
+        background-color var(--transition-normal);
 }
 
 .book-now-btn:hover {
-    --book-now-shift-y: -1px;
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.34);
+    transform: translateX(-50%) translateY(-1px);
+    background: var(--accent-primary-hover);
+    box-shadow: var(--shadow-lg);
 }
 
 .book-now-btn::before {
@@ -52,7 +43,7 @@
 }
 
 .book-now-btn.hidden {
-    --book-now-shift-y: var(--book-now-hidden-shift);
+    transform: translateX(-50%) translateY(20px);
     opacity: 0;
     pointer-events: none;
 }
@@ -77,11 +68,11 @@
 
 @media (max-width: 768px) {
     .book-now-btn {
-        bottom: calc(var(--book-now-mobile-bottom-gap) + var(--book-now-mobile-lift) + env(safe-area-inset-bottom, 0px));
+        bottom: calc(42px + env(safe-area-inset-bottom, 0px));
         padding: 12px 21px;
     }
 
     .book-now-btn.hidden {
-        --book-now-shift-y: var(--book-now-mobile-hidden-shift);
+        transform: translateX(-50%) translateY(18px);
     }
 }

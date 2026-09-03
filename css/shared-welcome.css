@@ -5,15 +5,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: var(--welcome-padding, 16px);
+    padding: 16px;
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
-    transition: opacity var(--welcome-transition-duration, 0.7s) ease, visibility 0s linear var(--welcome-transition-duration, 0.7s);
+    transition: opacity 0.7s ease, visibility 0s linear 0.7s;
 }
 
 .welcome-popup.show {
-    transition: opacity var(--welcome-transition-duration, 0.7s) ease, visibility 0s linear 0s;
+    transition: opacity 0.7s ease, visibility 0s linear 0s;
 }
 
 .welcome-popup.hidden {
@@ -25,7 +25,7 @@
 .welcome-note {
     position: relative;
     z-index: 2;
-    width: min(var(--welcome-note-max-width, 620px), calc(100% - var(--welcome-note-gutter, 36px)));
+    width: min(620px, calc(100% - 36px));
     padding: 0;
     text-align: center;
 }

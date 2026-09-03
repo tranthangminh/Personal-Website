@@ -1,4 +1,4 @@
-﻿(function () {
+(function () {
     'use strict';
 
     if (!window.sharedI18n || typeof window.sharedI18n.registerTranslations !== 'function') {
@@ -20,20 +20,28 @@
                 title: 'Họa Sĩ - Trần Thắng Minh'
             },
             tools: {
-                title: 'Công Cụ - Trần Thắng Minh'
+                title: 'Sản Phẩm - Trần Thắng Minh'
+            },
+            products: {
+                title: 'Sản Phẩm - Trần Thắng Minh'
             }
         },
         header: {
             professions: 'Nghề Nghiệp',
-            tools: 'Công Cụ',
+            tools: 'Sản Phẩm',
             homeAria: 'Quay về trang chủ',
             languageAria: 'Chuyển ngôn ngữ',
+            themeAria: 'Chuyển đổi giao diện',
             profession: {
                 actor: 'Diễn Viên',
                 artist: 'Họa Sĩ',
                 photographer: 'Nhiếp Ảnh'
             },
             tool: {
+                chromeExtension: 'Chrome Extension',
+                plugins: 'Plugins',
+                windowsApps: 'Windows Apps',
+                books: 'Books',
                 photoshop: 'Tool Photoshop',
                 maya: 'Tool Maya',
                 cheatEngine: 'Tool Cheat Engine'
@@ -75,7 +83,7 @@
             },
             photoshop: {
                 previewLabel: 'Xem trước',
-                overviewTitle: 'Tổng Quan Công Cụ',
+                overviewTitle: 'Tổng Quan Sản Phẩm',
                 overviewBody: 'Layer Export, Rename & Sort là một panel tiện ích cho Photoshop được tạo ra để tăng tốc các quy trình lặp đi lặp lại với layer. Công cụ này giúp xuất các layer đã chọn thành nhiều định dạng file, đổi tên layer hàng loạt và sắp xếp layer theo tên mà vẫn giữ nhịp làm việc liền mạch trong Photoshop.',
                 downloadLabel: 'Tải Layer Export, Rename & Sort .CCX',
                 installationTitle: 'Hướng Dẫn Cài Đặt',
@@ -96,6 +104,21 @@
                 sortTitle: 'Sort',
                 sortBody: 'Sắp xếp layer theo thứ tự chữ cái để tài liệu luôn gọn gàng và dễ quản lý hơn. Bạn có thể chọn phạm vi sắp xếp như chỉ layer cấp cao nhất, toàn bộ layer theo kiểu đệ quy, hoặc các layer bên trong một group đang chọn, rồi sắp xếp theo chiều A đến Z hoặc Z đến A.'
             }
+        },
+        productsPage: {
+            title: 'Sản Phẩm',
+            breadcrumbHome: 'Trang Chủ',
+            breadcrumbProducts: 'Sản Phẩm',
+            summary: 'Bộ sưu tập các ứng dụng Windows, tiện ích mở rộng Chrome Extension và Plugins hỗ trợ thiết kế, đồ họa và tự động hóa quy trình làm việc.',
+            tabs: {
+                all: 'Tất Cả',
+                chromeExtension: 'Chrome Extension',
+                plugins: 'Plugins',
+                windowsApps: 'Windows Apps',
+                books: 'Sách / Books'
+            },
+            viewAction: 'Xem chi tiết',
+            emptyNotice: 'Đang cập nhật thêm sản phẩm trong danh mục này...'
         },
         welcome: {
             home: {

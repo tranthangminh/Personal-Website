@@ -6,8 +6,9 @@
 <title>Hồ Sơ Trần Thắng Minh</title>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;700&family=Great+Vibes&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/shared-layout.css?v=20260330-1">
-<link rel="stylesheet" href="css/shared-header.css?v=20260330-1">
+<link rel="stylesheet" href="css/theme.css?v=20260830-2">
+<link rel="stylesheet" href="css/shared-layout.css?v=20260405-3">
+<link rel="stylesheet" href="css/shared-header.css?v=20260830-2">
 <link rel="stylesheet" href="css/shared-footer.css?v=20260331-5">
 <link rel="stylesheet" href="css/shared-book-now.css?v=20260330-1">
 <link rel="stylesheet" href="css/shared-surfaces.css?v=20260330-1">
@@ -15,12 +16,12 @@
 <link rel="stylesheet" href="css/shared-lightbox.css?v=20260331-2">
 <link rel="stylesheet" href="css/shared-welcome.css?v=20260330-1">
 <link rel="stylesheet" href="css/shared-mobile-type-scale.css?v=20260330-1">
-<link rel="stylesheet" href="css/pages/home.css?v=20260405-1">
+<link rel="stylesheet" href="css/pages/home.css?v=20260405-2">
 <script src="js/shared-utils.js?v=20260330-1"></script>
 <script src="js/shared-i18n.js?v=20260330-1"></script>
-<script src="js/i18n-vi.js?v=20260405-3"></script>
-<script src="js/i18n-en.js?v=20260405-3"></script>
-<script src="js/shared-header.js?v=20260405-2"></script>
+<script src="js/i18n-vi.js?v=20260830-1"></script>
+<script src="js/i18n-en.js?v=20260830-1"></script>
+<script src="js/shared-header.js?v=20260830-2"></script>
 <script src="js/shared-book-now.js?v=20260330-1"></script>
 <script src="js/shared-momentum.js?v=20260330-1"></script>
 <script src="js/shared-lightbox.js?v=20260330-1"></script>
@@ -30,18 +31,9 @@
 </head>
 <body>
 <div id="sharedWelcomeRoot"></div>
-<div class="container">
-    <div class="snap-indicator" aria-label="Section navigation">
-        <button class="snap-dot active" type="button" aria-label="Go to section 1"></button>
-        <button class="snap-dot" type="button" aria-label="Go to section 2"></button>
-        <button class="snap-dot" type="button" aria-label="Go to section 3"></button>
-        <button class="snap-dot" type="button" aria-label="Go to section 4"></button>
-        <button class="snap-dot" type="button" aria-label="Go to section 5"></button>
-        <button class="snap-dot" type="button" aria-label="Go to section 6"></button>
-        <button class="snap-dot" type="button" aria-label="Go to section 7"></button>
-    </div>
-    <div id="sharedHeaderRoot"></div>
+<div id="sharedHeaderRoot"></div>
 
+<main class="home-main">
     <section class="page hero-page">
         <div class="hero">
             <picture>
@@ -93,14 +85,14 @@
                     </li>
                 </ul>
                 <p class="intro-note reveal-up">
-                    Ngoài ra mình còn biết lập trình và đã tạo nhiều công cụ phục vụ quy trình làm việc thực tế.
+                    Ngoài ra mình còn biết lập trình và đã tạo nhiều sản phẩm, công cụ phục vụ quy trình làm việc thực tế.
                 </p>
                 <div class="intro-tools reveal-up">
-                    <div class="intro-tools-title">CÔNG CỤ & NỀN TẢNG</div>
+                    <div class="intro-tools-title">SẢN PHẨM & NỀN TẢNG</div>
                     <div class="intro-tags">
-                        <a class="intro-tag intro-tag-link" href="tools.html?tab=photoshop" aria-label="Mở tab Photoshop trong trang Công Cụ">Photoshop</a>
-                        <a class="intro-tag intro-tag-link" href="tools.html?tab=maya" aria-label="Mở tab Maya trong trang Công Cụ">Maya</a>
-                        <a class="intro-tag intro-tag-link" href="tools.html?tab=cheat-engine" aria-label="Mở tab Cheat Engine trong trang Công Cụ">Cheat Engine</a>
+                        <a class="intro-tag intro-tag-link" href="products.html?tab=chrome-extension" aria-label="Mở tab Chrome Extension trong trang Sản Phẩm">Chrome Extension</a>
+                        <a class="intro-tag intro-tag-link" href="products.html?tab=plugins" aria-label="Mở tab Plugins trong trang Sản Phẩm">Plugins</a>
+                        <a class="intro-tag intro-tag-link" href="products.html?tab=windows-apps" aria-label="Mở tab Windows Apps trong trang Sản Phẩm">Windows Apps</a>
                     </div>
                 </div>
             </div>
@@ -229,50 +221,42 @@
     <section class="page artist-page" id="artistPage">
         <div class="content-wrap artist-wrap">
             <aside class="artist-info reveal-up">
-                <h2 class="actor-title reveal-up">LẬP TRÌNH & PHÁT TRIỂN CÔNG CỤ</h2>
+                <h2 class="actor-title reveal-up">LẬP TRÌNH & PHÁT TRIỂN SẢN PHẨM</h2>
                 <p class="actor-summary reveal-up">
-                    Mình từng học Đại học chuyên ngành Công nghệ thông tin trong 2 năm, nên có thể lập trình và phát triển công cụ phục vụ công việc thực tế.
-                    Các công cụ này giúp tối ưu thời gian thao tác, tự động hóa những bước lặp và làm quy trình làm việc ổn định hơn.
+                    Mình từng học Đại học chuyên ngành Công nghệ thông tin trong 2 năm, nên có thể lập trình và phát triển sản phẩm phục vụ công việc thực tế.
+                    Các sản phẩm này giúp tối ưu thời gian thao tác, tự động hóa những bước lặp và làm quy trình làm việc ổn định hơn.
                 </p>
                 <ul class="intro-list artist-tool-list">
                     <li class="reveal-up">
-                        <a class="intro-item-link" href="tools.html?tab=photoshop" aria-label="Mở tab Photoshop trong trang Công Cụ">
-                            <span class="intro-role"><span class="intro-icon">🎨</span>Photoshop</span>
-                            <span class="intro-years">Tạo script chỉnh sửa ảnh và tự động hóa quy trình làm việc.</span>
+                        <a class="intro-item-link" href="products.html?tab=chrome-extension" aria-label="Mở tab Chrome Extension trong trang Sản Phẩm">
+                            <span class="intro-role"><span class="intro-icon">🌐</span>Chrome Extension</span>
+                            <span class="intro-years">Bộ công cụ toàn năng MAX Design Power-Pack hỗ trợ tải tài nguyên và xử lý đồ họa.</span>
                         </a>
                     </li>
                     <li class="reveal-up">
-                        <a class="intro-item-link" href="tools.html?tab=maya" aria-label="Mở tab Maya trong trang Công Cụ">
-                            <span class="intro-role"><span class="intro-icon">🧊</span>Maya</span>
-                            <span class="intro-years">Viết công cụ dựng hình và tối ưu thao tác cho dự án 3D.</span>
+                        <a class="intro-item-link" href="products.html?tab=plugins" aria-label="Mở tab Plugins trong trang Sản Phẩm">
+                            <span class="intro-role"><span class="intro-icon">🎨</span>Plugins</span>
+                            <span class="intro-years">Tạo script và plugin mở rộng cho Photoshop/Maya giúp tự động hóa quy trình.</span>
                         </a>
                     </li>
                     <li class="reveal-up">
-                        <a class="intro-item-link" href="tools.html?tab=cheat-engine" aria-label="Mở tab Cheat Engine trong trang Công Cụ">
-                            <span class="intro-role"><span class="intro-icon">⚙️</span>Cheat Engine</span>
-                            <span class="intro-years">Chỉ dùng để cheat game Steam và PC.</span>
+                        <a class="intro-item-link" href="products.html?tab=windows-apps" aria-label="Mở tab Windows Apps trong trang Sản Phẩm">
+                            <span class="intro-role"><span class="intro-icon">💻</span>Windows Apps</span>
+                            <span class="intro-years">Phần mềm AutoClicker và các tiện ích Windows hỗ trợ thao tác tự động hiệu năng cao.</span>
                         </a>
-                    </li>
-                    <li class="reveal-up">
-                        <span class="intro-role"><span class="intro-icon">💻</span>Windows</span>
-                        <span class="intro-years">Viết lệnh batch để tự động hóa thao tác và xử lý file nhanh hơn.</span>
                     </li>
                 </ul>
             </aside>
         </div>
     </section>
+</main>
 
-    <div id="sharedContactRoot"></div>
-</div>
+<div id="sharedContactRoot"></div>
 <div id="sharedBookNowRoot"></div>
 <div id="sharedLightboxRoot"></div>
-<script src="js/pages/home.js?v=20260331-3"></script>
+<script src="js/pages/home.js?v=20260902-1"></script>
 </body>
 </html>
-
-
-
-
 
 
 

@@ -1,0 +1,3814 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheatTable CheatEngineTableVersion="46">
+  <CheatEntries>
+    <CheatEntry>
+      <ID>94</ID>
+      <Description>"Activate Helpful Cheats"</Description>
+      <Options moHideChildren="1" moManualExpandCollapse="1" moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1" moAllowManualCollapseAndExpand="1"/>
+      <LastState Value="" Activated="1" RealAddress="00000000"/>
+      <Color>40BF40</Color>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>117</ID>
+          <Description>"Set Money on Start"</Description>
+          <LastState Activated="1"/>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : Death Skid Marks
+  Date   : 2026-04-12
+  Author : Max Chen (Trần Thắng Minh) - Contact me:
+    🌐Facebook  : https://www.facebook.com/maxiechen
+    🌐Reddit    : https://www.reddit.com/user/maxiechen96
+    🌐Discord   : https://discord.com/users/@maxiechen
+
+  Update Here
+    ☁️GoogleDrive: https://drive.google.com/drive/folders/1psd4TzcmHOUAO7NIBKI0lf47hKGp-qkK?usp=drive_link
+    ☁️Github     : https://github.com/tranthangminh/Cheat-Engine-Tables-for-Games
+}
+
+
+
+
+
+//MoneyOnStart:   DeathSkidMarks++.exe.text+196E5: A3 14 BC 55 02 - mov [DeathSkidMarks++.exe+1C3BC14],eax
+define(addressMoneyOnStart,DeathSkidMarks++.exe.text+196E5)
+//define(bytesMoneyOnStart,A3 14 BC 55 02)
+
+
+
+
+
+
+[ENABLE]
+
+
+
+//──────────────────────────────────────── MoneyOnStart:   DeathSkidMarks++.exe.text+196E5: A3 14 BC 55 02 - mov [DeathSkidMarks++.exe+1C3BC14],eax
+
+//assert(addressMoneyOnStart,bytesMoneyOnStart)
+alloc(newmemMoneyOnStart,$1000)
+
+alloc(MoneyOnStart,8)
+registersymbol(MoneyOnStart)
+
+label(codeMoneyOnStart)
+label(returnMoneyOnStart)
+
+newmemMoneyOnStart:
+
+codeMoneyOnStart:
+  mov eax, [MoneyOnStart] //Load MoneyOnStart value into eax
+  mov [DeathSkidMarks++.exe+1C3BC14],eax
+  jmp returnMoneyOnStart
+
+MoneyOnStart:
+ dd (int)9999
+
+addressMoneyOnStart:
+  jmp newmemMoneyOnStart
+returnMoneyOnStart:
+
+
+
+
+
+
+
+[DISABLE]
+
+
+
+//──────────────────── MoneyOnStart:   DeathSkidMarks++.exe.text+196E5: A3 14 BC 55 02 - mov [DeathSkidMarks++.exe+1C3BC14],eax
+addressMoneyOnStart:
+  //db bytesMoneyOnStart
+  mov [DeathSkidMarks++.exe+1C3BC14],eax
+
+dealloc(newmemMoneyOnStart)
+dealloc(MoneyOnStart)
+unregistersymbol(MoneyOnStart)
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>118</ID>
+              <Description>"☰ Money"</Description>
+              <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">1000:1000
+2000:2000
+5000:5000
+10000:10000
+20000:20000
+50000:50000
+100000:100000
+</DropDownList>
+              <LastState Value="9999" RealAddress="0DE71000"/>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>40BFBF</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>MoneyOnStart</Address>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>126</ID>
+          <Description>"HIKERS"</Description>
+          <Options moHideChildren="1" moManualExpandCollapse="1" moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1" moAllowManualCollapseAndExpand="1"/>
+          <LastState Value="" Activated="1" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>93</ID>
+              <Description>"Hikers - HP won't reduce"</Description>
+              <LastState Activated="1"/>
+              <Color>40BF40</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{ Game   : Death Skid Marks
+  Version: 
+  Date   : 2026-04-11
+  Author : Max
+
+  This script does blah blah blah
+}
+
+define(address,DeathSkidMarks++.exe.text+7DCE5)
+define(bytes,F3 0F 11 50 7C)
+
+[ENABLE]
+
+assert(address,bytes)
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  //movss [eax+7C],xmm2
+  jmp return
+
+address:
+  jmp newmem
+return:
+
+[DISABLE]
+
+address:
+  db bytes
+  // movss [eax+7C],xmm2
+
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: DeathSkidMarks++.exe.text+7DCE5
+
+DeathSkidMarks++.exe.text+7DCB3: 8B 84 9E 94 08 00 00     - mov eax,[esi+ebx*4+00000894]
+DeathSkidMarks++.exe.text+7DCBA: 74 09                    - je DeathSkidMarks++.exe.text+7DCC5
+DeathSkidMarks++.exe.text+7DCBC: 83 B8 A0 00 00 00 2B     - cmp dword ptr [eax+000000A0],2B
+DeathSkidMarks++.exe.text+7DCC3: EB 07                    - jmp DeathSkidMarks++.exe.text+7DCCC
+DeathSkidMarks++.exe.text+7DCC5: 83 B8 A0 00 00 00 2A     - cmp dword ptr [eax+000000A0],2A
+DeathSkidMarks++.exe.text+7DCCC: 75 0E                    - jne DeathSkidMarks++.exe.text+7DCDC
+DeathSkidMarks++.exe.text+7DCCE: F3 0F 59 05 3C DF D7 01  - mulss xmm0,[DeathSkidMarks++.exe.rdata+1372F3C]
+DeathSkidMarks++.exe.text+7DCD6: F3 0F 11 44 24 10        - movss [esp+10],xmm0
+DeathSkidMarks++.exe.text+7DCDC: F3 0F 10 50 7C           - movss xmm2,[eax+7C]
+DeathSkidMarks++.exe.text+7DCE1: F3 0F 5C D0              - subss xmm2,xmm0
+// ---------- INJECTING HERE ----------
+DeathSkidMarks++.exe.text+7DCE5: F3 0F 11 50 7C           - movss [eax+7C],xmm2
+// ---------- DONE INJECTING  ----------
+DeathSkidMarks++.exe.text+7DCEA: 83 BE B0 00 00 00 42     - cmp dword ptr [esi+000000B0],42
+DeathSkidMarks++.exe.text+7DCF1: 75 66                    - jne DeathSkidMarks++.exe.text+7DD59
+DeathSkidMarks++.exe.text+7DCF3: 8D AE A4 08 00 00        - lea ebp,[esi+000008A4]
+DeathSkidMarks++.exe.text+7DCF9: 8D BE E0 00 00 00        - lea edi,[esi+000000E0]
+DeathSkidMarks++.exe.text+7DCFF: C7 44 24 24 04 00 00 00  - mov [esp+24],00000004
+DeathSkidMarks++.exe.text+7DD07: E8 E4 7F F8 FF           - call DeathSkidMarks++.exe.text+5CF0
+DeathSkidMarks++.exe.text+7DD0C: D8 4C 24 10              - fmul dword ptr [esp+10]
+DeathSkidMarks++.exe.text+7DD10: D8 07                    - fadd dword ptr [edi]
+DeathSkidMarks++.exe.text+7DD12: D9 54 24 28              - fst dword ptr [esp+28]
+DeathSkidMarks++.exe.text+7DD16: F3 0F 10 4C 24 28        - movss xmm1,[esp+28]
+}
+</AssemblerScript>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>115</ID>
+              <Description>"Hikers - Change on Swap Position"</Description>
+              <LastState Activated="1"/>
+              <Color>40BF40</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{ Game   : Death Skid Marks
+  Version: 
+  Date   : 2026-04-12
+  Author : Max
+
+  This script does blah blah blah
+}
+
+define(address,"DeathSkidMarks++.exe"+144D6)
+define(bytes,89 88 88 00 00 00)
+
+[ENABLE]
+alloc(Hiker,8)
+registersymbol(Hiker)
+
+assert(address,bytes)
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov ecx,[Hiker]
+  mov [eax+00000088],ecx
+  //mov [eax+00000088],ecx
+  jmp return
+
+Hiker:
+ dd (int)15 //11 in Hex means 17 Decimal
+
+address:
+  jmp newmem
+  nop
+return:
+
+[DISABLE]
+
+address:
+  db bytes
+  // mov [eax+00000088],ecx
+
+dealloc(newmem)
+dealloc(Hiker)
+unregistersymbol(Hiker)
+
+{
+// ORIGINAL CODE - INJECTION POINT: DeathSkidMarks++.exe.text+134D6
+
+DeathSkidMarks++.exe.text+134A9: 89 48 74              - mov [eax+74],ecx
+DeathSkidMarks++.exe.text+134AC: 8B 4A 78              - mov ecx,[edx+78]
+DeathSkidMarks++.exe.text+134AF: 89 48 78              - mov [eax+78],ecx
+DeathSkidMarks++.exe.text+134B2: D9 42 7C              - fld dword ptr [edx+7C]
+DeathSkidMarks++.exe.text+134B5: D9 58 7C              - fstp dword ptr [eax+7C]
+DeathSkidMarks++.exe.text+134B8: D9 82 80 00 00 00     - fld dword ptr [edx+00000080]
+DeathSkidMarks++.exe.text+134BE: D9 98 80 00 00 00     - fstp dword ptr [eax+00000080]
+DeathSkidMarks++.exe.text+134C4: D9 82 84 00 00 00     - fld dword ptr [edx+00000084]
+DeathSkidMarks++.exe.text+134CA: D9 98 84 00 00 00     - fstp dword ptr [eax+00000084]
+DeathSkidMarks++.exe.text+134D0: 8B 8A 88 00 00 00     - mov ecx,[edx+00000088]
+// ---------- INJECTING HERE ----------
+DeathSkidMarks++.exe.text+134D6: 89 88 88 00 00 00     - mov [eax+00000088],ecx
+// ---------- DONE INJECTING  ----------
+DeathSkidMarks++.exe.text+134DC: 8B 8A 8C 00 00 00     - mov ecx,[edx+0000008C]
+DeathSkidMarks++.exe.text+134E2: 89 88 8C 00 00 00     - mov [eax+0000008C],ecx
+DeathSkidMarks++.exe.text+134E8: 0F B6 8A 90 00 00 00  - movzx ecx,byte ptr [edx+00000090]
+DeathSkidMarks++.exe.text+134EF: 88 88 90 00 00 00     - mov [eax+00000090],cl
+DeathSkidMarks++.exe.text+134F5: 0F B6 8A 91 00 00 00  - movzx ecx,byte ptr [edx+00000091]
+DeathSkidMarks++.exe.text+134FC: 88 88 91 00 00 00     - mov [eax+00000091],cl
+DeathSkidMarks++.exe.text+13502: 0F B6 8A 92 00 00 00  - movzx ecx,byte ptr [edx+00000092]
+DeathSkidMarks++.exe.text+13509: 88 88 92 00 00 00     - mov [eax+00000092],cl
+DeathSkidMarks++.exe.text+1350F: 0F B6 8A 93 00 00 00  - movzx ecx,byte ptr [edx+00000093]
+DeathSkidMarks++.exe.text+13516: 88 88 93 00 00 00     - mov [eax+00000093],cl
+}
+</AssemblerScript>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>116</ID>
+                  <Description>"☰ Hiker"</Description>
+                  <DropDownListLink>☰ Hikers</DropDownListLink>
+                  <LastState Value="15" RealAddress="0FFD0000"/>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>40BFBF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>Hiker</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>157</ID>
+              <Description>"Hikers - Stats"</Description>
+              <Options moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1"/>
+              <LastState Activated="1"/>
+              <Color>40BF40</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{ Game   : Death Skid Marks
+  Date   : 2026-04-11
+  Author : Max Chen (Trần Thắng Minh) - Contact me:
+    🌐Facebook  : https://www.facebook.com/maxiechen
+    🌐Reddit    : https://www.reddit.com/user/maxiechen96
+    🌐Discord   : https://discord.com/users/@maxiechen
+
+  Update Here
+    ☁️GoogleDrive: https://drive.google.com/drive/folders/1psd4TzcmHOUAO7NIBKI0lf47hKGp-qkK?usp=drive_link
+    ☁️Github     : https://github.com/tranthangminh/Cheat-Engine-Tables-for-Games
+}
+
+
+
+
+
+[ENABLE]
+alloc(DudesStats,8)
+registersymbol(DudesStats)
+DudesStats:
+ dd (int)4
+
+
+
+
+
+
+
+[DISABLE]
+dealloc(DudesStats,8)
+unregistersymbol(DudesStats)
+</AssemblerScript>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>158</ID>
+                  <Description>"☰ Hikers - Stats"</Description>
+                  <Options moAlwaysHideChildren="1" moManualExpandCollapse="1" moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1" moAllowManualCollapseAndExpand="1"/>
+                  <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">0:0
+1:1
+2:2
+3:3
+4:4
+</DropDownList>
+                  <LastState Value="4" Activated="1" RealAddress="0FFE0000"/>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>40BFBF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>DudesStats</Address>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>159</ID>
+                      <Description>"Hikers - Stats"</Description>
+                      <LastState Activated="1"/>
+                      <Color>40BF40</Color>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>{ Game   : Death Skid Marks
+  Version:
+  Date   : 2026-04-12
+  Author : Max
+
+  This script does blah blah blah
+}
+
+define(address,DeathSkidMarks++.exe.text+9022C)
+define(bytes,89 50 6C 89 50 70)
+
+[ENABLE]
+
+assert(address,bytes)
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov ebx,[DudesStats]
+  mov [eax+6C],edx
+  mov [eax+70],edx
+  jmp return
+
+address:
+  jmp newmem
+  nop
+return:
+
+[DISABLE]
+
+address:
+  db bytes
+  // mov [eax+6C],edx
+  // mov [eax+70],edx
+
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: DeathSkidMarks++.exe.text+9022C
+
+DeathSkidMarks++.exe.text+901FF: 38 50 0F           - cmp [eax+0F],dl
+DeathSkidMarks++.exe.text+90202: 74 3A              - je DeathSkidMarks++.exe.text+9023E
+DeathSkidMarks++.exe.text+90204: 89 96 AC 0B 00 00  - mov [esi+00000BAC],edx
+DeathSkidMarks++.exe.text+9020A: 89 96 00 0E 00 00  - mov [esi+00000E00],edx
+DeathSkidMarks++.exe.text+90210: 3A CA              - cmp cl,dl
+DeathSkidMarks++.exe.text+90212: 74 0C              - je DeathSkidMarks++.exe.text+90220
+DeathSkidMarks++.exe.text+90214: 89 B8 9C 00 00 00  - mov [eax+0000009C],edi
+DeathSkidMarks++.exe.text+9021A: 89 B8 A0 00 00 00  - mov [eax+000000A0],edi
+DeathSkidMarks++.exe.text+90220: 88 90 91 00 00 00  - mov [eax+00000091],dl
+DeathSkidMarks++.exe.text+90226: 88 90 90 00 00 00  - mov [eax+00000090],dl
+// ---------- INJECTING HERE ----------
+DeathSkidMarks++.exe.text+9022C: 89 50 6C           - mov [eax+6C],edx
+// ---------- DONE INJECTING  ----------
+DeathSkidMarks++.exe.text+9022F: 89 50 70           - mov [eax+70],edx
+DeathSkidMarks++.exe.text+90232: 89 50 74           - mov [eax+74],edx
+DeathSkidMarks++.exe.text+90235: 89 50 78           - mov [eax+78],edx
+DeathSkidMarks++.exe.text+90238: 89 A8 88 00 00 00  - mov [eax+00000088],ebp
+DeathSkidMarks++.exe.text+9023E: 8B 86 98 08 00 00  - mov eax,[esi+00000898]
+DeathSkidMarks++.exe.text+90244: 89 98 8C 00 00 00  - mov [eax+0000008C],ebx
+DeathSkidMarks++.exe.text+9024A: 0F 2F 40 7C        - comiss xmm0,[eax+7C]
+DeathSkidMarks++.exe.text+9024E: 72 03              - jb DeathSkidMarks++.exe.text+90253
+DeathSkidMarks++.exe.text+90250: 88 58 0F           - mov [eax+0F],bl
+DeathSkidMarks++.exe.text+90253: 38 50 0F           - cmp [eax+0F],dl
+}
+</AssemblerScript>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>150</ID>
+              <Description>"Weapon - Upgrade on Start"</Description>
+              <LastState Activated="1"/>
+              <Color>40BF40</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{ Game   : Death Skid Marks
+  Version: 
+  Date   : 2026-04-12
+  Author : Max
+
+  This script does blah blah blah
+}
+
+define(address,"DeathSkidMarks++.exe"+8FE18)
+define(bytes,89 9F 4C 04 00 00)
+
+[ENABLE]
+alloc(WeaponUpgrade,8)
+registersymbol(WeaponUpgrade)
+WeaponUpgrade:
+ dd (int)65535
+
+
+assert(address,bytes)
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov ebx,[WeaponUpgrade]
+  mov [edi+0000044C],ebx
+  jmp return
+
+address:
+  jmp newmem
+  nop
+return:
+
+[DISABLE]
+dealloc(WeaponUpgrade,8)
+unregistersymbol(WeaponUpgrade)
+
+
+address:
+  db bytes
+  // mov [edi+0000044C],ebx
+
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: DeathSkidMarks++.exe.text+8EE18
+
+DeathSkidMarks++.exe.text+8EDF5: EB 05              - jmp DeathSkidMarks++.exe.text+8EDFC
+DeathSkidMarks++.exe.text+8EDF7: B8 44 00 00 00     - mov eax,00000044
+DeathSkidMarks++.exe.text+8EDFC: 38 9F B7 03 00 00  - cmp [edi+000003B7],bl
+DeathSkidMarks++.exe.text+8EE02: 75 08              - jne DeathSkidMarks++.exe.text+8EE0C
+DeathSkidMarks++.exe.text+8EE04: 38 9F B8 03 00 00  - cmp [edi+000003B8],bl
+DeathSkidMarks++.exe.text+8EE0A: 75 12              - jne DeathSkidMarks++.exe.text+8EE1E
+DeathSkidMarks++.exe.text+8EE0C: E9 F7 11 34 0D     - jmp 0DCF1008
+DeathSkidMarks++.exe.text+8EE11: 90                 - nop 
+DeathSkidMarks++.exe.text+8EE12: E9 E9 01 23 0E     - jmp 0EBE0000
+DeathSkidMarks++.exe.text+8EE17: 90                 - nop 
+// ---------- INJECTING HERE ----------
+DeathSkidMarks++.exe.text+8EE18: 89 9F 4C 04 00 00  - mov [edi+0000044C],ebx
+// ---------- DONE INJECTING  ----------
+DeathSkidMarks++.exe.text+8EE1E: 38 9F 5B 05 00 00  - cmp [edi+0000055B],bl
+DeathSkidMarks++.exe.text+8EE24: 75 08              - jne DeathSkidMarks++.exe.text+8EE2E
+DeathSkidMarks++.exe.text+8EE26: 38 9F 5C 05 00 00  - cmp [edi+0000055C],bl
+DeathSkidMarks++.exe.text+8EE2C: 75 12              - jne DeathSkidMarks++.exe.text+8EE40
+DeathSkidMarks++.exe.text+8EE2E: E9 D5 21 34 0D     - jmp 0DCF2008
+DeathSkidMarks++.exe.text+8EE33: 90                 - nop 
+DeathSkidMarks++.exe.text+8EE34: E9 C7 01 26 0E     - jmp 0EC10000
+DeathSkidMarks++.exe.text+8EE39: 90                 - nop 
+DeathSkidMarks++.exe.text+8EE3A: 89 9F F0 05 00 00  - mov [edi+000005F0],ebx
+DeathSkidMarks++.exe.text+8EE40: 38 9F FF 06 00 00  - cmp [edi+000006FF],bl
+}
+</AssemblerScript>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>151</ID>
+                  <Description>"☰ Weapon Upgrade"</Description>
+                  <Options moManualExpandCollapse="1" moAllowManualCollapseAndExpand="1"/>
+                  <DropDownListLink>☰ Weapon Upgrade (value 0 - 65535)</DropDownListLink>
+                  <LastState Value="65535" RealAddress="3CCA0000"/>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>40BFBF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>WeaponUpgrade</Address>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>161</ID>
+                      <Description>"Damage = (Value mod 256) * 5%"</Description>
+                      <DropDownListLink>☰ Weapon Upgrade (value 0 - 65535)</DropDownListLink>
+                      <LastState Value="" RealAddress="00000000"/>
+                      <GroupHeader>1</GroupHeader>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>162</ID>
+                      <Description>"Speed = floor(Value / 256) * 5%"</Description>
+                      <DropDownListLink>☰ Weapon Upgrade (value 0 - 65535)</DropDownListLink>
+                      <LastState Value="" RealAddress="00000000"/>
+                      <GroupHeader>1</GroupHeader>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>106</ID>
+              <Description>"Weapon - Select on Start"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Activated="1"/>
+              <Color>40BF40</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{ Game   : Death Skid Marks
+  Date   : 2026-04-11
+  Author : Max Chen (Trần Thắng Minh) - Contact me:
+    🌐Facebook  : https://www.facebook.com/maxiechen
+    🌐Reddit    : https://www.reddit.com/user/maxiechen96
+    🌐Discord   : https://discord.com/users/@maxiechen
+
+  Update Here
+    ☁️GoogleDrive: https://drive.google.com/drive/folders/1psd4TzcmHOUAO7NIBKI0lf47hKGp-qkK?usp=drive_link
+    ☁️Github     : https://github.com/tranthangminh/Cheat-Engine-Tables-for-Games
+}
+
+[ENABLE]
+alloc(Weapon,8)
+registersymbol(Weapon)
+Weapon:
+ dd (int)17
+
+
+
+
+
+[DISABLE]
+dealloc(Weapon,8)
+unregistersymbol(Weapon)
+</AssemblerScript>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>107</ID>
+                  <Description>"☰ Weapon"</Description>
+                  <DropDownListLink>☰ Weapons (value 0-31)</DropDownListLink>
+                  <LastState Value="17" RealAddress="3CCB0000"/>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>40BFBF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>Weapon</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>136</ID>
+              <Description>"Special Item - Select on Start"</Description>
+              <Options moHideChildren="1" moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1"/>
+              <LastState Activated="1"/>
+              <Color>40BF40</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{ Game   : Death Skid Marks
+  Date   : 2026-04-11
+  Author : Max Chen (Trần Thắng Minh) - Contact me:
+    🌐Facebook  : https://www.facebook.com/maxiechen
+    🌐Reddit    : https://www.reddit.com/user/maxiechen96
+    🌐Discord   : https://discord.com/users/@maxiechen
+
+  Update Here
+    ☁️GoogleDrive: https://drive.google.com/drive/folders/1psd4TzcmHOUAO7NIBKI0lf47hKGp-qkK?usp=drive_link
+    ☁️Github     : https://github.com/tranthangminh/Cheat-Engine-Tables-for-Games
+}
+
+
+
+
+
+[ENABLE]
+alloc(SpecialItem,8)
+registersymbol(SpecialItem)
+SpecialItem:
+ dd (int)49
+
+
+
+
+
+
+
+[DISABLE]
+dealloc(SpecialItem,8)
+unregistersymbol(SpecialItem)
+</AssemblerScript>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>173</ID>
+                  <Description>"Special Item - Change on Swap Position"</Description>
+                  <LastState Activated="1"/>
+                  <Color>40BF40</Color>
+                  <VariableType>Auto Assembler Script</VariableType>
+                  <AssemblerScript>{ Game   : Death Skid Marks
+  Version:
+  Date   : 2026-04-12
+  Author : Max
+
+  This script does blah blah blah
+}
+
+define(address,"DeathSkidMarks++.exe"+14561)
+define(bytes,89 88 A0 00 00 00)
+
+[ENABLE]
+
+assert(address,bytes)
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov ecx,[SpecialItem]
+  mov [eax+000000A0],ecx
+  jmp return
+
+address:
+  jmp newmem
+  nop
+return:
+
+[DISABLE]
+
+address:
+  db bytes
+  // mov [eax+000000A0],ecx
+
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: DeathSkidMarks++.exe.text+13561
+
+DeathSkidMarks++.exe.text+13527: 00 00                 - add [eax],al
+DeathSkidMarks++.exe.text+13529: 0F B6 8A 95 00 00 00  - movzx ecx,byte ptr [edx+00000095]
+DeathSkidMarks++.exe.text+13530: 88 88 95 00 00 00     - mov [eax+00000095],cl
+DeathSkidMarks++.exe.text+13536: 0F B6 8A 96 00 00 00  - movzx ecx,byte ptr [edx+00000096]
+DeathSkidMarks++.exe.text+1353D: 88 88 96 00 00 00     - mov [eax+00000096],cl
+DeathSkidMarks++.exe.text+13543: 8B 8A 98 00 00 00     - mov ecx,[edx+00000098]
+DeathSkidMarks++.exe.text+13549: 89 88 98 00 00 00     - mov [eax+00000098],ecx
+DeathSkidMarks++.exe.text+1354F: 8B 8A 9C 00 00 00     - mov ecx,[edx+0000009C]
+DeathSkidMarks++.exe.text+13555: 89 88 9C 00 00 00     - mov [eax+0000009C],ecx
+DeathSkidMarks++.exe.text+1355B: 8B 8A A0 00 00 00     - mov ecx,[edx+000000A0]
+// ---------- INJECTING HERE ----------
+DeathSkidMarks++.exe.text+13561: 89 88 A0 00 00 00     - mov [eax+000000A0],ecx
+// ---------- DONE INJECTING  ----------
+DeathSkidMarks++.exe.text+13567: 8B 8A A4 00 00 00     - mov ecx,[edx+000000A4]
+DeathSkidMarks++.exe.text+1356D: 89 88 A4 00 00 00     - mov [eax+000000A4],ecx
+DeathSkidMarks++.exe.text+13573: 8B 8A A8 00 00 00     - mov ecx,[edx+000000A8]
+DeathSkidMarks++.exe.text+13579: 89 88 A8 00 00 00     - mov [eax+000000A8],ecx
+DeathSkidMarks++.exe.text+1357F: D9 82 AC 00 00 00     - fld dword ptr [edx+000000AC]
+DeathSkidMarks++.exe.text+13585: D9 98 AC 00 00 00     - fstp dword ptr [eax+000000AC]
+DeathSkidMarks++.exe.text+1358B: 8B 8A B0 00 00 00     - mov ecx,[edx+000000B0]
+DeathSkidMarks++.exe.text+13591: 89 88 B0 00 00 00     - mov [eax+000000B0],ecx
+DeathSkidMarks++.exe.text+13597: 0F B6 8A B4 00 00 00  - movzx ecx,byte ptr [edx+000000B4]
+DeathSkidMarks++.exe.text+1359E: 88 88 B4 00 00 00     - mov [eax+000000B4],cl
+}
+</AssemblerScript>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>138</ID>
+                  <Description>"☰ Special Item"</Description>
+                  <Options moAlwaysHideChildren="1" moManualExpandCollapse="1" moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1" moAllowManualCollapseAndExpand="1"/>
+                  <DropDownListLink>☰ Special Item (value 32-52)</DropDownListLink>
+                  <LastState Value="49" Activated="1" RealAddress="3CE80000"/>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>40BFBF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>SpecialItem</Address>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>127</ID>
+                      <Description>"Special Items Infinite 1"</Description>
+                      <LastState Activated="1"/>
+                      <Color>40BF40</Color>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>{ Game   : Death Skid Marks
+  Version: 
+  Date   : 2026-04-12
+  Author : Max
+
+  This script does blah blah blah
+}
+
+define(address,"DeathSkidMarks++.exe"+83C22)
+define(bytes,C7 86 A0 00 00 00 44 00 00 00)
+
+[ENABLE]
+
+assert(address,bytes)
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  //mov [esi+000000A0],00000044
+  jmp return
+
+address:
+  jmp newmem
+  nop 5
+return:
+
+[DISABLE]
+
+address:
+  db bytes
+  // mov [esi+000000A0],00000044
+
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: DeathSkidMarks++.exe.text+82C22
+
+DeathSkidMarks++.exe.text+82C04: 53                             - push ebx
+DeathSkidMarks++.exe.text+82C05: 56                             - push esi
+DeathSkidMarks++.exe.text+82C06: 8B CF                          - mov ecx,edi
+DeathSkidMarks++.exe.text+82C08: 89 46 18                       - mov [esi+18],eax
+DeathSkidMarks++.exe.text+82C0B: E8 00 0E FF FF                 - call DeathSkidMarks++.exe.text+73A10
+DeathSkidMarks++.exe.text+82C10: 56                             - push esi
+DeathSkidMarks++.exe.text+82C11: 6A 36                          - push 36
+DeathSkidMarks++.exe.text+82C13: E8 28 25 04 00                 - call DeathSkidMarks++.exe.text+C5140
+DeathSkidMarks++.exe.text+82C18: C6 87 C5 00 00 00 01           - mov byte ptr [edi+000000C5],01
+DeathSkidMarks++.exe.text+82C1F: 83 C4 08                       - add esp,08
+// ---------- INJECTING HERE ----------
+DeathSkidMarks++.exe.text+82C22: C7 86 A0 00 00 00 44 00 00 00  - mov [esi+000000A0],00000044
+// ---------- DONE INJECTING  ----------
+DeathSkidMarks++.exe.text+82C2C: E9 10 33 00 00                 - jmp DeathSkidMarks++.exe.text+85F41
+DeathSkidMarks++.exe.text+82C31: 8B 8E 88 00 00 00              - mov ecx,[esi+00000088]
+DeathSkidMarks++.exe.text+82C37: 56                             - push esi
+DeathSkidMarks++.exe.text+82C38: 51                             - push ecx
+DeathSkidMarks++.exe.text+82C39: 6A 0E                          - push 0E
+DeathSkidMarks++.exe.text+82C3B: E8 20 A7 00 00                 - call DeathSkidMarks++.exe.text+8D360
+DeathSkidMarks++.exe.text+82C40: 83 C4 0C                       - add esp,0C
+DeathSkidMarks++.exe.text+82C43: 53                             - push ebx
+DeathSkidMarks++.exe.text+82C44: 56                             - push esi
+DeathSkidMarks++.exe.text+82C45: 8B CF                          - mov ecx,edi
+}
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>128</ID>
+                      <Description>"Special Items Infinite 2"</Description>
+                      <LastState Activated="1"/>
+                      <Color>40BF40</Color>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>{ Game   : Death Skid Marks
+  Version: 
+  Date   : 2026-04-12
+  Author : Max
+
+  This script does blah blah blah
+}
+
+define(address,"DeathSkidMarks++.exe"+83BC8)
+define(bytes,C7 86 A0 00 00 00 44 00 00 00)
+
+[ENABLE]
+
+assert(address,bytes)
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  //mov [esi+000000A0],00000044
+  jmp return
+
+address:
+  jmp newmem
+  nop 5
+return:
+
+[DISABLE]
+
+address:
+  db bytes
+  // mov [esi+000000A0],00000044
+
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: DeathSkidMarks++.exe.text+82BC8
+
+DeathSkidMarks++.exe.text+82BA4: D9 5C 24 10                    - fstp dword ptr [esp+10]
+DeathSkidMarks++.exe.text+82BA8: E8 03 10 04 00                 - call DeathSkidMarks++.exe.text+C3BB0
+DeathSkidMarks++.exe.text+82BAD: D8 6E 20                       - fsubr dword ptr [esi+20]
+DeathSkidMarks++.exe.text+82BB0: 83 EC 08                       - sub esp,08
+DeathSkidMarks++.exe.text+82BB3: 8B CE                          - mov ecx,esi
+DeathSkidMarks++.exe.text+82BB5: D9 5C 24 04                    - fstp dword ptr [esp+04]
+DeathSkidMarks++.exe.text+82BB9: D9 46 1C                       - fld dword ptr [esi+1C]
+DeathSkidMarks++.exe.text+82BBC: D8 64 24 18                    - fsub dword ptr [esp+18]
+DeathSkidMarks++.exe.text+82BC0: D9 1C 24                       - fstp dword ptr [esp]
+DeathSkidMarks++.exe.text+82BC3: E8 48 55 FE FF                 - call DeathSkidMarks++.exe.text+68110
+// ---------- INJECTING HERE ----------
+DeathSkidMarks++.exe.text+82BC8: C7 86 A0 00 00 00 44 00 00 00  - mov [esi+000000A0],00000044
+// ---------- DONE INJECTING  ----------
+DeathSkidMarks++.exe.text+82BD2: 84 DB                          - test bl,bl
+DeathSkidMarks++.exe.text+82BD4: 0F 84 67 33 00 00              - je DeathSkidMarks++.exe.text+85F41
+DeathSkidMarks++.exe.text+82BDA: D9 84 24 C4 04 00 00           - fld dword ptr [esp+000004C4]
+DeathSkidMarks++.exe.text+82BE1: 51                             - push ecx
+DeathSkidMarks++.exe.text+82BE2: D9 1C 24                       - fstp dword ptr [esp]
+DeathSkidMarks++.exe.text+82BE5: 56                             - push esi
+DeathSkidMarks++.exe.text+82BE6: 8B CF                          - mov ecx,edi
+DeathSkidMarks++.exe.text+82BE8: E8 13 B2 FE FF                 - call DeathSkidMarks++.exe.text+6DE00
+DeathSkidMarks++.exe.text+82BED: E9 4F 33 00 00                 - jmp DeathSkidMarks++.exe.text+85F41
+DeathSkidMarks++.exe.text+82BF2: 8B 86 88 00 00 00              - mov eax,[esi+00000088]
+}
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>130</ID>
+                      <Description>"Special Items Infinite 3"</Description>
+                      <LastState Activated="1"/>
+                      <Color>40BF40</Color>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>{ Game   : Death Skid Marks
+  Version: 
+  Date   : 2026-04-12
+  Author : Max
+
+  This script does blah blah blah
+}
+
+define(address,"DeathSkidMarks++.exe"+83B58)
+define(bytes,C7 86 A0 00 00 00 44 00 00 00)
+
+[ENABLE]
+
+assert(address,bytes)
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  //mov [esi+000000A0],00000044
+  jmp return
+
+address:
+  jmp newmem
+  nop 5
+return:
+
+[DISABLE]
+
+address:
+  db bytes
+  // mov [esi+000000A0],00000044
+
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: DeathSkidMarks++.exe.text+82B58
+
+DeathSkidMarks++.exe.text+82B33: 56                             - push esi
+DeathSkidMarks++.exe.text+82B34: 83 C0 10                       - add eax,10
+DeathSkidMarks++.exe.text+82B37: 51                             - push ecx
+DeathSkidMarks++.exe.text+82B38: 50                             - push eax
+DeathSkidMarks++.exe.text+82B39: E8 22 A8 00 00                 - call DeathSkidMarks++.exe.text+8D360
+DeathSkidMarks++.exe.text+82B3E: 83 C4 0C                       - add esp,0C
+DeathSkidMarks++.exe.text+82B41: 80 BE 3D 01 00 00 00           - cmp byte ptr [esi+0000013D],00
+DeathSkidMarks++.exe.text+82B48: 89 46 18                       - mov [esi+18],eax
+DeathSkidMarks++.exe.text+82B4B: 0F 84 F0 33 00 00              - je DeathSkidMarks++.exe.text+85F41
+DeathSkidMarks++.exe.text+82B51: C6 86 90 00 00 00 00           - mov byte ptr [esi+00000090],00
+// ---------- INJECTING HERE ----------
+DeathSkidMarks++.exe.text+82B58: C7 86 A0 00 00 00 44 00 00 00  - mov [esi+000000A0],00000044
+// ---------- DONE INJECTING  ----------
+DeathSkidMarks++.exe.text+82B62: E9 DA 33 00 00                 - jmp DeathSkidMarks++.exe.text+85F41
+DeathSkidMarks++.exe.text+82B67: 8B 87 B0 00 00 00              - mov eax,[edi+000000B0]
+DeathSkidMarks++.exe.text+82B6D: 83 F8 44                       - cmp eax,44
+DeathSkidMarks++.exe.text+82B70: 0F 84 CB 33 00 00              - je DeathSkidMarks++.exe.text+85F41
+DeathSkidMarks++.exe.text+82B76: 83 F8 45                       - cmp eax,45
+DeathSkidMarks++.exe.text+82B79: 0F 84 C2 33 00 00              - je DeathSkidMarks++.exe.text+85F41
+DeathSkidMarks++.exe.text+82B7F: 8B 96 88 00 00 00              - mov edx,[esi+00000088]
+DeathSkidMarks++.exe.text+82B85: 56                             - push esi
+DeathSkidMarks++.exe.text+82B86: 52                             - push edx
+DeathSkidMarks++.exe.text+82B87: 6A 2B                          - push 2B
+}
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>131</ID>
+                      <Description>"Special Items Infinite 4"</Description>
+                      <LastState Activated="1"/>
+                      <Color>40BF40</Color>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>{ Game   : Death Skid Marks
+  Version: 
+  Date   : 2026-04-12
+  Author : Max
+
+  This script does blah blah blah
+}
+
+define(address,"DeathSkidMarks++.exe"+840DB)
+define(bytes,C7 86 A0 00 00 00 43 00 00 00)
+
+[ENABLE]
+
+assert(address,bytes)
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  //mov [esi+000000A0],00000043
+  jmp return
+
+address:
+  jmp newmem
+  nop 5
+return:
+
+[DISABLE]
+
+address:
+  db bytes
+  // mov [esi+000000A0],00000043
+
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: DeathSkidMarks++.exe.text+830DB
+
+DeathSkidMarks++.exe.text+830BA: D8 6C 24 28                    - fsubr dword ptr [esp+28]
+DeathSkidMarks++.exe.text+830BE: 83 EC 08                       - sub esp,08
+DeathSkidMarks++.exe.text+830C1: D8 6C 24 18                    - fsubr dword ptr [esp+18]
+DeathSkidMarks++.exe.text+830C5: D9 E0                          - fchs 
+DeathSkidMarks++.exe.text+830C7: D9 5C 24 04                    - fstp dword ptr [esp+04]
+DeathSkidMarks++.exe.text+830CB: D9 44 24 20                    - fld dword ptr [esp+20]
+DeathSkidMarks++.exe.text+830CF: D9 E0                          - fchs 
+DeathSkidMarks++.exe.text+830D1: 8B CE                          - mov ecx,esi
+DeathSkidMarks++.exe.text+830D3: D9 1C 24                       - fstp dword ptr [esp]
+DeathSkidMarks++.exe.text+830D6: E8 35 50 FE FF                 - call DeathSkidMarks++.exe.text+68110
+// ---------- INJECTING HERE ----------
+DeathSkidMarks++.exe.text+830DB: C7 86 A0 00 00 00 43 00 00 00  - mov [esi+000000A0],00000043
+// ---------- DONE INJECTING  ----------
+DeathSkidMarks++.exe.text+830E5: E8 96 0A 04 00                 - call DeathSkidMarks++.exe.text+C3B80
+DeathSkidMarks++.exe.text+830EA: D9 5C 24 10                    - fstp dword ptr [esp+10]
+DeathSkidMarks++.exe.text+830EE: E8 BD 0A 04 00                 - call DeathSkidMarks++.exe.text+C3BB0
+DeathSkidMarks++.exe.text+830F3: D9 5C 24 18                    - fstp dword ptr [esp+18]
+DeathSkidMarks++.exe.text+830F7: D9 44 24 10                    - fld dword ptr [esp+10]
+DeathSkidMarks++.exe.text+830FB: F3 0F 10 46 20                 - movss xmm0,[esi+20]
+DeathSkidMarks++.exe.text+83100: D8 66 1C                       - fsub dword ptr [esi+1C]
+DeathSkidMarks++.exe.text+83103: F3 0F 10 4C 24 18              - movss xmm1,[esp+18]
+DeathSkidMarks++.exe.text+83109: F3 0F 5C C8                    - subss xmm1,xmm0
+DeathSkidMarks++.exe.text+8310D: F3 0F 59 0D 34 51 A1 00        - mulss xmm1,[DeathSkidMarks++.exe.rdata+A134]
+}
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>132</ID>
+                      <Description>"Special Items Infinite 5"</Description>
+                      <LastState Activated="1"/>
+                      <Color>40BF40</Color>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>{ Game   : Death Skid Marks
+  Version: 
+  Date   : 2026-04-12
+  Author : Max
+
+  This script does blah blah blah
+}
+
+define(address,"DeathSkidMarks++.exe"+83C7F)
+define(bytes,C7 86 A0 00 00 00 44 00 00 00)
+
+[ENABLE]
+
+assert(address,bytes)
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  //mov [esi+000000A0],00000044
+  jmp return
+
+address:
+  jmp newmem
+  nop 5
+return:
+
+[DISABLE]
+
+address:
+  db bytes
+  // mov [esi+000000A0],00000044
+
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: DeathSkidMarks++.exe.text+82C7F
+
+DeathSkidMarks++.exe.text+82C58: E8 D3 68 F9 FF                 - call DeathSkidMarks++.exe.text+19530
+DeathSkidMarks++.exe.text+82C5D: D8 6C 24 14                    - fsubr dword ptr [esp+14]
+DeathSkidMarks++.exe.text+82C61: 83 EC 08                       - sub esp,08
+DeathSkidMarks++.exe.text+82C64: D8 05 58 26 A1 00              - fadd dword ptr [DeathSkidMarks++.exe.rdata+7658]
+DeathSkidMarks++.exe.text+82C6A: D9 5C 24 04                    - fstp dword ptr [esp+04]
+DeathSkidMarks++.exe.text+82C6E: D9 47 1C                       - fld dword ptr [edi+1C]
+DeathSkidMarks++.exe.text+82C71: D9 1C 24                       - fstp dword ptr [esp]
+DeathSkidMarks++.exe.text+82C74: E8 E7 0C FD FF                 - call DeathSkidMarks++.exe.text+53960
+DeathSkidMarks++.exe.text+82C79: 57                             - push edi
+DeathSkidMarks++.exe.text+82C7A: 68 95 00 00 00                 - push 00000095
+// ---------- INJECTING HERE ----------
+DeathSkidMarks++.exe.text+82C7F: C7 86 A0 00 00 00 44 00 00 00  - mov [esi+000000A0],00000044
+// ---------- DONE INJECTING  ----------
+DeathSkidMarks++.exe.text+82C89: E8 B2 24 04 00                 - call DeathSkidMarks++.exe.text+C5140
+DeathSkidMarks++.exe.text+82C8E: 83 C4 14                       - add esp,14
+DeathSkidMarks++.exe.text+82C91: E9 AB 32 00 00                 - jmp DeathSkidMarks++.exe.text+85F41
+DeathSkidMarks++.exe.text+82C96: C6 86 90 00 00 00 00           - mov byte ptr [esi+00000090],00
+DeathSkidMarks++.exe.text+82C9D: E9 9F 32 00 00                 - jmp DeathSkidMarks++.exe.text+85F41
+DeathSkidMarks++.exe.text+82CA2: 80 BC 24 C8 04 00 00 00        - cmp byte ptr [esp+000004C8],00
+DeathSkidMarks++.exe.text+82CAA: 0F 84 91 32 00 00              - je DeathSkidMarks++.exe.text+85F41
+DeathSkidMarks++.exe.text+82CB0: 56                             - push esi
+DeathSkidMarks++.exe.text+82CB1: 68 D9 00 00 00                 - push 000000D9
+DeathSkidMarks++.exe.text+82CB6: E8 85 24 04 00                 - call DeathSkidMarks++.exe.text+C5140
+}
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>133</ID>
+                      <Description>"Special Items Infinite 6"</Description>
+                      <LastState Activated="1"/>
+                      <Color>40BF40</Color>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>{ Game   : Death Skid Marks
+  Version: 
+  Date   : 2026-04-12
+  Author : Max
+
+  This script does blah blah blah
+}
+
+define(address,"DeathSkidMarks++.exe"+83CBE)
+define(bytes,C7 86 A0 00 00 00 44 00 00 00)
+
+[ENABLE]
+
+assert(address,bytes)
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  //mov [esi+000000A0],00000044
+  jmp return
+
+address:
+  jmp newmem
+  nop 5
+return:
+
+[DISABLE]
+
+address:
+  db bytes
+  // mov [esi+000000A0],00000044
+
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: DeathSkidMarks++.exe.text+82CBE
+
+DeathSkidMarks++.exe.text+82C8E: 83 C4 14                       - add esp,14
+DeathSkidMarks++.exe.text+82C91: E9 AB 32 00 00                 - jmp DeathSkidMarks++.exe.text+85F41
+DeathSkidMarks++.exe.text+82C96: C6 86 90 00 00 00 00           - mov byte ptr [esi+00000090],00
+DeathSkidMarks++.exe.text+82C9D: E9 9F 32 00 00                 - jmp DeathSkidMarks++.exe.text+85F41
+DeathSkidMarks++.exe.text+82CA2: 80 BC 24 C8 04 00 00 00        - cmp byte ptr [esp+000004C8],00
+DeathSkidMarks++.exe.text+82CAA: 0F 84 91 32 00 00              - je DeathSkidMarks++.exe.text+85F41
+DeathSkidMarks++.exe.text+82CB0: 56                             - push esi
+DeathSkidMarks++.exe.text+82CB1: 68 D9 00 00 00                 - push 000000D9
+DeathSkidMarks++.exe.text+82CB6: E8 85 24 04 00                 - call DeathSkidMarks++.exe.text+C5140
+DeathSkidMarks++.exe.text+82CBB: 83 C4 08                       - add esp,08
+// ---------- INJECTING HERE ----------
+DeathSkidMarks++.exe.text+82CBE: C7 86 A0 00 00 00 44 00 00 00  - mov [esi+000000A0],00000044
+// ---------- DONE INJECTING  ----------
+DeathSkidMarks++.exe.text+82CC8: 33 DB                          - xor ebx,ebx
+DeathSkidMarks++.exe.text+82CCA: 8D AF E0 00 00 00              - lea ebp,[edi+000000E0]
+DeathSkidMarks++.exe.text+82CD0: 8D B7 A4 08 00 00              - lea esi,[edi+000008A4]
+DeathSkidMarks++.exe.text+82CD6: C7 44 24 18 08 00 00 00        - mov [esp+18],00000008
+DeathSkidMarks++.exe.text+82CDE: 8B FF                          - mov edi,edi
+DeathSkidMarks++.exe.text+82CE0: 56                             - push esi
+DeathSkidMarks++.exe.text+82CE1: 57                             - push edi
+DeathSkidMarks++.exe.text+82CE2: E8 69 40 03 00                 - call DeathSkidMarks++.exe.text+B6D50
+DeathSkidMarks++.exe.text+82CE7: 83 C4 08                       - add esp,08
+DeathSkidMarks++.exe.text+82CEA: 83 6C 24 18 01                 - sub dword ptr [esp+18],01
+}
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>134</ID>
+                      <Description>"Special Items Infinite 7"</Description>
+                      <LastState Activated="1"/>
+                      <Color>40BF40</Color>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>{ Game   : Death Skid Marks
+  Version: 
+  Date   : 2026-04-12
+  Author : Max
+
+  This script does blah blah blah
+}
+
+define(address,"DeathSkidMarks++.exe"+83D9F)
+define(bytes,C7 86 A0 00 00 00 44 00 00 00)
+
+[ENABLE]
+
+assert(address,bytes)
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  //mov [esi+000000A0],00000044
+  jmp return
+
+address:
+  jmp newmem
+  nop 5
+return:
+
+[DISABLE]
+
+address:
+  db bytes
+  // mov [esi+000000A0],00000044
+
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: DeathSkidMarks++.exe.text+82D9F
+
+DeathSkidMarks++.exe.text+82D72: 83 C6 10                       - add esi,10
+DeathSkidMarks++.exe.text+82D75: 83 FB 04                       - cmp ebx,04
+DeathSkidMarks++.exe.text+82D78: 0F 8C 58 FF FF FF              - jl DeathSkidMarks++.exe.text+82CD6
+DeathSkidMarks++.exe.text+82D7E: E9 BE 31 00 00                 - jmp DeathSkidMarks++.exe.text+85F41
+DeathSkidMarks++.exe.text+82D83: 80 BC 24 C8 04 00 00 00        - cmp byte ptr [esp+000004C8],00
+DeathSkidMarks++.exe.text+82D8B: 0F 84 B0 31 00 00              - je DeathSkidMarks++.exe.text+85F41
+DeathSkidMarks++.exe.text+82D91: 56                             - push esi
+DeathSkidMarks++.exe.text+82D92: 68 DA 00 00 00                 - push 000000DA
+DeathSkidMarks++.exe.text+82D97: E8 A4 23 04 00                 - call DeathSkidMarks++.exe.text+C5140
+DeathSkidMarks++.exe.text+82D9C: 83 C4 08                       - add esp,08
+// ---------- INJECTING HERE ----------
+DeathSkidMarks++.exe.text+82D9F: C7 86 A0 00 00 00 44 00 00 00  - mov [esi+000000A0],00000044
+// ---------- DONE INJECTING  ----------
+DeathSkidMarks++.exe.text+82DA9: 33 DB                          - xor ebx,ebx
+DeathSkidMarks++.exe.text+82DAB: 8D AF E0 00 00 00              - lea ebp,[edi+000000E0]
+DeathSkidMarks++.exe.text+82DB1: 8D B7 A4 08 00 00              - lea esi,[edi+000008A4]
+DeathSkidMarks++.exe.text+82DB7: EB 07                          - jmp DeathSkidMarks++.exe.text+82DC0
+DeathSkidMarks++.exe.text+82DB9: 8D A4 24 00 00 00 00           - lea esp,[esp+00000000]
+DeathSkidMarks++.exe.text+82DC0: C7 44 24 18 10 00 00 00        - mov [esp+18],00000010
+DeathSkidMarks++.exe.text+82DC8: 56                             - push esi
+DeathSkidMarks++.exe.text+82DC9: 57                             - push edi
+DeathSkidMarks++.exe.text+82DCA: E8 81 3F 03 00                 - call DeathSkidMarks++.exe.text+B6D50
+DeathSkidMarks++.exe.text+82DCF: 83 C4 08                       - add esp,08
+}
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>135</ID>
+                      <Description>"Special Item 1 on start"</Description>
+                      <LastState Activated="1"/>
+                      <Color>40BF40</Color>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>{ Game   : Death Skid Marks
+  Version: 
+  Date   : 2026-04-12
+  Author : Max
+
+  This script does blah blah blah
+}
+
+define(address,"DeathSkidMarks++.exe"+8FDE9)
+define(bytes,89 87 A4 02 00 00)
+
+[ENABLE]
+
+assert(address,bytes)
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov eax,[SpecialItem]
+  mov [edi+000002A4],eax
+  jmp return
+
+address:
+  jmp newmem
+  nop
+return:
+
+[DISABLE]
+
+address:
+  db bytes
+  // mov [edi+000002A4],eax
+
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: DeathSkidMarks++.exe.text+8EDE9
+
+DeathSkidMarks++.exe.text+8EDC3: 51                 - push ecx
+DeathSkidMarks++.exe.text+8EDC4: 8B CF              - mov ecx,edi
+DeathSkidMarks++.exe.text+8EDC6: D9 1C 24           - fstp dword ptr [esp]
+DeathSkidMarks++.exe.text+8EDC9: E8 32 BC FD FF     - call DeathSkidMarks++.exe.text+6AA00
+DeathSkidMarks++.exe.text+8EDCE: 38 9F 13 02 00 00  - cmp [edi+00000213],bl
+DeathSkidMarks++.exe.text+8EDD4: 75 08              - jne DeathSkidMarks++.exe.text+8EDDE
+DeathSkidMarks++.exe.text+8EDD6: 38 9F 14 02 00 00  - cmp [edi+00000214],bl
+DeathSkidMarks++.exe.text+8EDDC: 75 19              - jne DeathSkidMarks++.exe.text+8EDF7
+DeathSkidMarks++.exe.text+8EDDE: B8 44 00 00 00     - mov eax,00000044
+DeathSkidMarks++.exe.text+8EDE3: 89 87 A0 02 00 00  - mov [edi+000002A0],eax
+// ---------- INJECTING HERE ----------
+DeathSkidMarks++.exe.text+8EDE9: 89 87 A4 02 00 00  - mov [edi+000002A4],eax
+// ---------- DONE INJECTING  ----------
+DeathSkidMarks++.exe.text+8EDEF: 89 9F A8 02 00 00  - mov [edi+000002A8],ebx
+DeathSkidMarks++.exe.text+8EDF5: EB 05              - jmp DeathSkidMarks++.exe.text+8EDFC
+DeathSkidMarks++.exe.text+8EDF7: B8 44 00 00 00     - mov eax,00000044
+DeathSkidMarks++.exe.text+8EDFC: 38 9F B7 03 00 00  - cmp [edi+000003B7],bl
+DeathSkidMarks++.exe.text+8EE02: 75 08              - jne DeathSkidMarks++.exe.text+8EE0C
+DeathSkidMarks++.exe.text+8EE04: 38 9F B8 03 00 00  - cmp [edi+000003B8],bl
+DeathSkidMarks++.exe.text+8EE0A: 75 12              - jne DeathSkidMarks++.exe.text+8EE1E
+DeathSkidMarks++.exe.text+8EE0C: E9 F7 11 55 0B     - jmp 0BF01008
+DeathSkidMarks++.exe.text+8EE11: 90                 - nop 
+DeathSkidMarks++.exe.text+8EE12: 89 87 48 04 00 00  - mov [edi+00000448],eax
+}
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>139</ID>
+                      <Description>"Special Item 2 on start"</Description>
+                      <LastState Activated="1"/>
+                      <Color>40BF40</Color>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>{ Game   : Death Skid Marks
+  Version: 
+  Date   : 2026-04-12
+  Author : Max
+
+  This script does blah blah blah
+}
+
+define(address,"DeathSkidMarks++.exe"+8FE12)
+define(bytes,89 87 48 04 00 00)
+
+[ENABLE]
+
+assert(address,bytes)
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov eax, [SpecialItem]
+  mov [edi+00000448],eax
+  jmp return
+
+address:
+  jmp newmem
+  nop
+return:
+
+[DISABLE]
+
+address:
+  db bytes
+  // mov [edi+00000448],eax
+
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: DeathSkidMarks++.exe.text+8EE12
+
+DeathSkidMarks++.exe.text+8EDE9: 89 87 A4 02 00 00  - mov [edi+000002A4],eax
+DeathSkidMarks++.exe.text+8EDEF: 89 9F A8 02 00 00  - mov [edi+000002A8],ebx
+DeathSkidMarks++.exe.text+8EDF5: EB 05              - jmp DeathSkidMarks++.exe.text+8EDFC
+DeathSkidMarks++.exe.text+8EDF7: B8 44 00 00 00     - mov eax,00000044
+DeathSkidMarks++.exe.text+8EDFC: 38 9F B7 03 00 00  - cmp [edi+000003B7],bl
+DeathSkidMarks++.exe.text+8EE02: 75 08              - jne DeathSkidMarks++.exe.text+8EE0C
+DeathSkidMarks++.exe.text+8EE04: 38 9F B8 03 00 00  - cmp [edi+000003B8],bl
+DeathSkidMarks++.exe.text+8EE0A: 75 12              - jne DeathSkidMarks++.exe.text+8EE1E
+DeathSkidMarks++.exe.text+8EE0C: E9 F7 11 A8 02     - jmp 03431008
+DeathSkidMarks++.exe.text+8EE11: 90                 - nop 
+// ---------- INJECTING HERE ----------
+DeathSkidMarks++.exe.text+8EE12: 89 87 48 04 00 00  - mov [edi+00000448],eax
+// ---------- DONE INJECTING  ----------
+DeathSkidMarks++.exe.text+8EE18: 89 9F 4C 04 00 00  - mov [edi+0000044C],ebx
+DeathSkidMarks++.exe.text+8EE1E: 38 9F 5B 05 00 00  - cmp [edi+0000055B],bl
+DeathSkidMarks++.exe.text+8EE24: 75 08              - jne DeathSkidMarks++.exe.text+8EE2E
+DeathSkidMarks++.exe.text+8EE26: 38 9F 5C 05 00 00  - cmp [edi+0000055C],bl
+DeathSkidMarks++.exe.text+8EE2C: 75 12              - jne DeathSkidMarks++.exe.text+8EE40
+DeathSkidMarks++.exe.text+8EE2E: E9 D5 21 A8 02     - jmp 03432008
+DeathSkidMarks++.exe.text+8EE33: 90                 - nop 
+DeathSkidMarks++.exe.text+8EE34: 89 87 EC 05 00 00  - mov [edi+000005EC],eax
+DeathSkidMarks++.exe.text+8EE3A: 89 9F F0 05 00 00  - mov [edi+000005F0],ebx
+DeathSkidMarks++.exe.text+8EE40: 38 9F FF 06 00 00  - cmp [edi+000006FF],bl
+}
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>140</ID>
+                      <Description>"Special Item 3 on start"</Description>
+                      <LastState Activated="1"/>
+                      <Color>40BF40</Color>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>{ Game   : Death Skid Marks
+  Version: 
+  Date   : 2026-04-12
+  Author : Max
+
+  This script does blah blah blah
+}
+
+define(address,"DeathSkidMarks++.exe"+8FE56)
+define(bytes,89 87 90 07 00 00)
+
+[ENABLE]
+
+assert(address,bytes)
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov eax,[SpecialItem]
+  mov [edi+00000790],eax
+  jmp return
+
+address:
+  jmp newmem
+  nop
+return:
+
+[DISABLE]
+
+address:
+  db bytes
+  // mov [edi+00000790],eax
+
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: DeathSkidMarks++.exe.text+8EE56
+
+DeathSkidMarks++.exe.text+8EE2E: E9 D5 21 A8 02     - jmp 03432008
+DeathSkidMarks++.exe.text+8EE33: 90                 - nop 
+DeathSkidMarks++.exe.text+8EE34: 89 87 EC 05 00 00  - mov [edi+000005EC],eax
+DeathSkidMarks++.exe.text+8EE3A: 89 9F F0 05 00 00  - mov [edi+000005F0],ebx
+DeathSkidMarks++.exe.text+8EE40: 38 9F FF 06 00 00  - cmp [edi+000006FF],bl
+DeathSkidMarks++.exe.text+8EE46: 75 08              - jne DeathSkidMarks++.exe.text+8EE50
+DeathSkidMarks++.exe.text+8EE48: 38 9F 00 07 00 00  - cmp [edi+00000700],bl
+DeathSkidMarks++.exe.text+8EE4E: 75 12              - jne DeathSkidMarks++.exe.text+8EE62
+DeathSkidMarks++.exe.text+8EE50: E9 B3 31 A8 02     - jmp 03433008
+DeathSkidMarks++.exe.text+8EE55: 90                 - nop 
+// ---------- INJECTING HERE ----------
+DeathSkidMarks++.exe.text+8EE56: 89 87 90 07 00 00  - mov [edi+00000790],eax
+// ---------- DONE INJECTING  ----------
+DeathSkidMarks++.exe.text+8EE5C: 89 9F 94 07 00 00  - mov [edi+00000794],ebx
+DeathSkidMarks++.exe.text+8EE62: FF 15 DC B1 A0 00  - call dword ptr [DeathSkidMarks++.exe.rdata+1DC]
+DeathSkidMarks++.exe.text+8EE68: 24 01              - and al,01
+DeathSkidMarks++.exe.text+8EE6A: 88 87 C4 00 00 00  - mov [edi+000000C4],al
+DeathSkidMarks++.exe.text+8EE70: E8 6B 58 03 00     - call DeathSkidMarks++.exe.text+C46E0
+DeathSkidMarks++.exe.text+8EE75: D9 97 EC 01 00 00  - fst dword ptr [edi+000001EC]
+DeathSkidMarks++.exe.text+8EE7B: D9 05 74 53 A1 00  - fld dword ptr [DeathSkidMarks++.exe.rdata+A374]
+DeathSkidMarks++.exe.text+8EE81: DF F1              - fcomip st(0),st(1)
+DeathSkidMarks++.exe.text+8EE83: DD D8              - fstp st(0)
+DeathSkidMarks++.exe.text+8EE85: 76 10              - jna DeathSkidMarks++.exe.text+8EE97
+}
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>141</ID>
+                      <Description>"Special Item 4 on start"</Description>
+                      <LastState Activated="1"/>
+                      <Color>40BF40</Color>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>{ Game   : Death Skid Marks
+  Version: 
+  Date   : 2026-04-12
+  Author : Max
+
+  This script does blah blah blah
+}
+
+define(address,"DeathSkidMarks++.exe"+8FE34)
+define(bytes,89 87 EC 05 00 00)
+
+[ENABLE]
+
+assert(address,bytes)
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov eax,[SpecialItem]
+  mov [edi+000005EC],eax
+  jmp return
+
+address:
+  jmp newmem
+  nop
+return:
+
+[DISABLE]
+
+address:
+  db bytes
+  // mov [edi+000005EC],eax
+
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: DeathSkidMarks++.exe.text+8EE34
+
+DeathSkidMarks++.exe.text+8EE11: 90                 - nop 
+DeathSkidMarks++.exe.text+8EE12: E9 E9 01 BA 02     - jmp 03550000
+DeathSkidMarks++.exe.text+8EE17: 90                 - nop 
+DeathSkidMarks++.exe.text+8EE18: 89 9F 4C 04 00 00  - mov [edi+0000044C],ebx
+DeathSkidMarks++.exe.text+8EE1E: 38 9F 5B 05 00 00  - cmp [edi+0000055B],bl
+DeathSkidMarks++.exe.text+8EE24: 75 08              - jne DeathSkidMarks++.exe.text+8EE2E
+DeathSkidMarks++.exe.text+8EE26: 38 9F 5C 05 00 00  - cmp [edi+0000055C],bl
+DeathSkidMarks++.exe.text+8EE2C: 75 12              - jne DeathSkidMarks++.exe.text+8EE40
+DeathSkidMarks++.exe.text+8EE2E: E9 D5 21 A8 02     - jmp 03432008
+DeathSkidMarks++.exe.text+8EE33: 90                 - nop 
+// ---------- INJECTING HERE ----------
+DeathSkidMarks++.exe.text+8EE34: 89 87 EC 05 00 00  - mov [edi+000005EC],eax
+// ---------- DONE INJECTING  ----------
+DeathSkidMarks++.exe.text+8EE3A: 89 9F F0 05 00 00  - mov [edi+000005F0],ebx
+DeathSkidMarks++.exe.text+8EE40: 38 9F FF 06 00 00  - cmp [edi+000006FF],bl
+DeathSkidMarks++.exe.text+8EE46: 75 08              - jne DeathSkidMarks++.exe.text+8EE50
+DeathSkidMarks++.exe.text+8EE48: 38 9F 00 07 00 00  - cmp [edi+00000700],bl
+DeathSkidMarks++.exe.text+8EE4E: 75 12              - jne DeathSkidMarks++.exe.text+8EE62
+DeathSkidMarks++.exe.text+8EE50: E9 B3 31 A8 02     - jmp 03433008
+DeathSkidMarks++.exe.text+8EE55: 90                 - nop 
+DeathSkidMarks++.exe.text+8EE56: E9 A5 01 BB 02     - jmp 03560000
+DeathSkidMarks++.exe.text+8EE5B: 90                 - nop 
+DeathSkidMarks++.exe.text+8EE5C: 89 9F 94 07 00 00  - mov [edi+00000794],ebx
+}
+</AssemblerScript>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>113</ID>
+              <Description>"Show Ticket - Get on start"</Description>
+              <Options moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1"/>
+              <LastState Activated="1"/>
+              <Color>40BF40</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{ Game   : Death Skid Marks
+  Date   : 2026-04-11
+  Author : Max Chen (Trần Thắng Minh) - Contact me:
+    🌐Facebook  : https://www.facebook.com/maxiechen
+    🌐Reddit    : https://www.reddit.com/user/maxiechen96
+    🌐Discord   : https://discord.com/users/@maxiechen
+
+  Update Here
+    ☁️GoogleDrive: https://drive.google.com/drive/folders/1psd4TzcmHOUAO7NIBKI0lf47hKGp-qkK?usp=drive_link
+    ☁️Github     : https://github.com/tranthangminh/Cheat-Engine-Tables-for-Games
+}
+
+
+
+
+
+[ENABLE]
+alloc(ShowTicket,8)
+registersymbol(ShowTicket)
+ShowTicket:
+ dd (int)256
+
+
+
+
+
+
+
+[DISABLE]
+dealloc(ShowTicket,8)
+unregistersymbol(ShowTicket)
+</AssemblerScript>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>172</ID>
+                  <Description>"Show Ticket - Get on Swap Position"</Description>
+                  <Options moAlwaysHideChildren="1" moManualExpandCollapse="1" moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1" moAllowManualCollapseAndExpand="1"/>
+                  <LastState Value="" Activated="1" RealAddress="00000000"/>
+                  <Color>40BF40</Color>
+                  <GroupHeader>1</GroupHeader>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>168</ID>
+                      <Description>"Show Ticket 1 - Get on Swap Position"</Description>
+                      <LastState Activated="1"/>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>{ Game   : Death Skid Marks
+  Version: 
+  Date   : 2026-04-12
+  Author : Max
+
+  This script does blah blah blah
+}
+
+define(address,"DeathSkidMarks++.exe"+144EF)
+define(bytes,88 88 90 00 00 00)
+
+[ENABLE]
+
+assert(address,bytes)
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov cl,[SpecialItem]
+  mov [eax+00000090],cl
+  jmp return
+
+address:
+  jmp newmem
+  nop
+return:
+
+[DISABLE]
+
+address:
+  db bytes
+  // mov [eax+00000090],cl
+
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: DeathSkidMarks++.exe.text+134EF
+
+DeathSkidMarks++.exe.text+134B8: D9 82 80 00 00 00     - fld dword ptr [edx+00000080]
+DeathSkidMarks++.exe.text+134BE: D9 98 80 00 00 00     - fstp dword ptr [eax+00000080]
+DeathSkidMarks++.exe.text+134C4: D9 82 84 00 00 00     - fld dword ptr [edx+00000084]
+DeathSkidMarks++.exe.text+134CA: D9 98 84 00 00 00     - fstp dword ptr [eax+00000084]
+DeathSkidMarks++.exe.text+134D0: 8B 8A 88 00 00 00     - mov ecx,[edx+00000088]
+DeathSkidMarks++.exe.text+134D6: E9 2D BB AA 05        - jmp 063E0008
+DeathSkidMarks++.exe.text+134DB: 90                    - nop 
+DeathSkidMarks++.exe.text+134DC: 8B 8A 8C 00 00 00     - mov ecx,[edx+0000008C]
+DeathSkidMarks++.exe.text+134E2: 89 88 8C 00 00 00     - mov [eax+0000008C],ecx
+DeathSkidMarks++.exe.text+134E8: 0F B6 8A 90 00 00 00  - movzx ecx,byte ptr [edx+00000090]
+// ---------- INJECTING HERE ----------
+DeathSkidMarks++.exe.text+134EF: 88 88 90 00 00 00     - mov [eax+00000090],cl
+// ---------- DONE INJECTING  ----------
+DeathSkidMarks++.exe.text+134F5: 0F B6 8A 91 00 00 00  - movzx ecx,byte ptr [edx+00000091]
+DeathSkidMarks++.exe.text+134FC: 88 88 91 00 00 00     - mov [eax+00000091],cl
+DeathSkidMarks++.exe.text+13502: 0F B6 8A 92 00 00 00  - movzx ecx,byte ptr [edx+00000092]
+DeathSkidMarks++.exe.text+13509: 88 88 92 00 00 00     - mov [eax+00000092],cl
+DeathSkidMarks++.exe.text+1350F: 0F B6 8A 93 00 00 00  - movzx ecx,byte ptr [edx+00000093]
+DeathSkidMarks++.exe.text+13516: 88 88 93 00 00 00     - mov [eax+00000093],cl
+DeathSkidMarks++.exe.text+1351C: 0F B6 8A 94 00 00 00  - movzx ecx,byte ptr [edx+00000094]
+DeathSkidMarks++.exe.text+13523: 88 88 94 00 00 00     - mov [eax+00000094],cl
+DeathSkidMarks++.exe.text+13529: 0F B6 8A 95 00 00 00  - movzx ecx,byte ptr [edx+00000095]
+DeathSkidMarks++.exe.text+13530: 88 88 95 00 00 00     - mov [eax+00000095],cl
+}
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>169</ID>
+                      <Description>"Show Ticket 2 - Get on Swap Position"</Description>
+                      <LastState Activated="1"/>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>{ Game   : Death Skid Marks
+  Version: 
+  Date   : 2026-04-12
+  Author : Max
+
+  This script does blah blah blah
+}
+
+define(address,"DeathSkidMarks++.exe"+144FC)
+define(bytes,88 88 91 00 00 00)
+
+[ENABLE]
+
+assert(address,bytes)
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov cl,[SpecialItem]
+  mov [eax+00000091],cl
+  jmp return
+
+address:
+  jmp newmem
+  nop
+return:
+
+[DISABLE]
+
+address:
+  db bytes
+  // mov [eax+00000091],cl
+
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: DeathSkidMarks++.exe.text+134FC
+
+DeathSkidMarks++.exe.text+134C4: D9 82 84 00 00 00     - fld dword ptr [edx+00000084]
+DeathSkidMarks++.exe.text+134CA: D9 98 84 00 00 00     - fstp dword ptr [eax+00000084]
+DeathSkidMarks++.exe.text+134D0: 8B 8A 88 00 00 00     - mov ecx,[edx+00000088]
+DeathSkidMarks++.exe.text+134D6: E9 2D BB AA 05        - jmp 063E0008
+DeathSkidMarks++.exe.text+134DB: 90                    - nop 
+DeathSkidMarks++.exe.text+134DC: 8B 8A 8C 00 00 00     - mov ecx,[edx+0000008C]
+DeathSkidMarks++.exe.text+134E2: 89 88 8C 00 00 00     - mov [eax+0000008C],ecx
+DeathSkidMarks++.exe.text+134E8: 0F B6 8A 90 00 00 00  - movzx ecx,byte ptr [edx+00000090]
+DeathSkidMarks++.exe.text+134EF: 88 88 90 00 00 00     - mov [eax+00000090],cl
+DeathSkidMarks++.exe.text+134F5: 0F B6 8A 91 00 00 00  - movzx ecx,byte ptr [edx+00000091]
+// ---------- INJECTING HERE ----------
+DeathSkidMarks++.exe.text+134FC: 88 88 91 00 00 00     - mov [eax+00000091],cl
+// ---------- DONE INJECTING  ----------
+DeathSkidMarks++.exe.text+13502: 0F B6 8A 92 00 00 00  - movzx ecx,byte ptr [edx+00000092]
+DeathSkidMarks++.exe.text+13509: 88 88 92 00 00 00     - mov [eax+00000092],cl
+DeathSkidMarks++.exe.text+1350F: 0F B6 8A 93 00 00 00  - movzx ecx,byte ptr [edx+00000093]
+DeathSkidMarks++.exe.text+13516: 88 88 93 00 00 00     - mov [eax+00000093],cl
+DeathSkidMarks++.exe.text+1351C: 0F B6 8A 94 00 00 00  - movzx ecx,byte ptr [edx+00000094]
+DeathSkidMarks++.exe.text+13523: 88 88 94 00 00 00     - mov [eax+00000094],cl
+DeathSkidMarks++.exe.text+13529: 0F B6 8A 95 00 00 00  - movzx ecx,byte ptr [edx+00000095]
+DeathSkidMarks++.exe.text+13530: 88 88 95 00 00 00     - mov [eax+00000095],cl
+DeathSkidMarks++.exe.text+13536: 0F B6 8A 96 00 00 00  - movzx ecx,byte ptr [edx+00000096]
+DeathSkidMarks++.exe.text+1353D: 88 88 96 00 00 00     - mov [eax+00000096],cl
+}
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>170</ID>
+                      <Description>"Show Ticket 3 - Get on Swap Position"</Description>
+                      <LastState Activated="1"/>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>{ Game   : Death Skid Marks
+  Version: 
+  Date   : 2026-04-12
+  Author : Max
+
+  This script does blah blah blah
+}
+
+define(address,"DeathSkidMarks++.exe"+14509)
+define(bytes,88 88 92 00 00 00)
+
+[ENABLE]
+
+assert(address,bytes)
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov cl,[SpecialItem]
+  mov [eax+00000092],cl
+  jmp return
+
+address:
+  jmp newmem
+  nop
+return:
+
+[DISABLE]
+
+address:
+  db bytes
+  // mov [eax+00000092],cl
+
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: DeathSkidMarks++.exe.text+13509
+
+DeathSkidMarks++.exe.text+134D0: 8B 8A 88 00 00 00     - mov ecx,[edx+00000088]
+DeathSkidMarks++.exe.text+134D6: E9 2D BB AA 05        - jmp 063E0008
+DeathSkidMarks++.exe.text+134DB: 90                    - nop 
+DeathSkidMarks++.exe.text+134DC: 8B 8A 8C 00 00 00     - mov ecx,[edx+0000008C]
+DeathSkidMarks++.exe.text+134E2: 89 88 8C 00 00 00     - mov [eax+0000008C],ecx
+DeathSkidMarks++.exe.text+134E8: 0F B6 8A 90 00 00 00  - movzx ecx,byte ptr [edx+00000090]
+DeathSkidMarks++.exe.text+134EF: 88 88 90 00 00 00     - mov [eax+00000090],cl
+DeathSkidMarks++.exe.text+134F5: 0F B6 8A 91 00 00 00  - movzx ecx,byte ptr [edx+00000091]
+DeathSkidMarks++.exe.text+134FC: 88 88 91 00 00 00     - mov [eax+00000091],cl
+DeathSkidMarks++.exe.text+13502: 0F B6 8A 92 00 00 00  - movzx ecx,byte ptr [edx+00000092]
+// ---------- INJECTING HERE ----------
+DeathSkidMarks++.exe.text+13509: 88 88 92 00 00 00     - mov [eax+00000092],cl
+// ---------- DONE INJECTING  ----------
+DeathSkidMarks++.exe.text+1350F: 0F B6 8A 93 00 00 00  - movzx ecx,byte ptr [edx+00000093]
+DeathSkidMarks++.exe.text+13516: 88 88 93 00 00 00     - mov [eax+00000093],cl
+DeathSkidMarks++.exe.text+1351C: 0F B6 8A 94 00 00 00  - movzx ecx,byte ptr [edx+00000094]
+DeathSkidMarks++.exe.text+13523: 88 88 94 00 00 00     - mov [eax+00000094],cl
+DeathSkidMarks++.exe.text+13529: 0F B6 8A 95 00 00 00  - movzx ecx,byte ptr [edx+00000095]
+DeathSkidMarks++.exe.text+13530: 88 88 95 00 00 00     - mov [eax+00000095],cl
+DeathSkidMarks++.exe.text+13536: 0F B6 8A 96 00 00 00  - movzx ecx,byte ptr [edx+00000096]
+DeathSkidMarks++.exe.text+1353D: 88 88 96 00 00 00     - mov [eax+00000096],cl
+DeathSkidMarks++.exe.text+13543: 8B 8A 98 00 00 00     - mov ecx,[edx+00000098]
+DeathSkidMarks++.exe.text+13549: 89 88 98 00 00 00     - mov [eax+00000098],ecx
+}
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>171</ID>
+                      <Description>"Show Ticket 4 - Get on Swap Position"</Description>
+                      <LastState Activated="1"/>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>{ Game   : Death Skid Marks
+  Version: 
+  Date   : 2026-04-12
+  Author : Max
+
+  This script does blah blah blah
+}
+
+define(address,"DeathSkidMarks++.exe"+14516)
+define(bytes,88 88 93 00 00 00)
+
+[ENABLE]
+
+assert(address,bytes)
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov cl,[SpecialItem]
+  mov [eax+00000093],cl
+  jmp return
+
+address:
+  jmp newmem
+  nop
+return:
+
+[DISABLE]
+
+address:
+  db bytes
+  // mov [eax+00000093],cl
+
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: DeathSkidMarks++.exe.text+13516
+
+DeathSkidMarks++.exe.text+134DB: 90                    - nop 
+DeathSkidMarks++.exe.text+134DC: 8B 8A 8C 00 00 00     - mov ecx,[edx+0000008C]
+DeathSkidMarks++.exe.text+134E2: 89 88 8C 00 00 00     - mov [eax+0000008C],ecx
+DeathSkidMarks++.exe.text+134E8: 0F B6 8A 90 00 00 00  - movzx ecx,byte ptr [edx+00000090]
+DeathSkidMarks++.exe.text+134EF: 88 88 90 00 00 00     - mov [eax+00000090],cl
+DeathSkidMarks++.exe.text+134F5: 0F B6 8A 91 00 00 00  - movzx ecx,byte ptr [edx+00000091]
+DeathSkidMarks++.exe.text+134FC: 88 88 91 00 00 00     - mov [eax+00000091],cl
+DeathSkidMarks++.exe.text+13502: 0F B6 8A 92 00 00 00  - movzx ecx,byte ptr [edx+00000092]
+DeathSkidMarks++.exe.text+13509: 88 88 92 00 00 00     - mov [eax+00000092],cl
+DeathSkidMarks++.exe.text+1350F: 0F B6 8A 93 00 00 00  - movzx ecx,byte ptr [edx+00000093]
+// ---------- INJECTING HERE ----------
+DeathSkidMarks++.exe.text+13516: 88 88 93 00 00 00     - mov [eax+00000093],cl
+// ---------- DONE INJECTING  ----------
+DeathSkidMarks++.exe.text+1351C: 0F B6 8A 94 00 00 00  - movzx ecx,byte ptr [edx+00000094]
+DeathSkidMarks++.exe.text+13523: 88 88 94 00 00 00     - mov [eax+00000094],cl
+DeathSkidMarks++.exe.text+13529: 0F B6 8A 95 00 00 00  - movzx ecx,byte ptr [edx+00000095]
+DeathSkidMarks++.exe.text+13530: 88 88 95 00 00 00     - mov [eax+00000095],cl
+DeathSkidMarks++.exe.text+13536: 0F B6 8A 96 00 00 00  - movzx ecx,byte ptr [edx+00000096]
+DeathSkidMarks++.exe.text+1353D: 88 88 96 00 00 00     - mov [eax+00000096],cl
+DeathSkidMarks++.exe.text+13543: 8B 8A 98 00 00 00     - mov ecx,[edx+00000098]
+DeathSkidMarks++.exe.text+13549: 89 88 98 00 00 00     - mov [eax+00000098],ecx
+DeathSkidMarks++.exe.text+1354F: 8B 8A 9C 00 00 00     - mov ecx,[edx+0000009C]
+DeathSkidMarks++.exe.text+13555: 89 88 9C 00 00 00     - mov [eax+0000009C],ecx
+}
+</AssemblerScript>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>160</ID>
+                  <Description>"☰ Show Ticket"</Description>
+                  <Options moAlwaysHideChildren="1" moManualExpandCollapse="1" moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1" moAllowManualCollapseAndExpand="1"/>
+                  <DropDownListLink>Show Ticket (value 0 &amp; 256)</DropDownListLink>
+                  <LastState Value="256" Activated="1" RealAddress="420F0000"/>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>40BFBF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>ShowTicket</Address>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>146</ID>
+                      <Description>"Show Ticket 1"</Description>
+                      <Options moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1"/>
+                      <LastState Activated="1"/>
+                      <Color>40BF40</Color>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>{ Game   : Death Skid Marks
+  Version: 
+  Date   : 2026-04-12
+  Author : Max
+
+  This script does blah blah blah
+}
+
+define(address,"DeathSkidMarks++.exe"+8FC4C)
+define(bytes,88 9E 90 00 00 00)
+
+[ENABLE]
+
+assert(address,bytes)
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov bl,[ShowTicket]
+  mov [esi+00000090],bl
+  //mov [esi+00000090],bl
+  jmp return
+
+address:
+  jmp newmem
+  nop
+return:
+
+[DISABLE]
+
+address:
+  db bytes
+  // mov [esi+00000090],bl
+
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: DeathSkidMarks++.exe.text+8EC4C
+
+DeathSkidMarks++.exe.text+8EC13: 88 5E 10                       - mov [esi+10],bl
+DeathSkidMarks++.exe.text+8EC16: 89 9D 18 03 00 00              - mov [ebp+00000318],ebx
+DeathSkidMarks++.exe.text+8EC1C: F3 0F 11 85 28 03 00 00        - movss [ebp+00000328],xmm0
+DeathSkidMarks++.exe.text+8EC24: 89 9D 6C 05 00 00              - mov [ebp+0000056C],ebx
+DeathSkidMarks++.exe.text+8EC2A: B9 44 00 00 00                 - mov ecx,00000044
+DeathSkidMarks++.exe.text+8EC2F: 40                             - inc eax
+DeathSkidMarks++.exe.text+8EC30: C7 86 88 00 00 00 24 00 00 00  - mov [esi+00000088],00000024
+DeathSkidMarks++.exe.text+8EC3A: 89 8E 9C 00 00 00              - mov [esi+0000009C],ecx
+DeathSkidMarks++.exe.text+8EC40: 89 9E A4 00 00 00              - mov [esi+000000A4],ebx
+DeathSkidMarks++.exe.text+8EC46: 89 8E A0 00 00 00              - mov [esi+000000A0],ecx
+// ---------- INJECTING HERE ----------
+DeathSkidMarks++.exe.text+8EC4C: 88 9E 90 00 00 00              - mov [esi+00000090],bl
+// ---------- DONE INJECTING  ----------
+DeathSkidMarks++.exe.text+8EC52: 89 5E 6C                       - mov [esi+6C],ebx
+DeathSkidMarks++.exe.text+8EC55: 89 5E 70                       - mov [esi+70],ebx
+DeathSkidMarks++.exe.text+8EC58: 89 5E 74                       - mov [esi+74],ebx
+DeathSkidMarks++.exe.text+8EC5B: 89 5E 78                       - mov [esi+78],ebx
+DeathSkidMarks++.exe.text+8EC5E: 83 C5 04                       - add ebp,04
+DeathSkidMarks++.exe.text+8EC61: 81 C6 A4 01 00 00              - add esi,000001A4
+DeathSkidMarks++.exe.text+8EC67: 83 F8 04                       - cmp eax,04
+DeathSkidMarks++.exe.text+8EC6A: 89 44 24 10                    - mov [esp+10],eax
+DeathSkidMarks++.exe.text+8EC6E: 0F 8C 6C FF FF FF              - jl DeathSkidMarks++.exe.text+8EBE0
+DeathSkidMarks++.exe.text+8EC74: F3 0F 11 87 14 0E 00 00        - movss [edi+00000E14],xmm0
+}
+</AssemblerScript>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>142</ID>
+              <Description>"Get selected Task on Start"</Description>
+              <Options moHideChildren="1" moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1"/>
+              <LastState Activated="1"/>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{ Game   : Death Skid Marks
+  Date   : 2026-04-11
+  Author : Max Chen (Trần Thắng Minh) - Contact me:
+    🌐Facebook  : https://www.facebook.com/maxiechen
+    🌐Reddit    : https://www.reddit.com/user/maxiechen96
+    🌐Discord   : https://discord.com/users/@maxiechen
+
+  Update Here
+    ☁️GoogleDrive: https://drive.google.com/drive/folders/1psd4TzcmHOUAO7NIBKI0lf47hKGp-qkK?usp=drive_link
+    ☁️Github     : https://github.com/tranthangminh/Cheat-Engine-Tables-for-Games
+}
+
+
+
+
+
+[ENABLE]
+alloc(Task,8)
+registersymbol(Task)
+Task:
+ dd (int)44
+
+
+
+
+
+
+
+[DISABLE]
+dealloc(Task,8)
+unregistersymbol(Task)
+</AssemblerScript>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>143</ID>
+                  <Description>"☰ Task"</Description>
+                  <Options moManualExpandCollapse="1" moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1" moAllowManualCollapseAndExpand="1"/>
+                  <DropDownListLink>☰ Task (value 1-44)</DropDownListLink>
+                  <LastState Value="44" Activated="1" RealAddress="56E30000"/>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>40BFBF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>Task</Address>
+                  <CheatEntries>
+                    <CheatEntry>
+                      <ID>164</ID>
+                      <Description>"Task 2"</Description>
+                      <LastState Activated="1"/>
+                      <Color>40BF40</Color>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>{ Game   : Death Skid Marks
+  Version: 
+  Date   : 2026-04-12
+  Author : Max
+
+  This script does blah blah blah
+}
+
+define(address,"DeathSkidMarks++.exe"+91258)
+define(bytes,89 96 B0 0B 00 00)
+
+[ENABLE]
+
+assert(address,bytes)
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov edx,[Task]
+  mov [esi+00000BB0],edx
+  jmp return
+
+address:
+  jmp newmem
+  nop
+return:
+
+[DISABLE]
+
+address:
+  db bytes
+  // mov [esi+00000BB0],edx
+
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: DeathSkidMarks++.exe.text+90258
+
+DeathSkidMarks++.exe.text+90232: 89 50 74           - mov [eax+74],edx
+DeathSkidMarks++.exe.text+90235: 89 50 78           - mov [eax+78],edx
+DeathSkidMarks++.exe.text+90238: 89 A8 88 00 00 00  - mov [eax+00000088],ebp
+DeathSkidMarks++.exe.text+9023E: 8B 86 98 08 00 00  - mov eax,[esi+00000898]
+DeathSkidMarks++.exe.text+90244: 89 98 8C 00 00 00  - mov [eax+0000008C],ebx
+DeathSkidMarks++.exe.text+9024A: 0F 2F 40 7C        - comiss xmm0,[eax+7C]
+DeathSkidMarks++.exe.text+9024E: 72 03              - jb DeathSkidMarks++.exe.text+90253
+DeathSkidMarks++.exe.text+90250: 88 58 0F           - mov [eax+0F],bl
+DeathSkidMarks++.exe.text+90253: 38 50 0F           - cmp [eax+0F],dl
+DeathSkidMarks++.exe.text+90256: 74 3A              - je DeathSkidMarks++.exe.text+90292
+// ---------- INJECTING HERE ----------
+DeathSkidMarks++.exe.text+90258: 89 96 B0 0B 00 00  - mov [esi+00000BB0],edx
+// ---------- DONE INJECTING  ----------
+DeathSkidMarks++.exe.text+9025E: 89 96 04 0E 00 00  - mov [esi+00000E04],edx
+DeathSkidMarks++.exe.text+90264: 3A CA              - cmp cl,dl
+DeathSkidMarks++.exe.text+90266: 74 0C              - je DeathSkidMarks++.exe.text+90274
+DeathSkidMarks++.exe.text+90268: 89 B8 9C 00 00 00  - mov [eax+0000009C],edi
+DeathSkidMarks++.exe.text+9026E: 89 B8 A0 00 00 00  - mov [eax+000000A0],edi
+DeathSkidMarks++.exe.text+90274: 88 90 91 00 00 00  - mov [eax+00000091],dl
+DeathSkidMarks++.exe.text+9027A: E9 81 ED 82 02     - jmp 031E0000
+DeathSkidMarks++.exe.text+9027F: 90                 - nop 
+DeathSkidMarks++.exe.text+90280: 89 50 6C           - mov [eax+6C],edx
+DeathSkidMarks++.exe.text+90283: 89 50 70           - mov [eax+70],edx
+}
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>165</ID>
+                      <Description>"Task 3"</Description>
+                      <LastState Activated="1"/>
+                      <Color>40BF40</Color>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>{ Game   : Death Skid Marks
+  Version: 
+  Date   : 2026-04-12
+  Author : Max
+
+  This script does blah blah blah
+}
+
+define(address,"DeathSkidMarks++.exe"+912B0)
+define(bytes,89 96 B4 0B 00 00)
+
+[ENABLE]
+
+assert(address,bytes)
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov edx,[Task]
+  mov [esi+00000BB4],edx
+  jmp return
+
+address:
+  jmp newmem
+  nop
+return:
+
+[DISABLE]
+
+address:
+  db bytes
+  // mov [esi+00000BB4],edx
+
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: DeathSkidMarks++.exe.text+902B0
+
+DeathSkidMarks++.exe.text+90286: 89 50 74                       - mov [eax+74],edx
+DeathSkidMarks++.exe.text+90289: 89 50 78                       - mov [eax+78],edx
+DeathSkidMarks++.exe.text+9028C: 89 A8 88 00 00 00              - mov [eax+00000088],ebp
+DeathSkidMarks++.exe.text+90292: 8B 86 9C 08 00 00              - mov eax,[esi+0000089C]
+DeathSkidMarks++.exe.text+90298: C7 80 8C 00 00 00 02 00 00 00  - mov [eax+0000008C],00000002
+DeathSkidMarks++.exe.text+902A2: 0F 2F 40 7C                    - comiss xmm0,[eax+7C]
+DeathSkidMarks++.exe.text+902A6: 72 03                          - jb DeathSkidMarks++.exe.text+902AB
+DeathSkidMarks++.exe.text+902A8: 88 58 0F                       - mov [eax+0F],bl
+DeathSkidMarks++.exe.text+902AB: 38 50 0F                       - cmp [eax+0F],dl
+DeathSkidMarks++.exe.text+902AE: 74 3A                          - je DeathSkidMarks++.exe.text+902EA
+// ---------- INJECTING HERE ----------
+DeathSkidMarks++.exe.text+902B0: 89 96 B4 0B 00 00              - mov [esi+00000BB4],edx
+// ---------- DONE INJECTING  ----------
+DeathSkidMarks++.exe.text+902B6: 89 96 08 0E 00 00              - mov [esi+00000E08],edx
+DeathSkidMarks++.exe.text+902BC: 3A CA                          - cmp cl,dl
+DeathSkidMarks++.exe.text+902BE: 74 0C                          - je DeathSkidMarks++.exe.text+902CC
+DeathSkidMarks++.exe.text+902C0: 89 B8 9C 00 00 00              - mov [eax+0000009C],edi
+DeathSkidMarks++.exe.text+902C6: 89 B8 A0 00 00 00              - mov [eax+000000A0],edi
+DeathSkidMarks++.exe.text+902CC: 88 90 91 00 00 00              - mov [eax+00000091],dl
+DeathSkidMarks++.exe.text+902D2: 88 90 90 00 00 00              - mov [eax+00000090],dl
+DeathSkidMarks++.exe.text+902D8: 89 50 6C                       - mov [eax+6C],edx
+DeathSkidMarks++.exe.text+902DB: 89 50 70                       - mov [eax+70],edx
+DeathSkidMarks++.exe.text+902DE: 89 50 74                       - mov [eax+74],edx
+}
+</AssemblerScript>
+                    </CheatEntry>
+                    <CheatEntry>
+                      <ID>166</ID>
+                      <Description>"Task 4"</Description>
+                      <LastState Activated="1"/>
+                      <Color>40BF40</Color>
+                      <VariableType>Auto Assembler Script</VariableType>
+                      <AssemblerScript>{ Game   : Death Skid Marks
+  Version: 
+  Date   : 2026-04-12
+  Author : Max
+
+  This script does blah blah blah
+}
+
+define(address,"DeathSkidMarks++.exe"+91308)
+define(bytes,89 96 B8 0B 00 00)
+
+[ENABLE]
+
+assert(address,bytes)
+alloc(newmem,$1000)
+
+label(code)
+label(return)
+
+newmem:
+
+code:
+  mov edx,[Task]
+  mov [esi+00000BB8],edx
+  jmp return
+
+address:
+  jmp newmem
+  nop
+return:
+
+[DISABLE]
+
+address:
+  db bytes
+  // mov [esi+00000BB8],edx
+
+dealloc(newmem)
+
+{
+// ORIGINAL CODE - INJECTION POINT: DeathSkidMarks++.exe.text+90308
+
+DeathSkidMarks++.exe.text+902DE: 89 50 74                       - mov [eax+74],edx
+DeathSkidMarks++.exe.text+902E1: 89 50 78                       - mov [eax+78],edx
+DeathSkidMarks++.exe.text+902E4: 89 A8 88 00 00 00              - mov [eax+00000088],ebp
+DeathSkidMarks++.exe.text+902EA: 8B 86 A0 08 00 00              - mov eax,[esi+000008A0]
+DeathSkidMarks++.exe.text+902F0: C7 80 8C 00 00 00 03 00 00 00  - mov [eax+0000008C],00000003
+DeathSkidMarks++.exe.text+902FA: 0F 2F 40 7C                    - comiss xmm0,[eax+7C]
+DeathSkidMarks++.exe.text+902FE: 72 03                          - jb DeathSkidMarks++.exe.text+90303
+DeathSkidMarks++.exe.text+90300: 88 58 0F                       - mov [eax+0F],bl
+DeathSkidMarks++.exe.text+90303: 38 50 0F                       - cmp [eax+0F],dl
+DeathSkidMarks++.exe.text+90306: 74 3A                          - je DeathSkidMarks++.exe.text+90342
+// ---------- INJECTING HERE ----------
+DeathSkidMarks++.exe.text+90308: 89 96 B8 0B 00 00              - mov [esi+00000BB8],edx
+// ---------- DONE INJECTING  ----------
+DeathSkidMarks++.exe.text+9030E: 89 96 0C 0E 00 00              - mov [esi+00000E0C],edx
+DeathSkidMarks++.exe.text+90314: 3A CA                          - cmp cl,dl
+DeathSkidMarks++.exe.text+90316: 74 0C                          - je DeathSkidMarks++.exe.text+90324
+DeathSkidMarks++.exe.text+90318: 89 B8 9C 00 00 00              - mov [eax+0000009C],edi
+DeathSkidMarks++.exe.text+9031E: 89 B8 A0 00 00 00              - mov [eax+000000A0],edi
+DeathSkidMarks++.exe.text+90324: 88 90 91 00 00 00              - mov [eax+00000091],dl
+DeathSkidMarks++.exe.text+9032A: 88 90 90 00 00 00              - mov [eax+00000090],dl
+DeathSkidMarks++.exe.text+90330: 89 50 6C                       - mov [eax+6C],edx
+DeathSkidMarks++.exe.text+90333: 89 50 70                       - mov [eax+70],edx
+DeathSkidMarks++.exe.text+90336: 89 50 74                       - mov [eax+74],edx
+}
+</AssemblerScript>
+                    </CheatEntry>
+                  </CheatEntries>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>125</ID>
+          <Description>"CAR"</Description>
+          <Options moHideChildren="1" moManualExpandCollapse="1" moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1" moAllowManualCollapseAndExpand="1"/>
+          <LastState Value="" Activated="1" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>103</ID>
+              <Description>"Set Car HP on start"</Description>
+              <Options moHideChildren="1"/>
+              <LastState Activated="1"/>
+              <Color>40BF40</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{ Game   : Death Skid Marks
+  Date   : 2026-04-12
+  Author : Max Chen (Trần Thắng Minh) - Contact me:
+    🌐Facebook  : https://www.facebook.com/maxiechen
+    🌐Reddit    : https://www.reddit.com/user/maxiechen96
+    🌐Discord   : https://discord.com/users/@maxiechen
+
+  Update Here
+    ☁️GoogleDrive: https://drive.google.com/drive/folders/1psd4TzcmHOUAO7NIBKI0lf47hKGp-qkK?usp=drive_link
+    ☁️Github     : https://github.com/tranthangminh/Cheat-Engine-Tables-for-Games
+}
+
+
+
+//CarHP1:   DeathSkidMarks++.exe.text+8FC4D: F3 0F 11 8E E0 00 00 00 - movss [esi+000000E0],xmm1
+define(addressCarHP1,DeathSkidMarks++.exe.text+8FC4D)
+//define(bytesCarHP1,F3 0F 11 8E E0 00 00 00)
+
+//CarHP2:   DeathSkidMarks++.exe.text+8FC61: F3 0F 11 8E E4 00 00 00 - movss [esi+000000E4],xmm1
+define(addressCarHP2,DeathSkidMarks++.exe.text+8FC61)
+//define(bytesCarHP2,F3 0F 11 8E E4 00 00 00)
+
+//CarHP3:   DeathSkidMarks++.exe.text+8FC75: F3 0F 11 8E E8 00 00 00 - movss [esi+000000E8],xmm1
+define(addressCarHP3,DeathSkidMarks++.exe.text+8FC75)
+//define(bytesCarHP3,F3 0F 11 8E E8 00 00 00)
+
+//CarHP4:   DeathSkidMarks++.exe.text+8FC89: F3 0F 11 8E EC 00 00 00 - movss [esi+000000EC],xmm1
+define(addressCarHP4,DeathSkidMarks++.exe.text+8FC89)
+//define(bytesCarHP4,F3 0F 11 8E EC 00 00 00)
+
+
+
+
+
+
+[ENABLE]
+alloc(CarHP,8)
+registersymbol(CarHP)
+CarHP:
+ dd (float)10000
+
+
+
+
+//──────────────────────────────────────── CarHP1:   DeathSkidMarks++.exe.text+8FC4D: F3 0F 11 8E E0 00 00 00 - movss [esi+000000E0],xmm1
+
+//assert(addressCarHP1,bytesCarHP1)
+alloc(newmemCarHP1,$1000)
+
+label(codeCarHP1)
+label(returnCarHP1)
+
+newmemCarHP1:
+
+codeCarHP1:
+  mov eax, [CarHP]
+  mov [esi+000000E0],eax
+  //movss [esi+000000E0],xmm1
+  jmp returnCarHP1
+
+addressCarHP1:
+  jmp newmemCarHP1
+  nop 3
+returnCarHP1:
+
+//──────────────────────────────────────── CarHP2:   DeathSkidMarks++.exe.text+8FC61: F3 0F 11 8E E4 00 00 00 - movss [esi+000000E4],xmm1
+
+//assert(addressCarHP2,bytesCarHP2)
+alloc(newmemCarHP2,$1000)
+
+label(codeCarHP2)
+label(returnCarHP2)
+
+newmemCarHP2:
+
+codeCarHP2:
+  mov eax, [CarHP]
+  mov [esi+000000E4],eax
+  //movss [esi+000000E4],xmm1
+  jmp returnCarHP2
+
+addressCarHP2:
+  jmp newmemCarHP2
+  nop 3
+returnCarHP2:
+
+//──────────────────────────────────────── CarHP3:   DeathSkidMarks++.exe.text+8FC75: F3 0F 11 8E E8 00 00 00 - movss [esi+000000E8],xmm1
+
+//assert(addressCarHP3,bytesCarHP3)
+alloc(newmemCarHP3,$1000)
+
+label(codeCarHP3)
+label(returnCarHP3)
+
+newmemCarHP3:
+
+codeCarHP3:
+  mov eax, [CarHP]
+  mov [esi+000000E8],eax
+  //movss [esi+000000E8],xmm1
+  jmp returnCarHP3
+
+addressCarHP3:
+  jmp newmemCarHP3
+  nop 3
+returnCarHP3:
+
+//──────────────────────────────────────── CarHP4:   DeathSkidMarks++.exe.text+8FC89: F3 0F 11 8E EC 00 00 00 - movss [esi+000000EC],xmm1
+
+//assert(addressCarHP4,bytesCarHP4)
+alloc(newmemCarHP4,$1000)
+
+label(codeCarHP4)
+label(returnCarHP4)
+
+newmemCarHP4:
+
+codeCarHP4:
+  mov eax, [CarHP]
+  mov [esi+000000EC],eax
+  //movss [esi+000000EC],xmm1
+  jmp returnCarHP4
+
+addressCarHP4:
+  jmp newmemCarHP4
+  nop 3
+returnCarHP4:
+
+
+
+
+
+
+
+[DISABLE]
+alloc(CarHP,8)
+registersymbol(CarHP)
+
+
+
+//──────────────────── CarHP1:   DeathSkidMarks++.exe.text+8FC4D: F3 0F 11 8E E0 00 00 00 - movss [esi+000000E0],xmm1
+addressCarHP1:
+  //db bytesCarHP1
+  movss [esi+000000E0],xmm1
+
+dealloc(newmemCarHP1)
+
+//──────────────────── CarHP2:   DeathSkidMarks++.exe.text+8FC61: F3 0F 11 8E E4 00 00 00 - movss [esi+000000E4],xmm1
+addressCarHP2:
+  //db bytesCarHP2
+  movss [esi+000000E4],xmm1
+
+dealloc(newmemCarHP2)
+
+//──────────────────── CarHP3:   DeathSkidMarks++.exe.text+8FC75: F3 0F 11 8E E8 00 00 00 - movss [esi+000000E8],xmm1
+addressCarHP3:
+  //db bytesCarHP3
+  movss [esi+000000E8],xmm1
+
+dealloc(newmemCarHP3)
+
+//──────────────────── CarHP4:   DeathSkidMarks++.exe.text+8FC89: F3 0F 11 8E EC 00 00 00 - movss [esi+000000EC],xmm1
+addressCarHP4:
+  //db bytesCarHP4
+  movss [esi+000000EC],xmm1
+
+dealloc(newmemCarHP4)
+</AssemblerScript>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>110</ID>
+                  <Description>"☰ Car HP"</Description>
+                  <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">1000:1000
+2000:2000
+5000:5000
+10000:10000
+20000:20000
+50000:50000
+100000:100000
+</DropDownList>
+                  <LastState Value="10000" RealAddress="56EB0000"/>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>40BFBF</Color>
+                  <VariableType>Float</VariableType>
+                  <Address>CarHP</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>120</ID>
+              <Description>"Set Car Stats on start"</Description>
+              <LastState Activated="1"/>
+              <Color>40BF40</Color>
+              <VariableType>Auto Assembler Script</VariableType>
+              <AssemblerScript>{ Game   : Death Skid Marks
+  Date   : 2026-04-12
+  Author : Max Chen (Trần Thắng Minh) - Contact me:
+    🌐Facebook  : https://www.facebook.com/maxiechen
+    🌐Reddit    : https://www.reddit.com/user/maxiechen96
+    🌐Discord   : https://discord.com/users/@maxiechen
+
+  Update Here
+    ☁️GoogleDrive: https://drive.google.com/drive/folders/1psd4TzcmHOUAO7NIBKI0lf47hKGp-qkK?usp=drive_link
+    ☁️Github     : https://github.com/tranthangminh/Cheat-Engine-Tables-for-Games
+}
+
+
+
+//CarStats1:   DeathSkidMarks++.exe.text+8ED24: 89 5F 6C - mov [edi+6C],ebx
+define(addressCarStats1,DeathSkidMarks++.exe.text+8ED24)
+//define(bytesCarStats1,89 5F 6C 89 5F 70)
+
+//CarStats2:   DeathSkidMarks++.exe.text+8ED2A: 89 5F 74 - mov [edi+74],ebx
+define(addressCarStats2,DeathSkidMarks++.exe.text+8ED2A)
+//define(bytesCarStats2,89 5F 74 89 5F 78)
+
+
+
+
+
+
+[ENABLE]
+alloc(CarStats,8)
+registersymbol(CarStats)
+CarStats:
+ dd 4
+
+
+
+//──────────────────────────────────────── CarStats1:   DeathSkidMarks++.exe.text+8ED24: 89 5F 6C - mov [edi+6C],ebx
+
+//assert(addressCarStats1,bytesCarStats1)
+alloc(newmemCarStats1,$1000)
+
+label(codeCarStats1)
+label(returnCarStats1)
+
+newmemCarStats1:
+
+codeCarStats1:
+  mov ebx, [CarStats] //Load CarStats1 value into ebx
+  mov [edi+6C],ebx
+  mov [edi+70],ebx
+  jmp returnCarStats1
+
+
+
+addressCarStats1:
+  jmp newmemCarStats1
+  nop
+returnCarStats1:
+
+//──────────────────────────────────────── CarStats2:   DeathSkidMarks++.exe.text+8ED2A: 89 5F 74 - mov [edi+74],ebx
+
+//assert(addressCarStats2,bytesCarStats2)
+alloc(newmemCarStats2,$1000)
+
+label(codeCarStats2)
+label(returnCarStats2)
+
+newmemCarStats2:
+
+codeCarStats2:
+  mov ebx, [CarStats] //Load CarStats2 value into ebx
+  mov [edi+74],ebx
+  mov [edi+78],ebx
+  jmp returnCarStats2
+
+addressCarStats2:
+  jmp newmemCarStats2
+  nop
+returnCarStats2:
+
+
+
+
+
+
+
+[DISABLE]
+dealloc(newmemCarStats)
+dealloc(CarStats)
+
+
+//──────────────────── CarStats1:   DeathSkidMarks++.exe.text+8ED24: 89 5F 6C - mov [edi+6C],ebx
+addressCarStats1:
+  //db bytesCarStats1
+  mov [edi+6C],ebx
+  mov [edi+70],ebx
+
+unregistersymbol(CarStats1)
+
+//──────────────────── CarStats2:   DeathSkidMarks++.exe.text+8ED2A: 89 5F 74 - mov [edi+74],ebx
+addressCarStats2:
+  //db bytesCarStats2
+  mov [edi+74],ebx
+  mov [edi+78],ebx
+
+unregistersymbol(CarStats2)
+</AssemblerScript>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>121</ID>
+                  <Description>"☰ Car Stats"</Description>
+                  <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">0:0
+1:1
+2:2
+3:3
+4:4
+</DropDownList>
+                  <LastState Value="4" RealAddress="57060000"/>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>40BFBF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>CarStats</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>83</ID>
+          <Description>"Casino - Slot Machine - control reward"</Description>
+          <Options moHideChildren="1" moManualExpandCollapse="1" moAllowManualCollapseAndExpand="1"/>
+          <LastState Activated="1"/>
+          <Color>40BF40</Color>
+          <VariableType>Auto Assembler Script</VariableType>
+          <AssemblerScript>{ Game   : Death Skid Marks
+  Date   : 2026-04-10
+  Author : Max Chen (Trần Thắng Minh) - Contact me:
+    🌐Facebook  : https://www.facebook.com/maxiechen
+    🌐Reddit    : https://www.reddit.com/user/maxiechen96
+    🌐Discord   : https://discord.com/users/@maxiechen
+
+  Update Here
+    ☁️GoogleDrive: https://drive.google.com/drive/folders/1psd4TzcmHOUAO7NIBKI0lf47hKGp-qkK?usp=drive_link
+    ☁️Github     : https://github.com/tranthangminh/Cheat-Engine-Tables-for-Games
+}
+
+
+
+//SlotMachine1:   DeathSkidMarks++.exe.text+451EB: 89 15 E0 27 70 02 - mov [DeathSkidMarks++.exe+1CB27E0],edx
+define(addressSlotMachine1,DeathSkidMarks++.exe.text+451EB)
+//define(bytesSlotMachine1,89 15 E0 27 70 02)
+
+//SlotMachine2:   DeathSkidMarks++.exe.text+451FB: 89 15 E4 27 70 02 - mov [DeathSkidMarks++.exe+1CB27E4],edx
+define(addressSlotMachine2,DeathSkidMarks++.exe.text+451FB)
+//define(bytesSlotMachine2,89 15 E4 27 70 02)
+
+//SlotMachine3:   DeathSkidMarks++.exe.text+45212: 89 15 E8 27 70 02 - mov [DeathSkidMarks++.exe+1CB27E8],edx
+define(addressSlotMachine3,DeathSkidMarks++.exe.text+45212)
+//define(bytesSlotMachine3,89 15 E8 27 70 02)
+
+
+
+
+
+
+[ENABLE]
+
+alloc(SlotMachine,8)
+registersymbol(SlotMachine)
+
+//──────────────────────────────────────── SlotMachine1:   DeathSkidMarks++.exe.text+451EB: 89 15 E0 27 70 02 - mov [DeathSkidMarks++.exe+1CB27E0],edx
+
+//assert(addressSlotMachine1,bytesSlotMachine1)
+alloc(newmemSlotMachine1,$1000)
+
+
+
+label(codeSlotMachine1)
+label(returnSlotMachine1)
+
+newmemSlotMachine1:
+
+codeSlotMachine1:
+  mov edx, [SlotMachine] //Load SlotMachine1 value into edx
+  mov [DeathSkidMarks++.exe+1CB27E0],edx
+  jmp returnSlotMachine1
+
+SlotMachine:
+ dd 2 //2 in Hex means 2 Decimal
+
+addressSlotMachine1:
+  jmp newmemSlotMachine1
+  nop
+returnSlotMachine1:
+
+//──────────────────────────────────────── SlotMachine2:   DeathSkidMarks++.exe.text+451FB: 89 15 E4 27 70 02 - mov [DeathSkidMarks++.exe+1CB27E4],edx
+
+//assert(addressSlotMachine2,bytesSlotMachine2)
+alloc(newmemSlotMachine2,$1000)
+
+label(codeSlotMachine2)
+label(returnSlotMachine2)
+
+newmemSlotMachine2:
+
+codeSlotMachine2:
+  mov edx, [SlotMachine] //Load SlotMachine2 value into edx
+  mov [DeathSkidMarks++.exe+1CB27E4],edx
+  jmp returnSlotMachine2
+
+addressSlotMachine2:
+  jmp newmemSlotMachine2
+  nop
+returnSlotMachine2:
+
+//──────────────────────────────────────── SlotMachine3:   DeathSkidMarks++.exe.text+45212: 89 15 E8 27 70 02 - mov [DeathSkidMarks++.exe+1CB27E8],edx
+
+//assert(addressSlotMachine3,bytesSlotMachine3)
+alloc(newmemSlotMachine3,$1000)
+
+label(codeSlotMachine3)
+label(returnSlotMachine3)
+
+newmemSlotMachine3:
+
+codeSlotMachine3:
+  mov edx, [SlotMachine] //Load SlotMachine3 value into edx
+  mov [DeathSkidMarks++.exe+1CB27E8],edx
+  jmp returnSlotMachine3
+
+addressSlotMachine3:
+  jmp newmemSlotMachine3
+  nop
+returnSlotMachine3:
+
+
+
+
+
+
+
+[DISABLE]
+
+dealloc(SlotMachine)
+unregistersymbol(SlotMachine)
+
+//──────────────────── SlotMachine1:   DeathSkidMarks++.exe.text+451EB: 89 15 E0 27 70 02 - mov [DeathSkidMarks++.exe+1CB27E0],edx
+addressSlotMachine1:
+  //db bytesSlotMachine1
+  mov [DeathSkidMarks++.exe+1CB27E0],edx
+
+dealloc(newmemSlotMachine1)
+
+//──────────────────── SlotMachine2:   DeathSkidMarks++.exe.text+451FB: 89 15 E4 27 70 02 - mov [DeathSkidMarks++.exe+1CB27E4],edx
+addressSlotMachine2:
+  //db bytesSlotMachine2
+  mov [DeathSkidMarks++.exe+1CB27E4],edx
+
+dealloc(newmemSlotMachine2)
+
+//──────────────────── SlotMachine3:   DeathSkidMarks++.exe.text+45212: 89 15 E8 27 70 02 - mov [DeathSkidMarks++.exe+1CB27E8],edx
+addressSlotMachine3:
+  //db bytesSlotMachine3
+  mov [DeathSkidMarks++.exe+1CB27E8],edx
+
+dealloc(newmemSlotMachine3)
+</AssemblerScript>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>84</ID>
+              <Description>"Gains Type"</Description>
+              <Options moAlwaysHideChildren="1" moManualExpandCollapse="1" moAllowManualCollapseAndExpand="1"/>
+              <DropDownList ReadOnly="1" DescriptionOnly="1" DisplayValueAsItem="1">2: (x10) Number 6
+1: (x5) Gun
+0: (x4) Underwear
+6: (x3) Bat
+5: (x2) Pill
+4: (+x1) Bottle
+3: (Super Prize!) Skull
+</DropDownList>
+              <LastState Value="2" RealAddress="5B8D0000"/>
+              <ShowAsSigned>0</ShowAsSigned>
+              <Color>40BFBF</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>SlotMachine</Address>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>79</ID>
+                  <Description>"Slot 1"</Description>
+                  <DropDownListLink>Gains Type</DropDownListLink>
+                  <LastState Value="0" RealAddress="025D27E0"/>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>"DeathSkidMarks++.exe"+1CB27E0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>80</ID>
+                  <Description>"Slot 2"</Description>
+                  <DropDownListLink>Gains Type</DropDownListLink>
+                  <LastState Value="0" RealAddress="025D27E4"/>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>"DeathSkidMarks++.exe"+1CB27E4</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>81</ID>
+                  <Description>"Slot 3"</Description>
+                  <DropDownListLink>Gains Type</DropDownListLink>
+                  <LastState Value="0" RealAddress="025D27E8"/>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>"DeathSkidMarks++.exe"+1CB27E8</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>11</ID>
+      <Description>"Ingame"</Description>
+      <Options moHideChildren="1" moManualExpandCollapse="1" moAllowManualCollapseAndExpand="1"/>
+      <LastState Value="" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>3</ID>
+          <Description>"Money"</Description>
+          <LastState Value="120" RealAddress="0255BC14"/>
+          <Color>40BFBF</Color>
+          <VariableType>4 Bytes</VariableType>
+          <Address>"DeathSkidMarks++.exe"+1C3BC14</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>92</ID>
+          <Description>"Car"</Description>
+          <DropDownList DisplayValueAsItem="1">0:(4seats) Standardo XL
+17:(2seats - 1Turret) Machine Cannon Turret
+104:(4seats) Bummer
+105:(4seats) Acado GT
+</DropDownList>
+          <LastState Value="0" RealAddress="025663B8"/>
+          <Color>40BFBF</Color>
+          <VariableType>4 Bytes</VariableType>
+          <Address>"DeathSkidMarks++.exe"+1C463B8</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>0</ID>
+          <Description>"Death Counter"</Description>
+          <LastState Value="0" RealAddress="029696B0"/>
+          <Color>40BFBF</Color>
+          <VariableType>4 Bytes</VariableType>
+          <Address>"DeathSkidMarks++.exe"+20496B0</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>85</ID>
+          <Description>"Kilometers Left To Concert"</Description>
+          <LastState Value="666" RealAddress="0252E3A4"/>
+          <Color>40BFBF</Color>
+          <VariableType>4 Bytes</VariableType>
+          <Address>"DeathSkidMarks++.exe"+1C0E3A4</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>91</ID>
+          <Description>"ENEMIES"</Description>
+          <Options moHideChildren="1" moManualExpandCollapse="1" moAllowManualCollapseAndExpand="1"/>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>78</ID>
+              <Description>"Bikes left to Destroy"</Description>
+              <LastState Value="0" RealAddress="0255D35C"/>
+              <Color>40BFBF</Color>
+              <VariableType>4 Bytes</VariableType>
+              <Address>"DeathSkidMarks++.exe"+1C3D35C</Address>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>90</ID>
+              <Description>"Boss HP"</Description>
+              <Options moHideChildren="1" moRecursiveSetValue="1" moManualExpandCollapse="1" moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1" moAllowManualCollapseAndExpand="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>86</ID>
+                  <Description>"Boss HP 1"</Description>
+                  <LastState Value="200" RealAddress="0255BFC8"/>
+                  <Color>40BFBF</Color>
+                  <VariableType>Float</VariableType>
+                  <Address>"DeathSkidMarks++.exe"+1C3BFC8</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>87</ID>
+                  <Description>"Boss HP 2"</Description>
+                  <LastState Value="200" RealAddress="0255BFCC"/>
+                  <Color>40BFBF</Color>
+                  <VariableType>Float</VariableType>
+                  <Address>"DeathSkidMarks++.exe"+1C3BFCC</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>88</ID>
+                  <Description>"Boss HP 3"</Description>
+                  <LastState Value="200" RealAddress="0255BFD0"/>
+                  <Color>40BFBF</Color>
+                  <VariableType>Float</VariableType>
+                  <Address>"DeathSkidMarks++.exe"+1C3BFD0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>89</ID>
+                  <Description>"Boss HP 4"</Description>
+                  <LastState Value="200" RealAddress="0255BFD4"/>
+                  <Color>40BFBF</Color>
+                  <VariableType>Float</VariableType>
+                  <Address>"DeathSkidMarks++.exe"+1C3BFD4</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>14</ID>
+          <Description>"HIKERS"</Description>
+          <Options moHideChildren="1" moManualExpandCollapse="1" moAllowManualCollapseAndExpand="1"/>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>65</ID>
+              <Description>"☰ Hikers"</Description>
+              <Options moHideChildren="1" moRecursiveSetValue="1" moManualExpandCollapse="1" moAllowManualCollapseAndExpand="1"/>
+              <DropDownList ReadOnly="1" DisplayValueAsItem="1">0:(〇 〇 〇 〇) Mark Skid
+1:(➕ 〇 〇 ➖) Black Metal Head
+2:(〇 ➖ ➕ 〇) Masked Wrestler
+3:(〇 〇 ➕ ➖) Punk
+4:(➖ 〇 〇 ➕) Emo Girl
+5:(➕ ➖ ➕ ➖) Goth
+6:(〇 〇 〇 〇) Mr. Horse
+7:(➕ ➖ ➖ ➕) Hipple
+8:(➕ ➕ ➕ ➖) Bear
+9:(➕ ➕ ➖ ➖) Gimp
+10:(➖ ➕ ➖ ➕) SGT PTS
+11:(➖ ➖ ➕ ➕) Hobo
+12:(〇 ➕ ➖ 〇) Road Warrior
+13:(➖ ➖ ➖ ➖) Terminal Patient
+14:(➖ ➕ ➕ ➖) Street Worker
+15:(➕ ➕ ➕ ➕) Alien
+16:(➕ ➖ ➖ ➖) Enraged
+17:(➖ ➖ ➖ ➖) Lernie
+18:(〇 〇 〇 〇) Jobs
+19:(〇 〇 〇 〇) Snackbar
+</DropDownList>
+              <LastState Value="" RealAddress="00000000"/>
+              <Color>40BFBF</Color>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>61</ID>
+                  <Description>"☰ Hikers 1"</Description>
+                  <DropDownListLink>☰ Hikers</DropDownListLink>
+                  <LastState Value="0" RealAddress="02566594"/>
+                  <Color>40BFBF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>"DeathSkidMarks++.exe"+1C46594</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>62</ID>
+                  <Description>"☰ Hikers 2"</Description>
+                  <DropDownListLink>☰ Hikers</DropDownListLink>
+                  <LastState Value="36" RealAddress="02566738"/>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>40BFBF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>"DeathSkidMarks++.exe"+1C46738</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>63</ID>
+                  <Description>"☰ Hikers 3"</Description>
+                  <DropDownListLink>☰ Hikers</DropDownListLink>
+                  <LastState Value="36" RealAddress="025668DC"/>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>40BFBF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>"DeathSkidMarks++.exe"+1C468DC</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>64</ID>
+                  <Description>"☰ Hikers 4"</Description>
+                  <DropDownListLink>☰ Hikers</DropDownListLink>
+                  <LastState Value="36" RealAddress="02566A80"/>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>40BFBF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>"DeathSkidMarks++.exe"+1C46A80</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>53</ID>
+              <Description>"Hikers - HP"</Description>
+              <Options moHideChildren="1" moRecursiveSetValue="1" moManualExpandCollapse="1" moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1" moAllowManualCollapseAndExpand="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>7</ID>
+                  <Description>"HP 1"</Description>
+                  <LastState Value="100" RealAddress="02566588"/>
+                  <Color>40BFBF</Color>
+                  <VariableType>Float</VariableType>
+                  <Address>"DeathSkidMarks++.exe"+1C46588</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>10</ID>
+                  <Description>"HP 2"</Description>
+                  <LastState Value="100" RealAddress="0256672C"/>
+                  <Color>40BFBF</Color>
+                  <VariableType>Float</VariableType>
+                  <Address>"DeathSkidMarks++.exe"+1C4672C</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>8</ID>
+                  <Description>"HP 3"</Description>
+                  <LastState Value="100" RealAddress="025668D0"/>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>40BFBF</Color>
+                  <VariableType>Float</VariableType>
+                  <Address>"DeathSkidMarks++.exe"+1C468D0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>9</ID>
+                  <Description>"HP 4"</Description>
+                  <LastState Value="100" RealAddress="02566A74"/>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>40BFBF</Color>
+                  <VariableType>Float</VariableType>
+                  <Address>"DeathSkidMarks++.exe"+1C46A74</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>35</ID>
+              <Description>"☰ Hikers - Stats (value 0-4)"</Description>
+              <Options moHideChildren="1" moRecursiveSetValue="1" moManualExpandCollapse="1" moAllowManualCollapseAndExpand="1"/>
+              <DropDownList DescriptionOnly="1" DisplayValueAsItem="1">0:0
+1:1
+2:2
+3:3
+4:4
+</DropDownList>
+              <LastState Value="" RealAddress="00000000"/>
+              <Color>40BFBF</Color>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>34</ID>
+                  <Description>"Melee DEF 1"</Description>
+                  <DropDownListLink>☰ Hikers - Stats (value 0-4)</DropDownListLink>
+                  <LastState Value="0" RealAddress="02566578"/>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>40BFBF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>"DeathSkidMarks++.exe"+1C46578</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>37</ID>
+                  <Description>"Range ATK 1"</Description>
+                  <DropDownListLink>☰ Hikers - Stats (value 0-4)</DropDownListLink>
+                  <LastState Value="0" RealAddress="0256657C"/>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>40BFBF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>"DeathSkidMarks++.exe"+1C4657C</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>36</ID>
+                  <Description>"Melee ATK 1"</Description>
+                  <DropDownListLink>☰ Hikers - Stats (value 0-4)</DropDownListLink>
+                  <LastState Value="0" RealAddress="02566580"/>
+                  <Color>40BFBF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>"DeathSkidMarks++.exe"+1C46580</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>30</ID>
+                  <Description>"Range DEF 1"</Description>
+                  <DropDownListLink>☰ Hikers - Stats (value 0-4)</DropDownListLink>
+                  <LastState Value="0" RealAddress="02566584"/>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>40BFBF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>"DeathSkidMarks++.exe"+1C46584</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>31</ID>
+                  <Description>"Melee DEF 2"</Description>
+                  <DropDownListLink>☰ Hikers - Stats (value 0-4)</DropDownListLink>
+                  <LastState Value="0" RealAddress="0256671C"/>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>40BFBF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>"DeathSkidMarks++.exe"+1C4671C</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>40</ID>
+                  <Description>"Range ATK 2"</Description>
+                  <DropDownListLink>☰ Hikers - Stats (value 0-4)</DropDownListLink>
+                  <LastState Value="0" RealAddress="02566720"/>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>40BFBF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>"DeathSkidMarks++.exe"+1C46720</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>39</ID>
+                  <Description>"Melee ATK 2"</Description>
+                  <DropDownListLink>☰ Hikers - Stats (value 0-4)</DropDownListLink>
+                  <LastState Value="0" RealAddress="02566724"/>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>40BFBF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>"DeathSkidMarks++.exe"+1C46724</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>38</ID>
+                  <Description>"Range DEF 2"</Description>
+                  <DropDownListLink>☰ Hikers - Stats (value 0-4)</DropDownListLink>
+                  <LastState Value="0" RealAddress="02566728"/>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>40BFBF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>"DeathSkidMarks++.exe"+1C46728</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>32</ID>
+                  <Description>"Melee DEF 3"</Description>
+                  <DropDownListLink>☰ Hikers - Stats (value 0-4)</DropDownListLink>
+                  <LastState Value="0" RealAddress="025668C0"/>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>40BFBF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>"DeathSkidMarks++.exe"+1C468C0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>43</ID>
+                  <Description>"Range ATK 3"</Description>
+                  <DropDownListLink>☰ Hikers - Stats (value 0-4)</DropDownListLink>
+                  <LastState Value="0" RealAddress="025668C4"/>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>40BFBF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>"DeathSkidMarks++.exe"+1C468C4</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>42</ID>
+                  <Description>"Melee ATK 3"</Description>
+                  <DropDownListLink>☰ Hikers - Stats (value 0-4)</DropDownListLink>
+                  <LastState Value="0" RealAddress="025668C8"/>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>40BFBF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>"DeathSkidMarks++.exe"+1C468C8</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>41</ID>
+                  <Description>"Range DEF 3"</Description>
+                  <DropDownListLink>☰ Hikers - Stats (value 0-4)</DropDownListLink>
+                  <LastState Value="0" RealAddress="025668CC"/>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>40BFBF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>"DeathSkidMarks++.exe"+1C468CC</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>33</ID>
+                  <Description>"Melee DEF 4"</Description>
+                  <DropDownListLink>☰ Hikers - Stats (value 0-4)</DropDownListLink>
+                  <LastState Value="0" RealAddress="02566A64"/>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>40BFBF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>"DeathSkidMarks++.exe"+1C46A64</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>46</ID>
+                  <Description>"Range ATK 4"</Description>
+                  <DropDownListLink>☰ Hikers - Stats (value 0-4)</DropDownListLink>
+                  <LastState Value="0" RealAddress="02566A68"/>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>40BFBF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>"DeathSkidMarks++.exe"+1C46A68</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>45</ID>
+                  <Description>"Melee ATK 4"</Description>
+                  <DropDownListLink>☰ Hikers - Stats (value 0-4)</DropDownListLink>
+                  <LastState Value="0" RealAddress="02566A6C"/>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>40BFBF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>"DeathSkidMarks++.exe"+1C46A6C</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>44</ID>
+                  <Description>"Range DEF 4"</Description>
+                  <DropDownListLink>☰ Hikers - Stats (value 0-4)</DropDownListLink>
+                  <LastState Value="0" RealAddress="02566A70"/>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>40BFBF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>"DeathSkidMarks++.exe"+1C46A70</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>54</ID>
+              <Description>"☰ Task (value 1-44)"</Description>
+              <Options moHideChildren="1" moRecursiveSetValue="1" moManualExpandCollapse="1" moAllowManualCollapseAndExpand="1"/>
+              <DropDownList ReadOnly="1" DisplayValueAsItem="1">1:Ramming 1
+2:Ramming 2
+3:Ramming 3
+4:Ramming 4
+5:Car Destruction 1
+6:Car Destruction 2
+7:Car Destruction 3
+8:Car Destruction 4
+9:Melee 1
+10:Melee 2
+11:Melee 3
+12:Melee 4
+13:Ranged 1
+14:Ranged 2
+15:Ranged 3
+16:Ranged 4
+17:Dismember 1
+18:Dismember 2
+19:Dismember 3
+20:Dismember 4
+21:Robot Hunting 1
+22:Robot Hunting 2
+23:Robot Hunting 3
+24:Robot Hunting 4
+25:Crew Decimation 1
+26:Crew Decimation 2
+27:Crew Decimation 3
+28:Crew Decimation 4
+29:Melee Crew Decimation 1
+30:Melee Crew Decimation 2
+31:Melee Crew Decimation 3
+32:Melee Crew Decimation 4
+33:Ranged Crew Decimation 1
+34:Ranged Crew Decimation 2
+35:Ranged Crew Decimation 3
+36:Ranged Crew Decimation 4
+37:Reaper 1
+38:Reaper 2
+39:Reaper 3
+40:Reaper 4
+41:Victory 1
+42:Victory 2
+43:Victory 3
+44:Victory 4
+45:(Guide) Car Stats
+46:(Guide) The Car
+47:(Guide) Dudes' Stats
+48:(Weapon) Show Ticket
+49:(Weapon) Pistol
+50:(Weapon) Assault Rifle
+51:(Weapon) Shotgun
+52:(Weapon) Revolver .44
+53:(Weapon) Flamethrower
+54:(Weapon) Machine Cannon
+55:(Weapon) Rifle
+56:(Weapon) Sub Machine Gun
+57:(Weapon) Baseball Bat
+58:(Weapon) Chainsaw
+59:(Weapon) Crowbar
+60:(Weapon) Sledgehammer
+</DropDownList>
+              <LastState Value="" RealAddress="00000000"/>
+              <Color>40BFBF</Color>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>55</ID>
+                  <Description>"☰ Task 1"</Description>
+                  <DropDownListLink>☰ Task (value 1-44)</DropDownListLink>
+                  <LastState Value="0" RealAddress="02566EB4"/>
+                  <Color>40BFBF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>"DeathSkidMarks++.exe"+1C46EB4</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>56</ID>
+                  <Description>"☰ Task 2"</Description>
+                  <DropDownListLink>☰ Task (value 1-44)</DropDownListLink>
+                  <LastState Value="0" RealAddress="02566EB8"/>
+                  <Color>40BFBF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>"DeathSkidMarks++.exe"+1C46EB8</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>57</ID>
+                  <Description>"☰ Task 3"</Description>
+                  <DropDownListLink>☰ Task (value 1-44)</DropDownListLink>
+                  <LastState Value="0" RealAddress="02566EBC"/>
+                  <Color>40BFBF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>"DeathSkidMarks++.exe"+1C46EBC</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>58</ID>
+                  <Description>"☰ Task 4"</Description>
+                  <DropDownListLink>☰ Task (value 1-44)</DropDownListLink>
+                  <LastState Value="0" RealAddress="02566EC0"/>
+                  <Color>40BFBF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>"DeathSkidMarks++.exe"+1C46EC0</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>70</ID>
+              <Description>"☰ Show Ticket (value 0 &amp; 256)"</Description>
+              <Options moHideChildren="1" moRecursiveSetValue="1" moManualExpandCollapse="1" moAllowManualCollapseAndExpand="1"/>
+              <DropDownList ReadOnly="1" DisplayValueAsItem="1">0:
+256: Show Ticket
+</DropDownList>
+              <LastState Value="" RealAddress="00000000"/>
+              <Color>40BFBF</Color>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>66</ID>
+                  <Description>"☰ Show Ticket 1"</Description>
+                  <DropDownListLink>Show Ticket (value 0 &amp; 256)</DropDownListLink>
+                  <LastState Value="0" RealAddress="0256659C"/>
+                  <Color>40BFBF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>"DeathSkidMarks++.exe"+1C4659C</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>67</ID>
+                  <Description>"☰ Show Ticket 2"</Description>
+                  <DropDownListLink>Show Ticket (value 0 &amp; 256)</DropDownListLink>
+                  <LastState Value="0" RealAddress="02566740"/>
+                  <Color>40BFBF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>"DeathSkidMarks++.exe"+1C46740</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>69</ID>
+                  <Description>"☰ Show Ticket 3"</Description>
+                  <DropDownListLink>Show Ticket (value 0 &amp; 256)</DropDownListLink>
+                  <LastState Value="0" RealAddress="025668E4"/>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>40BFBF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>"DeathSkidMarks++.exe"+1C468E4</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>68</ID>
+                  <Description>"☰ Show Ticket 4"</Description>
+                  <DropDownListLink>Show Ticket (value 0 &amp; 256)</DropDownListLink>
+                  <LastState Value="0" RealAddress="02566A88"/>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>40BFBF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>"DeathSkidMarks++.exe"+1C46A88</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>74</ID>
+              <Description>"☰ Weapon Upgrade (value 0 - 65535)"</Description>
+              <Options moHideChildren="1" moRecursiveSetValue="1" moManualExpandCollapse="1" moAllowManualCollapseAndExpand="1"/>
+              <DropDownList DisplayValueAsItem="1">0:Damage +0%, Speed +0%
+771:Damage +15%, Speed +15%
+1542:Damage +30%, Speed +30%
+2313:Damage +45%, Speed +45%
+3084:Damage +60%, Speed +60%
+3855:Damage +75%, Speed +75%
+4626:Damage +90%, Speed +90%
+5397:Damage +105%, Speed +105%
+6168:Damage +120%, Speed +120%
+6939:Damage +135%, Speed +135%
+7710:Damage +150%, Speed +150%
+8481:Damage +165%, Speed +165%
+9252:Damage +180%, Speed +180%
+10023:Damage +195%, Speed +195%
+10794:Damage +210%, Speed +210%
+11565:Damage +225%, Speed +225%
+12336:Damage +240%, Speed +240%
+13107:Damage +255%, Speed +255%
+13878:Damage +270%, Speed +270%
+14649:Damage +285%, Speed +285%
+15420:Damage +300%, Speed +300%
+16191:Damage +315%, Speed +315%
+16962:Damage +330%, Speed +330%
+17733:Damage +345%, Speed +345%
+18504:Damage +360%, Speed +360%
+19275:Damage +375%, Speed +375%
+20046:Damage +390%, Speed +390%
+20817:Damage +405%, Speed +405%
+21588:Damage +420%, Speed +420%
+22359:Damage +435%, Speed +435%
+23130:Damage +450%, Speed +450%
+23901:Damage +465%, Speed +465%
+24672:Damage +480%, Speed +480%
+25443:Damage +495%, Speed +495%
+26214:Damage +510%, Speed +510%
+26985:Damage +525%, Speed +525%
+27756:Damage +540%, Speed +540%
+28527:Damage +555%, Speed +555%
+29298:Damage +570%, Speed +570%
+30069:Damage +585%, Speed +585%
+30840:Damage +600%, Speed +600%
+31611:Damage +615%, Speed +615%
+32382:Damage +630%, Speed +630%
+33153:Damage +645%, Speed +645%
+33924:Damage +660%, Speed +660%
+34695:Damage +675%, Speed +675%
+35466:Damage +690%, Speed +690%
+36237:Damage +705%, Speed +705%
+37008:Damage +720%, Speed +720%
+37779:Damage +735%, Speed +735%
+38550:Damage +750%, Speed +750%
+39321:Damage +765%, Speed +765%
+40092:Damage +780%, Speed +780%
+40863:Damage +795%, Speed +795%
+41634:Damage +810%, Speed +810%
+42405:Damage +825%, Speed +825%
+43176:Damage +840%, Speed +840%
+43947:Damage +855%, Speed +855%
+44718:Damage +870%, Speed +870%
+45489:Damage +885%, Speed +885%
+46260:Damage +900%, Speed +900%
+47031:Damage +915%, Speed +915%
+47802:Damage +930%, Speed +930%
+48573:Damage +945%, Speed +945%
+49344:Damage +960%, Speed +960%
+50115:Damage +975%, Speed +975%
+50886:Damage +990%, Speed +990%
+51657:Damage +1005%, Speed +1005%
+52428:Damage +1020%, Speed +1020%
+53199:Damage +1035%, Speed +1035%
+53970:Damage +1050%, Speed +1050%
+54741:Damage +1065%, Speed +1065%
+55512:Damage +1080%, Speed +1080%
+56283:Damage +1095%, Speed +1095%
+57054:Damage +1110%, Speed +1110%
+57825:Damage +1125%, Speed +1125%
+58596:Damage +1140%, Speed +1140%
+59367:Damage +1155%, Speed +1155%
+60138:Damage +1170%, Speed +1170%
+60909:Damage +1185%, Speed +1185%
+61680:Damage +1200%, Speed +1200%
+62451:Damage +1215%, Speed +1215%
+63222:Damage +1230%, Speed +1230%
+63993:Damage +1245%, Speed +1245%
+64764:Damage +1260%, Speed +1260%
+65535:Damage +1275%, Speed +1275%
+</DropDownList>
+              <LastState Value="" RealAddress="00000000"/>
+              <Color>40BFBF</Color>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>111</ID>
+                  <Description>"Damage = (Value mod 256) * 5%"</Description>
+                  <DropDownListLink>☰ Weapon Upgrade (value 0 - 65535)</DropDownListLink>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <GroupHeader>1</GroupHeader>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>112</ID>
+                  <Description>"Speed = floor(Value / 256) * 5%"</Description>
+                  <DropDownListLink>☰ Weapon Upgrade (value 0 - 65535)</DropDownListLink>
+                  <LastState Value="" RealAddress="00000000"/>
+                  <GroupHeader>1</GroupHeader>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>75</ID>
+                  <Description>"☰ Weapon Upgrade 1"</Description>
+                  <DropDownListLink>☰ Weapon Upgrade (value 0 - 65535)</DropDownListLink>
+                  <LastState Value="0" RealAddress="025665AF"/>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>40BFBF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>"DeathSkidMarks++.exe"+1C465AF</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>73</ID>
+                  <Description>"☰ Weapon Upgrade 2"</Description>
+                  <DropDownListLink>☰ Weapon Upgrade (value 0 - 65535)</DropDownListLink>
+                  <LastState Value="0" RealAddress="02566754"/>
+                  <Color>40BFBF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>"DeathSkidMarks++.exe"+1C46754</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>77</ID>
+                  <Description>"☰ Weapon Upgrade 3"</Description>
+                  <DropDownListLink>☰ Weapon Upgrade (value 0 - 65535)</DropDownListLink>
+                  <LastState Value="0" RealAddress="025668F8"/>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>40BFBF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>"DeathSkidMarks++.exe"+1C468F8</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>76</ID>
+                  <Description>"☰ Weapon Upgrade 4"</Description>
+                  <DropDownListLink>☰ Weapon Upgrade (value 0 - 65535)</DropDownListLink>
+                  <LastState Value="0" RealAddress="02566A9C"/>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>40BFBF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>"DeathSkidMarks++.exe"+1C46A9C</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>47</ID>
+              <Description>"☰ Weapons (value 0-31)"</Description>
+              <Options moHideChildren="1" moRecursiveSetValue="1" moManualExpandCollapse="1" moAllowManualCollapseAndExpand="1"/>
+              <DropDownList ReadOnly="1" DisplayValueAsItem="1">0:(Ranged 1) Pistol
+1:(Ranged 4) Assault Rifle
+2:(Ranged 3) Shotgun
+3:(Ranged 2) Revolver .44
+4:(Ranged 4) Flamethrower
+5:(Ranged 6) Machine Cannon
+6:(Ranged 5) Rifle
+7:(Ranged 3) Sub Machine Gun
+8:(Melee 2) Baseball Bat
+9:(Melee 5) Chainsaw
+10:(Melee 3) Crowbar
+11:(Melee 4) Sledgehammer
+12:(Melee 1) Hammer
+13:(Melee 6) Jackhammer
+14:(Melee 3) Welding Torch
+15:(Melee 4) Hedge Trimmer
+16:(Prem.Ranged 1) Pistol
+17:(Prem.Ranged 4) Assault Rifle
+18:(Prem.Ranged 3) Shotgun
+19:(Prem.Ranged 2) Revolver .44
+20:(Prem.Ranged 4) Flamethrower
+21:(Prem.Ranged 6) Machine Cannon
+22:(Prem.Ranged 5) Rifle
+23:(Prem.Ranged 3) Sub Machine Gun
+24:(Prem.Melee 2) Baseball Bat
+25:(Prem.Melee 5) Chainsaw
+26:(Prem.Melee 3) Crowbar
+27:(Prem.Melee 4) Sledgehammer
+28:(Prem.Melee 1) Hammer
+29:(Prem.Melee 6) Jackhammer
+30:(Prem.Melee 3) Welding Torch
+31:(Prem.Melee 4) Hedge Trimmer
+53:(Ranged Super) Doom Saw
+54:(Ranged Super) Bone Bricker
+55:(Ranged Super) Face Melter
+56:(Ranged Super) Gut Bubbler
+57:(Melee Super) Death Casque
+58:(Melee Super) Mega Fist
+59:(Melee Super) Pelvis Splitter
+60:(Melee Super) Ball Of Pain
+</DropDownList>
+              <LastState Value="" RealAddress="00000000"/>
+              <Color>40BFBF</Color>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>18</ID>
+                  <Description>"☰ Weapon 1"</Description>
+                  <DropDownListLink>☰ Weapons (value 0-31)</DropDownListLink>
+                  <LastState Value="0" RealAddress="025665A8"/>
+                  <Color>40BFBF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>"DeathSkidMarks++.exe"+1C465A8</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>19</ID>
+                  <Description>"☰ Weapon 2"</Description>
+                  <DropDownListLink>☰ Weapons (value 0-31)</DropDownListLink>
+                  <LastState Value="68" RealAddress="0256674C"/>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>40BFBF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>"DeathSkidMarks++.exe"+1C4674C</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>20</ID>
+                  <Description>"☰ Weapon 3"</Description>
+                  <DropDownListLink>☰ Weapons (value 0-31)</DropDownListLink>
+                  <LastState Value="68" RealAddress="025668F0"/>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>40BFBF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>"DeathSkidMarks++.exe"+1C468F0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>21</ID>
+                  <Description>"☰ Weapon 4"</Description>
+                  <DropDownListLink>☰ Weapons (value 0-31)</DropDownListLink>
+                  <LastState Value="68" RealAddress="02566A94"/>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>40BFBF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>"DeathSkidMarks++.exe"+1C46A94</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>52</ID>
+              <Description>"☰ Special Item (value 32-52)"</Description>
+              <Options moHideChildren="1" moRecursiveSetValue="1" moManualExpandCollapse="1" moAllowManualCollapseAndExpand="1"/>
+              <DropDownList ReadOnly="1" DisplayValueAsItem="1">32:(Single Use) Grenade
+33:(Single Use) Gas Grenade
+34:(Toggle FX) Wrench
+35:(Toggle FX) Medkit
+36:(Single Shot) Rocket Propelled Grenade
+37:(Single Use) Brick
+38:(Single Use) Nitro Boost
+39:(Single Use) Mine
+40:(Single Use) Cyclosarin Gas Grenade
+41:(Ticket) Show Ticket
+42:(Constant FX) Kevlar Jacket
+43:(Constant FX) Hockey Pads
+44:(Constant FX) Scope
+45:(Single Use) Duct Tape
+46:(Single Use) Insulation Foam Can
+47:(Single Use) Epipen
+48:(Constant FX) Steel Knuckles
+49:(Passive) Towing Voucher
+50:(Passive) Towing Voucher
+51:(Passive) Towing Voucher
+52:(Passive) Towing Voucher
+</DropDownList>
+              <LastState Value="" RealAddress="00000000"/>
+              <Color>40BFBF</Color>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>22</ID>
+                  <Description>"☰ Special Item 1"</Description>
+                  <DropDownListLink>☰ Special Item (value 32-52)</DropDownListLink>
+                  <LastState Value="68" RealAddress="025665AC"/>
+                  <Color>40BFBF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>"DeathSkidMarks++.exe"+1C465AC</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>23</ID>
+                  <Description>"☰ Special Item 2"</Description>
+                  <DropDownListLink>☰ Special Item (value 32-52)</DropDownListLink>
+                  <LastState Value="68" RealAddress="02566750"/>
+                  <Color>40BFBF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>"DeathSkidMarks++.exe"+1C46750</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>24</ID>
+                  <Description>"☰ Special Item 3"</Description>
+                  <DropDownListLink>☰ Special Item (value 32-52)</DropDownListLink>
+                  <LastState Value="68" RealAddress="025668F4"/>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>40BFBF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>"DeathSkidMarks++.exe"+1C468F4</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>25</ID>
+                  <Description>"☰ Special Item 4"</Description>
+                  <DropDownListLink>☰ Special Item (value 32-52)</DropDownListLink>
+                  <LastState Value="68" RealAddress="02566A98"/>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>40BFBF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>"DeathSkidMarks++.exe"+1C46A98</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>13</ID>
+          <Description>"CAR"</Description>
+          <Options moHideChildren="1" moManualExpandCollapse="1" moAllowManualCollapseAndExpand="1"/>
+          <LastState Value="" RealAddress="00000000"/>
+          <GroupHeader>1</GroupHeader>
+          <CheatEntries>
+            <CheatEntry>
+              <ID>60</ID>
+              <Description>"Car HP"</Description>
+              <Options moHideChildren="1" moRecursiveSetValue="1" moManualExpandCollapse="1" moActivateChildrenAsWell="1" moDeactivateChildrenAsWell="1" moAllowManualCollapseAndExpand="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>15</ID>
+                  <Description>"Car HP 1"</Description>
+                  <LastState Value="125" RealAddress="025663E8"/>
+                  <Color>40BFBF</Color>
+                  <VariableType>Float</VariableType>
+                  <Address>"DeathSkidMarks++.exe"+1C463E8</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>16</ID>
+                  <Description>"Car HP 2"</Description>
+                  <LastState Value="125" RealAddress="025663EC"/>
+                  <Color>40BFBF</Color>
+                  <VariableType>Float</VariableType>
+                  <Address>"DeathSkidMarks++.exe"+1C463EC</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>17</ID>
+                  <Description>"Car HP 3"</Description>
+                  <LastState Value="125" RealAddress="025663F0"/>
+                  <Color>40BFBF</Color>
+                  <VariableType>Float</VariableType>
+                  <Address>"DeathSkidMarks++.exe"+1C463F0</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>12</ID>
+                  <Description>"Car HP 4"</Description>
+                  <LastState Value="125" RealAddress="025663F4"/>
+                  <Color>40BFBF</Color>
+                  <VariableType>Float</VariableType>
+                  <Address>"DeathSkidMarks++.exe"+1C463F4</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+            <CheatEntry>
+              <ID>59</ID>
+              <Description>"Car Stats (value 0-4)"</Description>
+              <Options moHideChildren="1" moRecursiveSetValue="1" moManualExpandCollapse="1" moAllowManualCollapseAndExpand="1"/>
+              <LastState Value="" RealAddress="00000000"/>
+              <GroupHeader>1</GroupHeader>
+              <CheatEntries>
+                <CheatEntry>
+                  <ID>49</ID>
+                  <Description>"Armor HP"</Description>
+                  <LastState Value="0" RealAddress="02566374"/>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>40BFBF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>"DeathSkidMarks++.exe"+1C46374</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>51</ID>
+                  <Description>"Steer Move"</Description>
+                  <LastState Value="0" RealAddress="02566378"/>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>40BFBF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>"DeathSkidMarks++.exe"+1C46378</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>50</ID>
+                  <Description>"Engine Move"</Description>
+                  <LastState Value="0" RealAddress="02566380"/>
+                  <ShowAsSigned>0</ShowAsSigned>
+                  <Color>40BFBF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>"DeathSkidMarks++.exe"+1C46380</Address>
+                </CheatEntry>
+                <CheatEntry>
+                  <ID>48</ID>
+                  <Description>"Break Move"</Description>
+                  <LastState Value="0" RealAddress="0256637C"/>
+                  <Color>40BFBF</Color>
+                  <VariableType>4 Bytes</VariableType>
+                  <Address>"DeathSkidMarks++.exe"+1C4637C</Address>
+                </CheatEntry>
+              </CheatEntries>
+            </CheatEntry>
+          </CheatEntries>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+    <CheatEntry>
+      <ID>72</ID>
+      <Description>"Stats"</Description>
+      <Options moHideChildren="1" moManualExpandCollapse="1" moAllowManualCollapseAndExpand="1"/>
+      <LastState Value="" RealAddress="00000000"/>
+      <GroupHeader>1</GroupHeader>
+      <CheatEntries>
+        <CheatEntry>
+          <ID>4</ID>
+          <Description>"Total Money in a game"</Description>
+          <LastState Value="0" RealAddress="025D0808"/>
+          <Color>40BFBF</Color>
+          <VariableType>4 Bytes</VariableType>
+          <Address>"DeathSkidMarks++.exe"+1CB0808</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>2</ID>
+          <Description>"Total Death Toll"</Description>
+          <LastState Value="716" RealAddress="029696B8"/>
+          <Color>40BFBF</Color>
+          <VariableType>4 Bytes</VariableType>
+          <Address>"DeathSkidMarks++.exe"+20496B8</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>1</ID>
+          <Description>"Achievements 2 - They're all dead!"</Description>
+          <LastState Value="1216" RealAddress="029696B4"/>
+          <Color>40BFBF</Color>
+          <VariableType>4 Bytes</VariableType>
+          <Address>"DeathSkidMarks++.exe"+20496B4</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>6</ID>
+          <Description>"No description"</Description>
+          <LastState Value="720" RealAddress="028A9AE8"/>
+          <Color>40BFBF</Color>
+          <VariableType>4 Bytes</VariableType>
+          <Address>"DeathSkidMarks++.exe"+1F89AE8</Address>
+        </CheatEntry>
+        <CheatEntry>
+          <ID>5</ID>
+          <Description>"No description"</Description>
+          <LastState Value="720" RealAddress="0277C70C"/>
+          <Color>40BFBF</Color>
+          <VariableType>4 Bytes</VariableType>
+          <Address>"DeathSkidMarks++.exe"+1E5C70C</Address>
+        </CheatEntry>
+      </CheatEntries>
+    </CheatEntry>
+  </CheatEntries>
+  <CheatCodes>
+    <CodeEntry>
+      <Description>Change of fstp dword ptr [esi+000000E0]</Description>
+      <AddressString>DeathSkidMarks++.exe+795E0</AddressString>
+      <Before>
+        <Byte>AE</Byte>
+        <Byte>E0</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>9E</Byte>
+        <Byte>E0</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>E8</Byte>
+        <Byte>C5</Byte>
+        <Byte>7C</Byte>
+        <Byte>F8</Byte>
+        <Byte>FF</Byte>
+      </After>
+    </CodeEntry>
+    <CodeEntry>
+      <Description>Change of fstp dword ptr [esi+000000E0]</Description>
+      <AddressString>DeathSkidMarks++.exe+79901</AddressString>
+      <Before>
+        <Byte>AE</Byte>
+        <Byte>E0</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Before>
+      <Actual>
+        <Byte>D9</Byte>
+        <Byte>9E</Byte>
+        <Byte>E0</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+        <Byte>00</Byte>
+      </Actual>
+      <After>
+        <Byte>80</Byte>
+        <Byte>BE</Byte>
+        <Byte>9A</Byte>
+        <Byte>01</Byte>
+        <Byte>00</Byte>
+      </After>
+    </CodeEntry>
+  </CheatCodes>
+  <UserdefinedSymbols/>
+</CheatTable>
