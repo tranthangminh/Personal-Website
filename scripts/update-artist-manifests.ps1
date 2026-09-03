@@ -9,16 +9,16 @@ $ErrorActionPreference = 'Stop'
 
 $projectRoot = Split-Path -Parent $PSScriptRoot
 if (-not $Images2DDirectory) {
-    $Images2DDirectory = Join-Path $projectRoot 'assets\images\2D'
+    $Images2DDirectory = Join-Path $projectRoot 'jobs\artist-2D'
 }
 if (-not $Images3DDirectory) {
-    $Images3DDirectory = Join-Path $projectRoot 'assets\images\3D'
+    $Images3DDirectory = Join-Path $projectRoot 'jobs\artist-3D'
 }
 if (-not $Output2DFile) {
-    $Output2DFile = Join-Path $projectRoot 'js\data\artist-2d-images.js'
+    $Output2DFile = Join-Path $projectRoot 'jobs\artist-2d-images.js'
 }
 if (-not $Output3DFile) {
-    $Output3DFile = Join-Path $projectRoot 'js\data\artist-3d-images.js'
+    $Output3DFile = Join-Path $projectRoot 'jobs\artist-3d-images.js'
 }
 
 $supportedExtensions = @('.jpg', '.jpeg', '.png', '.webp', '.gif', '.avif')
@@ -55,7 +55,7 @@ function Write-ArtistManifest {
 
     for ($index = 0; $index -lt $imageFiles.Count; $index += 1) {
         $file = $imageFiles[$index]
-        $src = 'assets/images/' + $FolderName + '/' + $file.Name
+        $src = $FolderName + '/' + $file.Name
         $suffix = if ($index -lt ($imageFiles.Count - 1)) { ',' } else { '' }
         $lines.Add("    { src: '$(Escape-JavaScriptString $src)' }$suffix")
     }
@@ -69,8 +69,8 @@ function Write-ArtistManifest {
     return $imageFiles.Count
 }
 
-$count2D = Write-ArtistManifest -ImageDirectory $Images2DDirectory -OutputFile $Output2DFile -ManifestVariable 'artist2dImageManifest' -FolderName '2D'
-$count3D = Write-ArtistManifest -ImageDirectory $Images3DDirectory -OutputFile $Output3DFile -ManifestVariable 'artist3dImageManifest' -FolderName '3D'
+$count2D = Write-ArtistManifest -ImageDirectory $Images2DDirectory -OutputFile $Output2DFile -ManifestVariable 'artist2dImageManifest' -FolderName 'artist-2D'
+$count3D = Write-ArtistManifest -ImageDirectory $Images3DDirectory -OutputFile $Output3DFile -ManifestVariable 'artist3dImageManifest' -FolderName 'artist-3D'
 
 Write-Host "Updated 2D manifest:" $Output2DFile
 Write-Host "2D images found:" $count2D

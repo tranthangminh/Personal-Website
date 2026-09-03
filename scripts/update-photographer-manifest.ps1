@@ -7,10 +7,10 @@ $ErrorActionPreference = 'Stop'
 
 $projectRoot = Split-Path -Parent $PSScriptRoot
 if (-not $ImageDirectory) {
-    $ImageDirectory = Join-Path $projectRoot 'assets\images\Photographer'
+    $ImageDirectory = Join-Path $projectRoot 'jobs\photographer'
 }
 if (-not $OutputFile) {
-    $OutputFile = Join-Path $projectRoot 'js\data\photographer-images.js'
+    $OutputFile = Join-Path $projectRoot 'jobs\photographer-images.js'
 }
 
 $supportedExtensions = @('.jpg', '.jpeg', '.png', '.webp', '.gif', '.avif')
@@ -50,7 +50,7 @@ $lines.Add('window.photographerImageManifest = [')
 
 for ($index = 0; $index -lt $imageFiles.Count; $index += 1) {
     $file = $imageFiles[$index]
-    $src = 'assets/images/Photographer/' + $file.Name
+    $src = 'photographer/' + $file.Name
     $alt = Convert-ToAltText -Name $file.Name
     $suffix = if ($index -lt ($imageFiles.Count - 1)) { ',' } else { '' }
     $lines.Add("    { src: '$(Escape-JavaScriptString $src)', alt: '$(Escape-JavaScriptString $alt)' }$suffix")

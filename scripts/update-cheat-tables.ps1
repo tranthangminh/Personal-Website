@@ -11,16 +11,16 @@ $ProgressPreference = 'SilentlyContinue'
 
 $projectRoot = Split-Path -Parent $PSScriptRoot
 if (-not $CheatTableDirectory) {
-    $CheatTableDirectory = Join-Path $projectRoot 'assets\My Cheat Tables'
+    $CheatTableDirectory = Join-Path $projectRoot 'products\Plugins\My Cheat Tables'
 }
 if (-not $OutputFile) {
-    $OutputFile = Join-Path $projectRoot 'js\data\cheat-table-files.js'
+    $OutputFile = Join-Path $projectRoot 'products\cheat-table-files.js'
 }
 if (-not $ArtworkOutputFile) {
-    $ArtworkOutputFile = Join-Path $projectRoot 'js\data\cheat-table-artwork.js'
+    $ArtworkOutputFile = Join-Path $projectRoot 'products\cheat-table-artwork.js'
 }
 if (-not $ToolsPageFile) {
-    $ToolsPageFile = Join-Path $projectRoot 'tools.html'
+    $ToolsPageFile = Join-Path $projectRoot 'products\plugin-cheat-engine.html'
 }
 if (-not $MetadataFile) {
     $MetadataFile = Join-Path $CheatTableDirectory '_ID.txt'
