@@ -192,6 +192,8 @@ body {
     height: clamp(140px, 24vw, 240px);
     margin-top: 0;
     background-color: var(--accent-primary);
+    -webkit-mask-image: url('../../svg/porfolio.svg');
+    mask-image: url('../../svg/porfolio.svg');
     -webkit-mask-size: contain;
     mask-size: contain;
     -webkit-mask-repeat: no-repeat;
