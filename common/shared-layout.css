@@ -16,24 +16,82 @@
     margin: 0 auto;
 }
 
+/* ==========================================================================
+   Full-Width Accent Page Breadcrumb Bar
+   ========================================================================== */
+.page-breadcrumb-bar {
+    width: 100%;
+    background-color: var(--accent-primary);
+    padding: 8px 0;
+    margin-top: -18px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    position: relative;
+    z-index: 10;
+}
+
 .page-breadcrumb {
     margin: 0;
-    font-size: var(--font-xs);
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: var(--text-tertiary);
-    user-select: none;
-    line-height: 1;
-}
-
-.page-breadcrumb-current {
-    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 4px;
+    font-family: 'Barlow', 'Barlow Condensed', var(--font-secondary), sans-serif;
+    font-size: var(--font-sm);
     font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.85);
+    user-select: none;
+    line-height: 1.4;
 }
 
+.page-breadcrumb-link {
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    transition: color var(--transition-fast), opacity var(--transition-fast);
+}
+
+.page-breadcrumb-link:hover {
+    color: #ffffff;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.page-breadcrumb-sep,
 .page-breadcrumb-separator {
     margin: 0 6px;
-    color: var(--text-disabled);
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 11px;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    user-select: none;
+}
+
+.page-breadcrumb-current,
+.page-breadcrumb span:not(.page-breadcrumb-sep):not(.page-breadcrumb-separator):last-child {
+    color: #ffffff;
+    font-weight: 700;
+}
+
+@media (max-width: 768px) {
+    .page-breadcrumb-bar {
+        margin-top: -16px;
+        margin-bottom: 18px;
+        padding: 7px 0;
+    }
+
+    .page-breadcrumb {
+        font-size: 11px;
+        letter-spacing: 0.04em;
+    }
+
+    .page-breadcrumb-sep,
+    .page-breadcrumb-separator {
+        margin: 0 4px;
+        font-size: 10px;
+    }
 }
 
 /* Base interactive button polish */

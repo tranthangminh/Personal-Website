@@ -1,4 +1,4 @@
-﻿/* ==========================================================================
+/* ==========================================================================
    SHARED FOOTER & CONTACT BAR SYSTEM (30% - 40% - 30%)
    ========================================================================== */
 
@@ -51,19 +51,20 @@ body.actor-page-view .contact-page {
 
 .contact-connect-title {
     font-family: var(--font-secondary);
-    font-size: var(--font-xs);
+    font-size: var(--font-lg);
     font-weight: 700;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--accent-primary);
-    line-height: 1;
+    line-height: 1.2;
     margin: 0;
 }
 
 .contact-social-row {
     display: flex;
     align-items: center;
-    gap: 16px;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .contact-social-btn {
@@ -72,7 +73,7 @@ body.actor-page-view .contact-page {
     justify-content: center;
     color: var(--text-secondary);
     text-decoration: none;
-    transition: color var(--transition-fast), transform var(--transition-fast);
+    transition: color var(--transition-fast), transform var(--transition-fast), filter var(--transition-fast);
     line-height: 1;
     padding: 4px;
 }
@@ -80,6 +81,7 @@ body.actor-page-view .contact-page {
 .contact-social-btn:hover {
     color: var(--accent-primary);
     transform: translateY(-2px);
+    filter: drop-shadow(0 0 6px var(--accent-glow, rgba(229, 9, 20, 0.4)));
 }
 
 .contact-social-icon {
@@ -93,6 +95,88 @@ body.actor-page-view .contact-page {
     mask-position: center;
     -webkit-mask-size: contain;
     mask-size: contain;
+}
+
+.social-more {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.social-more-toggle {
+    list-style: none;
+    width: 28px;
+    height: 28px;
+    border-radius: var(--border-radius-full);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    cursor: pointer;
+    user-select: none;
+    font-size: 16px;
+    line-height: 1;
+    font-weight: 600;
+    transition: color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast), filter var(--transition-fast);
+}
+
+.social-more-toggle:hover {
+    color: var(--accent-primary);
+    border-color: var(--accent-primary);
+    transform: translateY(-2px);
+    filter: drop-shadow(0 0 6px var(--accent-glow, rgba(229, 9, 20, 0.4)));
+}
+
+.social-more-toggle::-webkit-details-marker {
+    display: none;
+}
+
+.social-more-toggle::marker {
+    content: "";
+}
+
+.social-more-toggle::before {
+    content: "+";
+    line-height: 1;
+    font-weight: 600;
+}
+
+.social-more[open] .social-more-toggle::before {
+    content: "\00d7";
+    font-size: 18px;
+}
+
+.social-more-list {
+    position: absolute;
+    left: 0;
+    bottom: calc(100% + 10px);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    border-radius: var(--border-radius-md);
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-lg);
+    z-index: 20;
+    white-space: nowrap;
+    backdrop-filter: var(--glass-backdrop);
+    -webkit-backdrop-filter: var(--glass-backdrop);
+    animation: socialMorePop 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes socialMorePop {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* --------------------------------------------------------------------------

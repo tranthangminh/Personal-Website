@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="common/theme.css?v=20260903-3">
 <link rel="stylesheet" href="common/shared-layout.css?v=20260903-3">
 <link rel="stylesheet" href="common/shared-header.css?v=20260903-3">
-<link rel="stylesheet" href="common/shared-footer.css?v=20260904-1">
+<link rel="stylesheet" href="common/shared-footer.css?v=20260904-3">
 <link rel="stylesheet" href="common/shared-book-now.css?v=20260903-3">
 <link rel="stylesheet" href="common/shared-surfaces.css?v=20260903-3">
 <link rel="stylesheet" href="common/shared-gallery.css?v=20260903-3">
@@ -26,7 +26,7 @@
 <script src="common/shared-book-now.js?v=20260903-3"></script>
 <script src="common/shared-momentum.js?v=20260903-3"></script>
 <script src="common/shared-lightbox.js?v=20260903-3"></script>
-<script src="common/shared-contact.js?v=20260904-1"></script>
+<script src="common/shared-contact.js?v=20260904-3"></script>
 <script src="common/shared-welcome.js?v=20260903-3"></script>
 <script src="common/shared-page.js?v=20260903-3"></script>
 </head>
@@ -34,12 +34,17 @@
 <div id="sharedHeaderRoot"></div>
 
 <main class="products-page-main">
+    <div class="page-breadcrumb-bar">
+        <div class="content-wrap">
+            <nav class="page-breadcrumb" aria-label="Breadcrumb">
+                <a class="page-breadcrumb-link" href="index.html" data-i18n="productsPage.breadcrumbHome">Trang Chủ</a>
+                <span class="page-breadcrumb-sep" aria-hidden="true">&#9656;</span>
+                <span class="page-breadcrumb-current" data-i18n="productsPage.breadcrumbProducts">Sản Phẩm</span>
+            </nav>
+        </div>
+    </div>
+
     <div class="content-wrap products-hero">
-        <h2 class="page-breadcrumb">
-            <a class="page-breadcrumb-link" href="index.html" data-i18n="productsPage.breadcrumbHome">Trang Chủ</a>
-            <span class="page-breadcrumb-sep">&gt;</span>
-            <span data-i18n="productsPage.breadcrumbProducts">Sản Phẩm</span>
-        </h2>
 
         <div class="products-switch" role="tablist" aria-label="Chọn danh mục sản phẩm">
             <button class="products-switch-btn is-active" type="button" data-product-tab="all" aria-pressed="true" data-i18n="productsPage.tabs.all">Tất Cả</button>

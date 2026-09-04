@@ -13,6 +13,11 @@ powershell -ExecutionPolicy Bypass -File "%SCRIPT_DIR%\update-artist-manifests.p
 if errorlevel 1 goto :error
 
 echo.
+echo Updating business manifests (Bun Gio Heo and Harry Perfume)...
+powershell -ExecutionPolicy Bypass -File "%SCRIPT_DIR%\update-business-manifests.ps1"
+if errorlevel 1 goto :error
+
+echo.
 echo All image manifests updated successfully.
 endlocal
 exit /b 0

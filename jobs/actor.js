@@ -12,7 +12,9 @@ if (typeof initSharedPage === 'function') {
                 professionItems: [
                     { labelKey: 'header.profession.actor', label: 'Diễn Viên', href: 'actor.html' },
                     { labelKey: 'header.profession.artist', label: 'Họa Sĩ', href: 'artist.html' },
-                    { labelKey: 'header.profession.photographer', label: 'Nhiếp Ảnh', href: 'photographer.html' }
+                    { labelKey: 'header.profession.photographer', label: 'Nhiếp Ảnh', href: 'photographer.html' },
+                    { labelKey: 'header.profession.bunGioHeo', label: 'Bún Giò Heo Minh Nhật', href: 'bun-gio-heo-minh-nhat.html' },
+                    { labelKey: 'header.profession.harryPerfume', label: 'Harry Perfume', href: 'https://harryperfume.vn/gioi-thieu', target: '_blank' }
                 ]
             }
         },
@@ -50,7 +52,7 @@ if (typeof initSharedPage === 'function') {
             hideAfter: 1500
         },
         lightboxInit: {
-            triggerSelector: '.actor-hero-gallery .actor-item img, .timeline-media-item img',
+            triggerSelector: '.actor-spotlight-frame img, .actor-hero-gallery .actor-item img, .timeline-media-item img',
             fallbackAltKey: 'lightbox.actorAlt',
             fallbackAlt: 'Ảnh diễn viên phóng to'
         },
@@ -82,5 +84,26 @@ if (actorPhoneToggle) {
 
         actorPhoneToggle.classList.add('is-revealed');
         actorPhoneToggle.textContent = phoneDisplay;
+    });
+}
+
+// Interactive Spotlight Sync with Gallery Lookbook
+var heroGallery = document.querySelector('.actor-hero-gallery');
+var spotlightImg = document.getElementById('actorFeaturedImg');
+
+if (heroGallery && spotlightImg) {
+    heroGallery.addEventListener('mouseover', function (e) {
+        var img = e.target.closest('.actor-item img');
+        if (img && img.src) {
+            spotlightImg.src = img.src;
+            var currentActive = heroGallery.querySelector('.active-thumb');
+            if (currentActive) {
+                currentActive.classList.remove('active-thumb');
+            }
+            var item = img.closest('.actor-item');
+            if (item) {
+                item.classList.add('active-thumb');
+            }
+        }
     });
 }

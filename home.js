@@ -117,22 +117,52 @@ if (typeof initSharedPage === 'function') {
             ],
             sideCover: 'jobs/photographer/MAX90056.jpg',
             sideBadge: 'TỪ NĂM 2023'
+        },
+        bunGioHeo: {
+            id: 'bunGioHeo',
+            title: 'BÚN GIÒ HEO MINH NHẬT',
+            badge: 'F&B - TỪ NĂM 2004',
+            href: 'jobs/bun-gio-heo-minh-nhat.html',
+            images: (window.bunGioHeoImageManifest && window.bunGioHeoImageManifest.length)
+                ? window.bunGioHeoImageManifest.map(function (m) { return 'jobs/' + m.src; })
+                : ['jobs/bun-gio-heo-minh-nhat/Logo.png'],
+            sideCover: 'jobs/bun-gio-heo-minh-nhat/Logo.png',
+            sideBadge: 'F&B - TỪ NĂM 2004'
+        },
+        harryPerfume: {
+            id: 'harryPerfume',
+            title: 'HARRY PERFUME',
+            badge: 'NƯỚC HOA - TỪ NĂM 2023',
+            href: 'https://harryperfume.vn/gioi-thieu',
+            images: (window.harryPerfumeImageManifest && window.harryPerfumeImageManifest.length)
+                ? window.harryPerfumeImageManifest.map(function (m) { return 'jobs/' + m.src; })
+                : [
+                    'jobs/harry-perfume/5c5feb8c46d2ea333e80165ef092ea82.jpg',
+                    'jobs/harry-perfume/7b556787785486c8640215b66f1e6ca1.jpg',
+                    'jobs/harry-perfume/839e0101376d1d141749187cc270c952.jpg',
+                    'jobs/harry-perfume/a5eb85e1232dfb72118911e16a57bf9c.jpg',
+                    'jobs/harry-perfume/e3481b9ea60c29331a140a0c8c42cc01.jpg'
+                ],
+            sideCover: 'jobs/harry-perfume/5c5feb8c46d2ea333e80165ef092ea82.jpg',
+            sideBadge: 'NƯỚC HOA - TỪ NĂM 2023'
         }
     };
 
     let activeMainLayer = 'A';
     let activeC1Layer = 'A';
     let activeC2Layer = 'A';
+    let activePerfumeLayer = 'A';
     let mainImgIndex = 0;
     let c1ImgIndex = 0;
     let c2ImgIndex = 0;
+    let perfumeImgIndex = 0;
     let slideshowInterval = null;
 
     function getNextRandomImage(profId, slotType) {
         const pool = professionsData[profId] ? professionsData[profId].images : null;
         if (!pool || !pool.length) return '';
         if (pool.length === 1) return pool[0];
-        const prevIdx = slotType === 'main' ? mainImgIndex : (slotType === 'c1' ? c1ImgIndex : c2ImgIndex);
+        const prevIdx = slotType === 'main' ? mainImgIndex : (slotType === 'c1' ? c1ImgIndex : (slotType === 'c2' ? c2ImgIndex : perfumeImgIndex));
         let nextIdx = 0;
         do {
             nextIdx = Math.floor(Math.random() * pool.length);
@@ -140,7 +170,8 @@ if (typeof initSharedPage === 'function') {
 
         if (slotType === 'main') mainImgIndex = nextIdx;
         else if (slotType === 'c1') c1ImgIndex = nextIdx;
-        else c2ImgIndex = nextIdx;
+        else if (slotType === 'c2') c2ImgIndex = nextIdx;
+        else perfumeImgIndex = nextIdx;
 
         return pool[nextIdx];
     }
@@ -156,7 +187,7 @@ if (typeof initSharedPage === 'function') {
         return activeLayerName === 'A' ? 'B' : 'A';
     }
 
-    let currentStep = 0; // 0: Main (Diễn viên), 1: Card 1 (Họa sĩ), 2: Card 2 (Nhiếp ảnh)
+    let currentStep = 0; // 0: Main (Diễn viên), 1: Card 1 (Họa sĩ), 2: Card 2 (Nhiếp ảnh), 3: Harry Perfume
 
     function startSlideshow() {
         stopSlideshow();
@@ -178,9 +209,15 @@ if (typeof initSharedPage === 'function') {
                 const c2A = document.getElementById('showcaseCard2CoverA');
                 const c2B = document.getElementById('showcaseCard2CoverB');
                 activeC2Layer = switchCover(c2A, c2B, activeC2Layer, nextC2Img);
+            } else if (currentStep === 3) {
+                // Harry Perfume
+                const nextPerfumeImg = getNextRandomImage('harryPerfume', 'perfume');
+                const pA = document.getElementById('showcaseCardPerfumeCoverA');
+                const pB = document.getElementById('showcaseCardPerfumeCoverB');
+                activePerfumeLayer = switchCover(pA, pB, activePerfumeLayer, nextPerfumeImg);
             }
-            // Chu kỳ xoay vòng 0 -> 1 -> 2 -> 0... (mỗi ô đổi 1.5s/lần)
-            currentStep = (currentStep + 1) % 3;
+            // Chu kỳ xoay vòng 0 -> 1 -> 2 -> 3 -> 0... (mỗi ô đổi 0.5s/lần)
+            currentStep = (currentStep + 1) % 4;
         }, 500);
     }
 
@@ -192,7 +229,7 @@ if (typeof initSharedPage === 'function') {
     }
 
     function initShowcase() {
-        // Khởi tạo ảnh ngẫu nhiên ban đầu cho cả 3 mục
+        // Khởi tạo ảnh ngẫu nhiên ban đầu cho các mục
         const initialMainImg = getNextRandomImage('actor', 'main');
         activeMainLayer = switchCover(showcaseCoverA, showcaseCoverB, activeMainLayer, initialMainImg);
 
@@ -205,6 +242,11 @@ if (typeof initSharedPage === 'function') {
         const c2A = document.getElementById('showcaseCard2CoverA');
         const c2B = document.getElementById('showcaseCard2CoverB');
         activeC2Layer = switchCover(c2A, c2B, activeC2Layer, initialC2Img);
+
+        const initialPerfumeImg = getNextRandomImage('harryPerfume', 'perfume');
+        const pA = document.getElementById('showcaseCardPerfumeCoverA');
+        const pB = document.getElementById('showcaseCardPerfumeCoverB');
+        activePerfumeLayer = switchCover(pA, pB, activePerfumeLayer, initialPerfumeImg);
 
         startSlideshow();
     }

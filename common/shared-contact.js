@@ -25,18 +25,48 @@
         var rv = opts.includeReveal === false ? '' : ' reveal-up';
         var assetBase = opts.assetBase ? String(opts.assetBase) : '';
 
-        var connectTitle = escapeHtml(translate('contact.connectTitle', "LET'S CONNECT"));
+        var connectTitle = escapeHtml(translate('contact.connectTitle', 'Liên Hệ'));
         var quoteText = escapeHtml(translate('contact.quote', 'Để lại giá trị cho cuộc sống'));
         var callLabel = escapeHtml(translate('contact.callBtn', 'Gọi'));
         var emailLabel = escapeHtml(translate('contact.emailBtn', 'Email'));
         var copyright = escapeHtml(translate('contact.copyright', '© 2026 Trần Thắng Minh. All rights reserved.'));
 
-        var linkedinSvg = assetBase + 'svg/linkedin.svg';
-        var behanceSvg = assetBase + 'svg/behance.svg';
-        var dribbbleSvg = assetBase + 'svg/dribbble.svg';
+        var facebookSvg = assetBase + 'svg/facebook.svg';
         var instagramSvg = assetBase + 'svg/instagram.svg';
+        var tiktokSvg = assetBase + 'svg/tiktok.svg';
+        var youtubeSvg = assetBase + 'svg/youtube.svg';
+        var redditSvg = assetBase + 'svg/reddit.svg';
+        var discordSvg = assetBase + 'svg/discord.svg';
+        var githubSvg = assetBase + 'svg/github.svg';
         var phoneSvg = assetBase + 'svg/phone.svg';
         var emailSvg = assetBase + 'svg/email.svg';
+
+        var moreSocialLabel = escapeHtml(translate('contact.moreSocial', 'Xem thêm mạng xã hội'));
+
+        var mainSocials = [
+            { name: 'Facebook', url: 'https://www.facebook.com/maxiechen/', svg: facebookSvg },
+            { name: 'Instagram', url: 'https://www.instagram.com/maxiechen/', svg: instagramSvg },
+            { name: 'TikTok', url: 'https://www.tiktok.com/@max9.tran', svg: tiktokSvg },
+            { name: 'YouTube', url: 'https://www.youtube.com/@MaxTran96', svg: youtubeSvg }
+        ];
+
+        var moreSocials = [
+            { name: 'Reddit', url: 'https://www.reddit.com/user/maxiechen96/', svg: redditSvg },
+            { name: 'Discord', url: 'https://discord.com/users/@maxiechen', svg: discordSvg },
+            { name: 'GitHub', url: 'https://github.com/tranthangminh', svg: githubSvg }
+        ];
+
+        var mainSocialsHtml = mainSocials.map(function (s) {
+            return '<a class="contact-social-btn" href="' + escapeHtml(s.url) + '" target="_blank" rel="noopener noreferrer" aria-label="' + escapeHtml(s.name) + '">' +
+                '<span class="contact-social-icon" style="-webkit-mask-image: url(\'' + s.svg + '\'); mask-image: url(\'' + s.svg + '\');"></span>' +
+                '</a>';
+        }).join('');
+
+        var moreSocialsHtml = moreSocials.map(function (s) {
+            return '<a class="contact-social-btn" href="' + escapeHtml(s.url) + '" target="_blank" rel="noopener noreferrer" aria-label="' + escapeHtml(s.name) + '">' +
+                '<span class="contact-social-icon" style="-webkit-mask-image: url(\'' + s.svg + '\'); mask-image: url(\'' + s.svg + '\');"></span>' +
+                '</a>';
+        }).join('');
 
         root.innerHTML = '' +
             '<section class="' + sectionClass + '"' + sectionId + '>' +
@@ -46,18 +76,13 @@
             '            <div class="contact-col contact-col-social">' +
             '                <span class="contact-connect-title">' + connectTitle + '</span>' +
             '                <div class="contact-social-row">' +
-            '                    <a class="contact-social-btn" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">' +
-            '                        <span class="contact-social-icon" style="-webkit-mask-image: url(\'' + linkedinSvg + '\'); mask-image: url(\'' + linkedinSvg + '\');"></span>' +
-            '                    </a>' +
-            '                    <a class="contact-social-btn" href="https://www.behance.net/" target="_blank" rel="noopener noreferrer" aria-label="Behance">' +
-            '                        <span class="contact-social-icon" style="-webkit-mask-image: url(\'' + behanceSvg + '\'); mask-image: url(\'' + behanceSvg + '\');"></span>' +
-            '                    </a>' +
-            '                    <a class="contact-social-btn" href="https://dribbble.com/" target="_blank" rel="noopener noreferrer" aria-label="Dribbble">' +
-            '                        <span class="contact-social-icon" style="-webkit-mask-image: url(\'' + dribbbleSvg + '\'); mask-image: url(\'' + dribbbleSvg + '\');"></span>' +
-            '                    </a>' +
-            '                    <a class="contact-social-btn" href="https://www.instagram.com/maxiechen/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">' +
-            '                        <span class="contact-social-icon" style="-webkit-mask-image: url(\'' + instagramSvg + '\'); mask-image: url(\'' + instagramSvg + '\');"></span>' +
-            '                    </a>' +
+                                 mainSocialsHtml +
+            '                    <details class="social-more">' +
+            '                        <summary class="social-more-toggle" aria-label="' + moreSocialLabel + '"></summary>' +
+            '                        <div class="social-more-list">' +
+                                         moreSocialsHtml +
+            '                        </div>' +
+            '                    </details>' +
             '                </div>' +
             '            </div>' +
             '            <!-- Center 40%: Quote -->' +
@@ -85,5 +110,14 @@
             '        </div>' +
             '    </div>' +
             '</section>';
+
+        var socialMore = root.querySelector('.social-more');
+        if (socialMore) {
+            document.addEventListener('click', function (e) {
+                if (!socialMore.contains(e.target) && socialMore.hasAttribute('open')) {
+                    socialMore.removeAttribute('open');
+                }
+            });
+        }
     };
 })();

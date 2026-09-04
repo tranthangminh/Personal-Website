@@ -191,7 +191,9 @@
         var professionItems = Array.isArray(opts.professionItems) && opts.professionItems.length ? opts.professionItems : [
             { labelKey: 'header.profession.actor', label: 'Di\u1ec5n Vi\u00ean', href: profBase + 'actor.html' },
             { labelKey: 'header.profession.artist', label: 'H\u1ecda S\u0129', href: profBase + 'artist.html' },
-            { labelKey: 'header.profession.photographer', label: 'Nhi\u1ebfp \u1ea2nh', href: profBase + 'photographer.html' }
+            { labelKey: 'header.profession.photographer', label: 'Nhi\u1ebfp \u1ea2nh', href: profBase + 'photographer.html' },
+            { labelKey: 'header.profession.bunGioHeo', label: 'B\u00fan Gi\u00f2 Heo Minh Nh\u1eadt', href: profBase + 'bun-gio-heo-minh-nhat.html' },
+            { labelKey: 'header.profession.harryPerfume', label: 'Harry Perfume', href: 'https://harryperfume.vn/gioi-thieu', target: '_blank' }
         ];
         var toolItems = Array.isArray(opts.toolItems) && opts.toolItems.length ? opts.toolItems : [
             { labelKey: 'header.tool.windowsApps', label: 'Windows Apps', href: prodBase + '?tab=windows-apps' },
@@ -207,7 +209,9 @@
             return items.map(function (item) {
                 var label = escapeHtml(translate(item.labelKey, item.label || ''));
                 if (item.href) {
-                    return '<li><a href="' + escapeHtml(item.href) + '">' + label + '</a></li>';
+                    var targetAttr = item.target ? ' target="' + escapeHtml(item.target) + '"' : '';
+                    var relAttr = item.target === '_blank' ? ' rel="noopener noreferrer"' : '';
+                    return '<li><a href="' + escapeHtml(item.href) + '"' + targetAttr + relAttr + '>' + label + '</a></li>';
                 }
                 return '<li>' + label + '</li>';
             }).join('');
@@ -247,7 +251,7 @@
             '        <div class="header-left">' +
             themeSwitchHtml +
             '            <div class="menu-wrap">' +
-            '                <button class="menu-btn" type="button">' + escapeHtml(translate('header.professions', 'Ngh\u1ec1 Nghi\u1ec7p')) + '</button>' +
+            '                <button class="menu-btn" type="button">' + escapeHtml(translate('header.professions', 'C\u00f4ng Vi\u1ec7c')) + '</button>' +
             '                <ul class="menu-list">' + professionMenuHtml + '</ul>' +
             '            </div>' +
             '        </div>' +

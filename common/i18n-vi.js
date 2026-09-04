@@ -27,7 +27,7 @@
             }
         },
         header: {
-            professions: 'Nghề Nghiệp',
+            professions: 'Công Việc',
             tools: 'Sản Phẩm',
             homeAria: 'Quay về trang chủ',
             languageAria: 'Chuyển ngôn ngữ',
@@ -35,7 +35,9 @@
             profession: {
                 actor: 'Diễn Viên',
                 artist: 'Họa Sĩ',
-                photographer: 'Nhiếp Ảnh'
+                photographer: 'Nhiếp Ảnh',
+                bunGioHeo: 'Bún Giò Heo Minh Nhật',
+                harryPerfume: 'Harry Perfume'
             },
             tool: {
                 windowsApps: 'Windows Apps',
@@ -63,6 +65,7 @@
         },
         contact: {
             title: 'LIÊN HỆ',
+            connectTitle: 'Liên Hệ',
             intro: 'Sẵn sàng hợp tác cho các dự án diễn xuất, thiết kế 2D/3D, nhiếp ảnh và phát triển công cụ hỗ trợ quy trình làm việc.',
             directTitle: 'Liên Hệ Trực Tiếp',
             socialTitle: 'Mạng Xã Hội',

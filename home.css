@@ -274,17 +274,19 @@ body {
 }
 
 .intro-col-header {
-    margin-bottom: 6px;
+    margin-bottom: 8px;
 }
 
+.intro-col-title,
 .intro-col-badge {
+    margin: 0;
     font-family: var(--font-secondary);
-    font-size: var(--font-xs);
+    font-size: var(--font-2xl);
     font-weight: 700;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
     color: var(--accent-primary);
-    line-height: 1;
+    line-height: 1.1;
     display: inline-block;
 }
 
@@ -496,6 +498,11 @@ a.skill-capsule-card:hover {
         gap: 8px;
     }
 
+    .intro-col-title,
+    .intro-col-badge {
+        font-size: var(--font-xl);
+    }
+
     .skill-capsule-card {
         padding: 9px 10px;
         min-height: 40px;
@@ -504,6 +511,7 @@ a.skill-capsule-card:hover {
 
     .skill-capsule-name {
         font-size: 11px;
+        letter-spacing: 0.02em;
     }
 }
 
@@ -516,12 +524,12 @@ a.skill-capsule-card:hover {
 }
 
 .professions-showcase-wrap {
-    display: grid;
-    grid-template-columns: 60% 40%;
+    display: flex;
+    flex-direction: column;
     gap: 0;
-    height: 720px;
-    min-height: 720px;
-    max-height: 720px;
+    height: 900px;
+    min-height: 900px;
+    max-height: 900px;
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius-md);
     background-color: var(--bg-100);
@@ -530,12 +538,30 @@ a.skill-capsule-card:hover {
     box-sizing: border-box;
 }
 
-/* Left Column 60%: Main Spotlight */
+/* 2-Row System (65% / 35%) */
+.showcase-row {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.showcase-row-top {
+    display: grid;
+    grid-template-columns: 60% 40%;
+    height: 65%;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.showcase-row-bottom {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    height: 35%;
+}
+
+/* Left Column 60%: Main Spotlight (Diễn Viên) */
 .showcase-main {
     position: relative;
     display: block;
     height: 100%;
-    max-height: 720px;
     border-right: 1px solid var(--border-color);
     background-color: var(--bg-100);
     overflow: hidden;
@@ -675,13 +701,12 @@ a.skill-capsule-card:hover {
     transform: translateX(4px);
 }
 
-/* Right Column 40%: 2 Secondary Cards */
+/* Right Column 40%: 2 Secondary Cards (Họa Sĩ & Nhiếp Ảnh) */
 .showcase-side {
     display: grid;
     grid-template-rows: 1fr 1fr;
     gap: 0;
     height: 100%;
-    max-height: 720px;
     box-sizing: border-box;
 }
 
@@ -699,8 +724,13 @@ a.skill-capsule-card:hover {
     transition: background-color var(--transition-fast);
 }
 
-.showcase-card:first-child {
+.showcase-side .showcase-card:first-child {
     border-bottom: 1px solid var(--border-color);
+}
+
+/* Row 2 Cards (50% / 50%) */
+.showcase-row-bottom .showcase-card:first-child {
+    border-right: 1px solid var(--border-color);
 }
 
 .showcase-card-info {
@@ -736,6 +766,12 @@ a.skill-capsule-card:hover {
     transition: color var(--transition-normal);
 }
 
+.showcase-row-bottom .showcase-card-vertical-title {
+    font-size: clamp(1rem, 1.4vw, 1.35rem);
+    letter-spacing: 0;
+    white-space: nowrap;
+}
+
 .showcase-card-vertical-subtitle {
     writing-mode: vertical-rl;
     text-orientation: mixed;
@@ -752,6 +788,11 @@ a.skill-capsule-card:hover {
     transition: color var(--transition-normal);
 }
 
+.showcase-row-bottom .showcase-card-vertical-subtitle {
+    font-size: clamp(0.6rem, 0.8vw, 0.72rem);
+    letter-spacing: 0.1em;
+}
+
 .showcase-card:hover .showcase-card-vertical-title {
     color: var(--accent-primary);
 }
@@ -761,20 +802,30 @@ a.skill-capsule-card:hover {
     transform: translateX(4px);
 }
 
-/* Responsive for Mobile: 3 rows of 1:1 squares (no 2-column structure) */
+/* Responsive for Mobile: Stack cards sequentially */
 @media (max-width: 767px) {
     .professions-showcase-wrap {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
+        grid-template-columns: none;
         height: auto;
         min-height: 0;
         max-height: none;
+    }
+
+    .showcase-row-top,
+    .showcase-row-bottom {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        border-bottom: none;
     }
 
     .showcase-main {
         width: 100%;
         height: auto;
         max-height: none;
-        aspect-ratio: 4 / 3;
+        aspect-ratio: 3 / 2;
         border-right: none;
         border-bottom: 1px solid var(--border-color);
     }
@@ -792,27 +843,30 @@ a.skill-capsule-card:hover {
         width: 100%;
         height: auto;
         max-height: none;
-        aspect-ratio: 4 / 3;
-    }
-
-    .showcase-card:first-child {
+        aspect-ratio: 3 / 2;
         border-right: none;
         border-bottom: 1px solid var(--border-color);
     }
 
+    .showcase-row-bottom .showcase-card:last-child {
+        border-bottom: none;
+    }
+
     .showcase-info,
     .showcase-card-info {
-        padding: 20px 16px;
+        padding: 16px 14px;
     }
 
     .showcase-vertical-title,
-    .showcase-card-vertical-title {
-        font-size: clamp(1.4rem, 5.5vw, 1.8rem);
+    .showcase-card-vertical-title,
+    .showcase-row-bottom .showcase-card-vertical-title {
+        font-size: clamp(1.3rem, 5vw, 1.8rem);
         letter-spacing: 0;
     }
 
     .showcase-vertical-subtitle,
-    .showcase-card-vertical-subtitle {
+    .showcase-card-vertical-subtitle,
+    .showcase-row-bottom .showcase-card-vertical-subtitle {
         font-size: clamp(0.68rem, 2.5vw, 0.75rem);
         letter-spacing: 0.1em;
     }

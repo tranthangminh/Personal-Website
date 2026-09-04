@@ -35,7 +35,9 @@
             profession: {
                 actor: 'Actor',
                 artist: 'Artist',
-                photographer: 'Photographer'
+                photographer: 'Photographer',
+                bunGioHeo: 'Minh Nhat Pork Hock Noodle',
+                harryPerfume: 'Harry Perfume'
             },
             tool: {
                 windowsApps: 'Windows Apps',
@@ -63,6 +65,7 @@
         },
         contact: {
             title: 'CONTACT',
+            connectTitle: "LET'S CONNECT",
             intro: 'Open to collaborations in acting, 2D/3D design, photography, and workflow tool development.',
             directTitle: 'Direct Contact',
             socialTitle: 'Social Media',
