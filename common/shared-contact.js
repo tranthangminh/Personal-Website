@@ -31,15 +31,16 @@
         var emailLabel = escapeHtml(translate('contact.emailBtn', 'Email'));
         var copyright = escapeHtml(translate('contact.copyright', '© 2026 Trần Thắng Minh. All rights reserved.'));
 
-        var facebookSvg = assetBase + 'svg/facebook.svg';
-        var instagramSvg = assetBase + 'svg/instagram.svg';
-        var tiktokSvg = assetBase + 'svg/tiktok.svg';
-        var youtubeSvg = assetBase + 'svg/youtube.svg';
-        var redditSvg = assetBase + 'svg/reddit.svg';
-        var discordSvg = assetBase + 'svg/discord.svg';
-        var githubSvg = assetBase + 'svg/github.svg';
-        var phoneSvg = assetBase + 'svg/phone.svg';
-        var emailSvg = assetBase + 'svg/email.svg';
+        var v = '?v=20260905-1';
+        var facebookSvg = assetBase + 'svg/facebook.svg' + v;
+        var instagramSvg = assetBase + 'svg/instagram.svg' + v;
+        var tiktokSvg = assetBase + 'svg/tiktok.svg' + v;
+        var youtubeSvg = assetBase + 'svg/youtube.svg' + v;
+        var redditSvg = assetBase + 'svg/reddit.svg' + v;
+        var discordSvg = assetBase + 'svg/discord.svg' + v;
+        var githubSvg = assetBase + 'svg/github.svg' + v;
+        var phoneSvg = assetBase + 'svg/phone.svg' + v;
+        var emailSvg = assetBase + 'svg/email.svg' + v;
 
         var moreSocialLabel = escapeHtml(translate('contact.moreSocial', 'Xem thêm mạng xã hội'));
 

@@ -112,7 +112,7 @@ body.actor-page-view .contact-page {
     align-items: center;
     justify-content: center;
     color: var(--text-secondary);
-    background: var(--bg-elevated);
+    background: var(--bg-primary);
     border: 1px solid var(--border-color);
     box-shadow: var(--shadow-sm);
     cursor: pointer;
@@ -158,7 +158,7 @@ body.actor-page-view .contact-page {
     gap: 8px;
     padding: 6px 10px;
     border-radius: var(--border-radius-md);
-    background: var(--bg-elevated);
+    background: var(--bg-primary);
     border: 1px solid var(--border-color);
     box-shadow: var(--shadow-lg);
     z-index: 20;

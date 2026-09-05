@@ -73,6 +73,29 @@ body {
     column-gap: 14px;
 }
 
+.artist-card {
+    break-inside: avoid;
+    margin: 0 0 14px;
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    background: var(--bg-elevated);
+    box-shadow: var(--shadow-md);
+    cursor: zoom-in;
+}
+
+.artist-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.artist-card:hover img {
+    transform: scale(1.02);
+    filter: saturate(1.04);
+}
+
 @media (max-width: 768px) {
     .artist-page-main {
         padding: calc(var(--header-h) + 16px) 0 18px;
@@ -82,5 +105,16 @@ body {
     .artist-intro-card {
         padding: 18px 16px;
         gap: 14px;
+    }
+
+    .artist-gallery {
+        column-width: auto;
+        column-count: 2;
+        column-gap: 7px;
+    }
+
+    .artist-card,
+    .masonry-card {
+        margin-bottom: 7px;
     }
 }

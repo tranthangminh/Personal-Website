@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="../common/theme.css?v=20260904-1">
 <link rel="stylesheet" href="../common/shared-layout.css?v=20260904-1">
 <link rel="stylesheet" href="../common/shared-header.css?v=20260904-1">
-<link rel="stylesheet" href="../common/shared-footer.css?v=20260904-1">
+<link rel="stylesheet" href="../common/shared-footer.css?v=20260905-1">
 <link rel="stylesheet" href="../common/shared-book-now.css?v=20260904-1">
 <link rel="stylesheet" href="../common/shared-surfaces.css?v=20260904-1">
 <link rel="stylesheet" href="../common/shared-gallery.css?v=20260904-1">
@@ -25,7 +25,7 @@
 <script src="../common/shared-book-now.js?v=20260904-1"></script>
 <script src="../common/shared-momentum.js?v=20260904-1"></script>
 <script src="../common/shared-lightbox.js?v=20260904-1"></script>
-<script src="../common/shared-contact.js?v=20260904-1"></script>
+<script src="../common/shared-contact.js?v=20260905-1"></script>
 <script src="../common/shared-welcome.js?v=20260904-1"></script>
 <script src="../common/shared-page.js?v=20260904-1"></script>
 </head>
@@ -75,19 +75,9 @@
                     <h3 class="actor-card-title">Thông tin cơ bản</h3>
                     <ul class="actor-bio-meta-list">
                         <li>
-                            <span class="actor-field-icon" aria-hidden="true">👤</span>
-                            <span class="actor-field-label">Tên:</span>
-                            <span class="actor-field-value">Trần Thắng Minh</span>
-                        </li>
-                        <li>
                             <span class="actor-field-icon" aria-hidden="true">🎂</span>
                             <span class="actor-field-label">Ngày sinh:</span>
                             <span class="actor-field-value">20/09/1996</span>
-                        </li>
-                        <li>
-                            <span class="actor-field-icon" aria-hidden="true">✨</span>
-                            <span class="actor-field-label">Năng Khiếu:</span>
-                            <span class="actor-field-value">Võ Thuật, Hát, Vẽ</span>
                         </li>
                         <li>
                             <span class="actor-field-icon" aria-hidden="true">📞</span>
@@ -95,6 +85,11 @@
                             <span class="actor-field-value">
                                 <button class="actor-phone-toggle" id="actorPhoneToggle" type="button" data-phone="+84363219989" data-phone-display="036 321 9989">Hiển thị</button>
                             </span>
+                        </li>
+                        <li class="actor-bio-meta-full">
+                            <span class="actor-field-icon" aria-hidden="true">✨</span>
+                            <span class="actor-field-label">Năng Khiếu:</span>
+                            <span class="actor-field-value">Võ Thuật, Hát, Vẽ</span>
                         </li>
                     </ul>
                 </section>
@@ -141,15 +136,10 @@
                 <div class="actor-spotlight-display">
                     <div class="actor-spotlight-frame">
                         <img id="actorFeaturedImg" src="actor/main-01.jpg" alt="Trần Thắng Minh - Diễn viên">
-                        <div class="actor-spotlight-badge">PORTRAIT LOOKBOOK</div>
                     </div>
                 </div>
 
                 <div class="actor-gallery-strip-wrapper">
-                    <div class="actor-gallery-strip-header">
-                        <span class="actor-strip-title">Bộ Ảnh Chân Dung (8 Looks)</span>
-                        <span class="actor-strip-hint">Cuộn / Click để xem</span>
-                    </div>
                     <section class="actor-hero-gallery" aria-label="Bộ sưu tập ảnh chân dung diễn viên">
                         <figure class="actor-item active-thumb"><img src="actor/main-01.jpg" alt="Actor photo main-01"></figure>
                         <figure class="actor-item"><img src="actor/main-02.jpg" alt="Actor photo main-02"></figure>
@@ -167,15 +157,12 @@
 
     <!-- Section 1: Quá Trình Rèn Luyện & Vai Diễn -->
     <div class="content-wrap actor-section-container" id="section-training">
-        <div class="actor-section-banner">
-            <div class="actor-section-heading">
-                <span class="actor-section-icon-badge" aria-hidden="true">🎬</span>
-                <h2 class="actor-section-title">Quá Trình Rèn Luyện &amp; Tác Phẩm</h2>
-            </div>
+        <div class="section-title-bar">
+            <h2 class="section-title-bar-heading">Quá Trình Rèn Luyện &amp; Tác Phẩm</h2>
+            <span class="section-title-bar-line" aria-hidden="true"></span>
         </div>
 
-        <div class="actor-timeline actor-timeline--training">
-            <ul class="timeline-list">
+        <ul class="timeline-list">
                 <li class="timeline-item">
                     <div class="timeline-header-meta">
                         <span class="timeline-year">2026-01</span>
@@ -367,20 +354,16 @@
                     </div>
                 </li>
             </ul>
-        </div>
     </div>
 
     <!-- Section 2: Quá Trình Học Tập -->
     <div class="content-wrap actor-section-container" id="section-study">
-        <div class="actor-section-banner">
-            <div class="actor-section-heading">
-                <span class="actor-section-icon-badge" aria-hidden="true">🎓</span>
-                <h2 class="actor-section-title">Quá Trình Học Tập &amp; Đào Tạo</h2>
-            </div>
+        <div class="section-title-bar">
+            <h2 class="section-title-bar-heading">Quá Trình Học Tập &amp; Đào Tạo</h2>
+            <span class="section-title-bar-line" aria-hidden="true"></span>
         </div>
 
-        <div class="actor-timeline actor-timeline--study">
-            <ul class="timeline-list">
+        <ul class="timeline-list">
                 <li class="timeline-item">
                     <div class="timeline-header-meta">
                         <span class="timeline-year">2024-04</span>
@@ -518,7 +501,6 @@
                     </p>
                 </li>
             </ul>
-        </div>
     </div>
 </main>
 
