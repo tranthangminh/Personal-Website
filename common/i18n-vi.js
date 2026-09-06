@@ -45,7 +45,7 @@
                 books: 'Sách',
                 plugins: 'Plugins',
                 photoshop: 'Tool Photoshop',
-                maya: 'Tool Maya',
+                maya: 'Maya Tools',
                 cheatEngine: 'Tool Cheat Engine'
             }
         },
@@ -106,6 +106,9 @@
                 renameBody: 'Đổi tên layer hàng loạt bằng những công cụ đơn giản nhưng linh hoạt. Bạn có thể đổi tên các layer đã chọn theo thứ tự số, thêm tiền tố hoặc hậu tố, hoặc xóa và thay thế một đoạn chữ trong nhiều tên layer cùng lúc. Công cụ này được thiết kế để dọn file nhanh và giữ cách đặt tên nhất quán khi làm việc với những bộ layer lớn.',
                 sortTitle: 'Sort',
                 sortBody: 'Sắp xếp layer theo thứ tự chữ cái để tài liệu luôn gọn gàng và dễ quản lý hơn. Bạn có thể chọn phạm vi sắp xếp như chỉ layer cấp cao nhất, toàn bộ layer theo kiểu đệ quy, hoặc các layer bên trong một group đang chọn, rồi sắp xếp theo chiều A đến Z hoặc Z đến A.'
+            },
+            maya: {
+                downloadLabel: 'Tải Xuống .ZIP'
             }
         },
         productsPage: {

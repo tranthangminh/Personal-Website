@@ -45,7 +45,7 @@
                 books: 'Books',
                 plugins: 'Plugins',
                 photoshop: 'Photoshop Tool',
-                maya: 'Maya Tool',
+                maya: 'Maya Tools',
                 cheatEngine: 'Cheat Engine Tool'
             }
         },
@@ -106,6 +106,9 @@
                 renameBody: 'Rename layers in bulk with simple but flexible tools. You can rename selected layers with sequential numbering, add a prefix or suffix, or remove and replace text across multiple layer names at once. It is designed for fast cleanup and consistent naming when working with large layer sets.',
                 sortTitle: 'Sort',
                 sortBody: 'Sort layers alphabetically to keep your document organized and easier to manage. You can choose different sorting scopes, such as top-level layers, all layers recursively, or layers inside a selected group, and then sort them in either A to Z or Z to A order.'
+            },
+            maya: {
+                downloadLabel: 'Download .ZIP'
             }
         },
         productsPage: {
