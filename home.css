@@ -181,7 +181,7 @@ body {
     aspect-ratio: 1024 / 382.11;
     height: auto;
     margin-top: 0;
-    background: linear-gradient(to top, transparent 0%, var(--text-primary) 50%);
+    background: linear-gradient(to top, transparent 0%, var(--accent-primary) 50%);
     -webkit-mask-image: url('svg/porfolio.svg');
     mask-image: url('svg/porfolio.svg');
     -webkit-mask-size: contain;

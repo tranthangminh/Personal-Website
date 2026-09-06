@@ -82,7 +82,7 @@ body {
   align-items: center;
   justify-content: center;
   width: 30px;
-  height: 45px;
+  height: 43px;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -143,6 +143,7 @@ body {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  margin: var(--margin-bottom-default);
 }
 
 .about-link-label {
@@ -155,7 +156,6 @@ body {
   padding: 0;
   border: 0;
   background: transparent;
-  color: var(--text-color);
   font: 13px Arial, sans-serif;
   text-decoration: underline;
   cursor: pointer;
@@ -175,7 +175,6 @@ body {
   border: 2px solid var(--background-color-black);
   background: var(--background-color);
   border-radius: 5px;
-  transition: background 0.5s ease, border-color 0.5s ease;
 }
 
 .format-row.is-active {
@@ -234,7 +233,6 @@ body {
   margin: 0;
   border-radius: 11px;
   background: var(--background-color-grey);
-  color: var(--text-color);
   font: 10px Arial, sans-serif;
   text-align: left;
   padding: 0 6px;
@@ -372,7 +370,6 @@ body {
   margin: 0px 0 10px 0;
   border-radius: 15px;
   background: var(--background-color-grey);
-  color: var(--text-color);
   font: 13px Arial, sans-serif;
   cursor: pointer;
 }
@@ -385,13 +382,11 @@ body {
 .app-button-secondary {
   background: var(--background-color-grey);
   border-color: var(--border-color-black);
-  color: var(--text-color);
 }
 
 .app-button-primary {
   background: var(--background-color-blue);
   border-color: var(--background-color-blue);
-  color: var(--text-color);
 }
 
 .action-button-half {

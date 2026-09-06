@@ -77,13 +77,24 @@ function updateCheatTableCount(count) {
     cheatTableFileCount.textContent = String(labelTemplate).replace('{{count}}', String(count));
 }
 
+function getRawCheatTableList() {
+    if (Array.isArray(window.cheatTableFiles)) {
+        return window.cheatTableFiles;
+    }
+    if (Array.isArray(window.cheatTableManifest)) {
+        return window.cheatTableManifest;
+    }
+    return [];
+}
+
 function filterCheatTableFiles(query) {
+    var rawList = getRawCheatTableList();
     var normalizedQuery = String(query || '').trim().toLowerCase();
     if (!normalizedQuery) {
-        return Array.isArray(window.cheatTableManifest) ? window.cheatTableManifest.slice() : [];
+        return rawList.slice();
     }
 
-    return (Array.isArray(window.cheatTableManifest) ? window.cheatTableManifest : []).filter(function (fileName) {
+    return rawList.filter(function (fileName) {
         var baseName = getCheatTableDisplayName(fileName).toLowerCase();
         var rawName = String(fileName || '').toLowerCase();
         var artwork = getCheatTableArtwork(fileName);
@@ -179,7 +190,13 @@ function renderCheatTableList(files) {
         cheatTableFileList.appendChild(groupSection);
     });
 
-    updateCheatTableCount(filteredFiles.length);
+    updateCheatTableCount(files.length);
+}
+
+function renderCheatTableFiles() {
+    var query = cheatTableSearch ? cheatTableSearch.value : '';
+    var files = filterCheatTableFiles(query);
+    renderCheatTableList(files);
 }
 
 if (cheatTableSearch) {

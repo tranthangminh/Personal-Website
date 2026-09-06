@@ -424,7 +424,7 @@ function getPanelSettingsStorage() {
 }
 
 function collectPersistedPanelSettings() {
-  return {
+  const settings = {
     jpgEnabled: !!getElement("jpgEnabled").checked,
     jpgQuality: getRoundedSliderValue("jpgQuality"),
     pngEnabled: !!getElement("pngEnabled").checked,
@@ -453,7 +453,7 @@ function collectPersistedPanelSettings() {
     sortLayersMenuCollapsed: getElement("sortLayersMenuSection").classList.contains("is-collapsed"),
     sortScopeCollapsed: getElement("sortScopeSection").classList.contains("is-collapsed"),
     sortOrderCollapsed: getElement("sortOrderSection").classList.contains("is-collapsed"),
-    aboutMeCollapsed: getElement("aboutMeSection").classList.contains("is-collapsed"),
+    activeMainTab: typeof getActiveSharedTabValue === "function" ? getActiveSharedTabValue("mainPanelTabs") : "tools",
     prefix: getElement("prefixInput").value || "",
     suffix: getElement("suffixInput").value || "",
     sortScope: getSortScopeValue(),
@@ -468,6 +468,15 @@ function collectPersistedPanelSettings() {
     removeTarget: getElement("removeTargetInput").value || "",
     replaceWith: getElement("replaceWithInput").value || ""
   };
+
+  if (typeof collectMineTabPersistedSettings === "function") {
+    const mineSettings = collectMineTabPersistedSettings();
+    if (mineSettings && typeof mineSettings === "object") {
+      Object.assign(settings, mineSettings);
+    }
+  }
+
+  return settings;
 }
 
 function savePanelSettings() {
@@ -594,8 +603,11 @@ function applySavedPanelSettings() {
   if (typeof savedSettings.sortOrderCollapsed === "boolean") {
     syncCollapsibleSectionState("sortOrderSection", "sortOrderToggleBtn", "sortOrderToggleIcon", savedSettings.sortOrderCollapsed);
   }
-  if (typeof savedSettings.aboutMeCollapsed === "boolean") {
-    syncCollapsibleSectionState("aboutMeSection", "aboutMeToggleBtn", "aboutMeToggleIcon", savedSettings.aboutMeCollapsed);
+  if (typeof applyMineTabSavedSettings === "function") {
+    applyMineTabSavedSettings(savedSettings);
+  }
+  if (typeof syncSharedTabGroup === "function") {
+    syncSharedTabGroup("mainPanelTabs", savedSettings.activeMainTab || "tools");
   }
   if (typeof savedSettings.prefix === "string") {
     getElement("prefixInput").value = savedSettings.prefix;
@@ -1079,11 +1091,22 @@ function renderPreview() {
     return;
   }
 
-  syncLocationInputFromDocument(false);
-  renderRenamePreviews();
+  try {
+    syncLocationInputFromDocument(false);
+    renderRenamePreviews();
 
-  const data = collectPreviewData();
-  lastSignature = renderSharedPreview("selectionPreview", data.preview, data.signature, lastSignature);
+    const data = collectPreviewData();
+    lastSignature = renderSharedPreview("selectionPreview", data.preview, data.signature, lastSignature);
+  } catch (error) {
+    const selectionPreview = getElement("selectionPreview");
+    if (selectionPreview) {
+      selectionPreview.textContent = "Photoshop is busy or no document is open.";
+    }
+    const renameLayersPreview = getElement("renameLayersPreview");
+    if (renameLayersPreview) {
+      renameLayersPreview.textContent = "Photoshop is busy or no document is open.";
+    }
+  }
 }
 
 function clearSliderInputTimer() {
@@ -1813,7 +1836,14 @@ function setSortOrderLabelText(inputId, labelText) {
   }
 }
 
-document.addEventListener("DOMContentLoaded", function () {
+let hasBootstrappedApp = false;
+
+async function bootstrapApp() {
+  if (hasBootstrappedApp) {
+    return;
+  }
+  hasBootstrappedApp = true;
+
   const bindSlider = function (id, valueId, labelPrefix) {
     const slider = getElement(id);
     if (typeof bindSharedSlider === "function") {
@@ -1956,6 +1986,9 @@ document.addEventListener("DOMContentLoaded", function () {
   getElement("exportMenuInfoBtn").addEventListener("click", handleExportMenuInfoClick);
   getElement("aboutWebsiteBtn").addEventListener("click", handleAboutWebsiteClick);
   getElement("exportBtn").addEventListener("click", handleExportClick);
+  if (typeof bindSharedTabGroup === "function") {
+    bindSharedTabGroup("mainPanelTabs", savePanelSettings);
+  }
   bindCollapsibleToggle("exportMenuToggleBtn", "exportMenuSection", "exportMenuToggleIcon", savePanelSettings);
   bindCollapsibleToggle("fileTypeToggleBtn", "fileTypeSection", "fileTypeToggleIcon", savePanelSettings);
   bindCollapsibleToggle("renameToggleBtn", "renameSection", "renameToggleIcon", savePanelSettings);
@@ -1968,7 +2001,9 @@ document.addEventListener("DOMContentLoaded", function () {
   bindCollapsibleToggle("sortLayersMenuToggleBtn", "sortLayersMenuSection", "sortLayersMenuToggleIcon", savePanelSettings);
   bindCollapsibleToggle("sortScopeToggleBtn", "sortScopeSection", "sortScopeToggleIcon", savePanelSettings);
   bindCollapsibleToggle("sortOrderToggleBtn", "sortOrderSection", "sortOrderToggleIcon", savePanelSettings);
-  bindCollapsibleToggle("aboutMeToggleBtn", "aboutMeSection", "aboutMeToggleIcon", savePanelSettings);
+  if (typeof bindMineTabHandlers === "function") {
+    bindMineTabHandlers(savePanelSettings);
+  }
 
   applySavedPanelSettings();
   setSortOrderLabelText("sortOrderAz", "A -> Z");
@@ -1977,6 +2012,9 @@ document.addEventListener("DOMContentLoaded", function () {
   setModeButtonValue("psdMode", getPsdMode());
   setModeButtonValue("tiffCompression", getTiffCompression());
   setModeButtonValue("bmpDepth", getBmpDepth());
+  if (typeof syncSharedTabGroup === "function") {
+    syncSharedTabGroup("mainPanelTabs", typeof getActiveSharedTabValue === "function" ? getActiveSharedTabValue("mainPanelTabs") : "tools");
+  }
   syncCollapsibleSectionState("exportMenuSection", "exportMenuToggleBtn", "exportMenuToggleIcon", getElement("exportMenuSection").classList.contains("is-collapsed"));
   syncCollapsibleSectionState("fileTypeSection", "fileTypeToggleBtn", "fileTypeToggleIcon", getElement("fileTypeSection").classList.contains("is-collapsed"));
   syncCollapsibleSectionState("renameSection", "renameToggleBtn", "renameToggleIcon", getElement("renameSection").classList.contains("is-collapsed"));
@@ -1989,7 +2027,9 @@ document.addEventListener("DOMContentLoaded", function () {
   syncCollapsibleSectionState("sortLayersMenuSection", "sortLayersMenuToggleBtn", "sortLayersMenuToggleIcon", getElement("sortLayersMenuSection").classList.contains("is-collapsed"));
   syncCollapsibleSectionState("sortScopeSection", "sortScopeToggleBtn", "sortScopeToggleIcon", getElement("sortScopeSection").classList.contains("is-collapsed"));
   syncCollapsibleSectionState("sortOrderSection", "sortOrderToggleBtn", "sortOrderToggleIcon", getElement("sortOrderSection").classList.contains("is-collapsed"));
-  syncCollapsibleSectionState("aboutMeSection", "aboutMeToggleBtn", "aboutMeToggleIcon", getElement("aboutMeSection").classList.contains("is-collapsed"));
+  if (typeof syncMineTabRuntimeState === "function") {
+    syncMineTabRuntimeState();
+  }
   normalizeSlider("jpgQuality", "jpgQualityValue", "Quality");
   normalizeSlider("pngCompression", "pngCompressionValue", "Compression");
   normalizeSlider("webpQuality", "webpQualityValue", "Quality");
@@ -2000,4 +2040,10 @@ document.addEventListener("DOMContentLoaded", function () {
   updateButtonState();
   renderPreview();
   startAutoRefresh();
-});
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", bootstrapApp);
+} else {
+  bootstrapApp();
+}

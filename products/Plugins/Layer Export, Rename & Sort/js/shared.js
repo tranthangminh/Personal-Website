@@ -2,6 +2,283 @@ function getElement(id) {
   return document.getElementById(id);
 }
 
+function extractSharedHtmlBody(markup) {
+  const text = String(markup || "");
+  const bodyMatch = text.match(/<body[^>]*>([\s\S]*?)<\/body>/i);
+  if (bodyMatch && typeof bodyMatch[1] === "string") {
+    return bodyMatch[1].replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, "");
+  }
+  return text.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, "");
+}
+
+async function readSharedPluginTextFileFromIframe(relativePath) {
+  if (typeof document === "undefined" || !document.createElement || !document.body) {
+    throw new Error("Iframe loading is unavailable.");
+  }
+
+  return await new Promise(function (resolve, reject) {
+    const frame = document.createElement("iframe");
+    frame.style.display = "none";
+    frame.setAttribute("aria-hidden", "true");
+
+    const cleanup = function () {
+      if (frame.parentNode) {
+        frame.parentNode.removeChild(frame);
+      }
+    };
+
+    frame.onload = function () {
+      try {
+        const frameDocument = frame.contentDocument || (frame.contentWindow && frame.contentWindow.document);
+        const body = frameDocument && frameDocument.body;
+        const markup = body ? body.innerHTML : "";
+        cleanup();
+        if (markup) {
+          resolve(markup);
+          return;
+        }
+        reject(new Error("Empty iframe fragment."));
+      } catch (error) {
+        cleanup();
+        reject(error);
+      }
+    };
+
+    frame.onerror = function () {
+      cleanup();
+      reject(new Error("Could not load iframe fragment."));
+    };
+
+    frame.src = relativePath;
+    document.body.appendChild(frame);
+  });
+}
+
+async function readSharedPluginTextFileFromXhr(relativePath) {
+  if (typeof XMLHttpRequest !== "function") {
+    throw new Error("XHR loading is unavailable.");
+  }
+
+  return await new Promise(function (resolve, reject) {
+    const request = new XMLHttpRequest();
+    request.open("GET", relativePath, true);
+
+    request.onload = function () {
+      const isSuccessful = (request.status >= 200 && request.status < 300) || request.status === 0;
+      if (isSuccessful && request.responseText) {
+        resolve(request.responseText);
+        return;
+      }
+      reject(new Error("Could not load XHR fragment."));
+    };
+
+    request.onerror = function () {
+      reject(new Error("Could not load XHR fragment."));
+    };
+
+    request.send();
+  });
+}
+
+async function readSharedPluginTextFile(relativePath) {
+  if (!relativePath) {
+    throw new Error("Missing file path.");
+  }
+
+  if (typeof fetch === "function") {
+    try {
+      const response = await fetch(relativePath);
+      if (response && response.ok) {
+        return await response.text();
+      }
+    } catch (error) {}
+  }
+
+  try {
+    return await readSharedPluginTextFileFromXhr(relativePath);
+  } catch (error) {}
+
+  try {
+    return await readSharedPluginTextFileFromIframe(relativePath);
+  } catch (error) {}
+
+  if (typeof require === "function") {
+    const uxpModule = require("uxp");
+    const fs = uxpModule && uxpModule.storage ? uxpModule.storage.localFileSystem : null;
+    if (fs && typeof fs.getPluginFolder === "function") {
+      const pluginFolder = await fs.getPluginFolder();
+      const parts = String(relativePath).replace(/\\/g, "/").split("/").filter(Boolean);
+      let currentEntry = pluginFolder;
+
+      for (let index = 0; index < parts.length; index += 1) {
+        const part = parts[index];
+        if (!currentEntry) {
+          throw new Error("Could not resolve fragment path.");
+        }
+
+        if (typeof currentEntry.getEntry === "function") {
+          currentEntry = await currentEntry.getEntry(part);
+          continue;
+        }
+
+        if (typeof currentEntry.getEntries === "function") {
+          const entries = await currentEntry.getEntries();
+          let matchedEntry = null;
+          for (let entryIndex = 0; entryIndex < entries.length; entryIndex += 1) {
+            if (entries[entryIndex] && entries[entryIndex].name === part) {
+              matchedEntry = entries[entryIndex];
+              break;
+            }
+          }
+          currentEntry = matchedEntry;
+          continue;
+        }
+
+        currentEntry = null;
+      }
+
+      if (currentEntry && typeof currentEntry.read === "function") {
+        return await currentEntry.read();
+      }
+    }
+  }
+
+  throw new Error("Could not load fragment: " + relativePath);
+}
+
+async function loadSharedHtmlFragmentInto(containerId, relativePath) {
+  const container = getElement(containerId);
+  if (!container) {
+    throw new Error("Missing fragment container: " + containerId);
+  }
+
+  const markup = await readSharedPluginTextFile(relativePath);
+  container.innerHTML = extractSharedHtmlBody(markup);
+  return container;
+}
+
+// Shared Tabs Helpers
+function getSharedTabButtons(groupName) {
+  if (!groupName || typeof document.querySelectorAll !== "function") {
+    return [];
+  }
+
+  const buttons = document.querySelectorAll('[data-shared-tab-group="' + groupName + '"]');
+  return Array.prototype.slice.call(buttons || []);
+}
+
+function getActiveSharedTabValue(groupName) {
+  const buttons = getSharedTabButtons(groupName);
+  for (let index = 0; index < buttons.length; index += 1) {
+    if (buttons[index].classList.contains("is-active")) {
+      return buttons[index].getAttribute("data-shared-tab-value");
+    }
+  }
+
+  return buttons.length ? buttons[0].getAttribute("data-shared-tab-value") : "";
+}
+
+function syncSharedTabGroup(groupName, activeValue) {
+  const buttons = getSharedTabButtons(groupName);
+  if (!buttons.length) {
+    return "";
+  }
+
+  let resolvedValue = activeValue;
+  let hasMatch = false;
+  for (let index = 0; index < buttons.length; index += 1) {
+    if (buttons[index].getAttribute("data-shared-tab-value") === activeValue) {
+      hasMatch = true;
+      break;
+    }
+  }
+
+  if (!hasMatch) {
+    resolvedValue = buttons[0].getAttribute("data-shared-tab-value");
+  }
+
+  for (let index = 0; index < buttons.length; index += 1) {
+    const button = buttons[index];
+    const panelId = button.getAttribute("data-shared-tab-panel");
+    const panel = panelId ? getElement(panelId) : null;
+    const isActive = button.getAttribute("data-shared-tab-value") === resolvedValue;
+
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-selected", isActive ? "true" : "false");
+    button.setAttribute("tabindex", isActive ? "0" : "-1");
+
+    if (panel) {
+      panel.classList.toggle("is-hidden", !isActive);
+    }
+  }
+
+  return resolvedValue;
+}
+
+function bindSharedTabGroup(groupName, afterChange) {
+  const buttons = getSharedTabButtons(groupName);
+  if (!buttons.length) {
+    return;
+  }
+
+  const focusButtonAtIndex = function (nextIndex) {
+    if (buttons[nextIndex] && typeof buttons[nextIndex].focus === "function") {
+      buttons[nextIndex].focus();
+    }
+  };
+
+  const activateButton = function (button) {
+    const nextValue = button.getAttribute("data-shared-tab-value");
+    const resolvedValue = syncSharedTabGroup(groupName, nextValue);
+    if (typeof afterChange === "function") {
+      afterChange(resolvedValue);
+    }
+  };
+
+  for (let index = 0; index < buttons.length; index += 1) {
+    const button = buttons[index];
+    if (button.getAttribute("data-shared-tab-bound") === "true") {
+      continue;
+    }
+
+    button.setAttribute("data-shared-tab-bound", "true");
+    button.addEventListener("click", function () {
+      activateButton(button);
+    });
+
+    button.addEventListener("keydown", function (event) {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        activateButton(button);
+        return;
+      }
+
+      if (event.key === "ArrowRight") {
+        event.preventDefault();
+        focusButtonAtIndex((index + 1) % buttons.length);
+        return;
+      }
+
+      if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        focusButtonAtIndex((index - 1 + buttons.length) % buttons.length);
+        return;
+      }
+
+      if (event.key === "Home") {
+        event.preventDefault();
+        focusButtonAtIndex(0);
+        return;
+      }
+
+      if (event.key === "End") {
+        event.preventDefault();
+        focusButtonAtIndex(buttons.length - 1);
+      }
+    });
+  }
+}
+
 // Shared Slider Helpers
 function clampSharedSliderNumber(value, min, max) {
   const numericValue = Number(value);

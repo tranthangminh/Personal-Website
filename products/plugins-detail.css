@@ -256,15 +256,26 @@ body {
 
 .tools-file-section {
     display: grid;
+    gap: 16px;
+    width: 100%;
+}
+
+.tools-file-head {
+    width: 100%;
+    display: grid;
     gap: 12px;
-    justify-items: center;
+}
+
+.tools-file-title {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 700;
 }
 
 .tools-file-note {
     margin: 0;
     line-height: 1.6;
     color: var(--text-secondary);
-    text-align: center;
 }
 
 .tools-file-toolbar {
@@ -309,6 +320,7 @@ body {
     border-color: var(--border-hover);
 }
 
+.tools-file-list,
 .tools-file-groups {
     display: grid;
     gap: 18px;
