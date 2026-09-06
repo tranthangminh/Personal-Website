@@ -71,7 +71,7 @@ body.actor-page-view .contact-page {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    color: var(--text-secondary);
+    color: var(--text-primary);
     text-decoration: none;
     transition: color var(--transition-fast), transform var(--transition-fast), filter var(--transition-fast);
     line-height: 1;
@@ -111,7 +111,7 @@ body.actor-page-view .contact-page {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    color: var(--text-secondary);
+    color: var(--text-primary);
     background: var(--bg-primary);
     border: 1px solid var(--border-color);
     box-shadow: var(--shadow-sm);

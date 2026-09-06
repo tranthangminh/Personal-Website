@@ -323,6 +323,51 @@ body {
     transform: translateX(4px);
 }
 
+/* ==========================================================================
+   Books Category: 4 Columns on PC & Vertical 2:1 Aspect Ratio Card
+   ========================================================================== */
+[data-product-section="books"] .products-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+}
+
+[data-product-section="books"] .product-card {
+    aspect-ratio: 1 / 2;
+}
+
+[data-product-section="books"] .product-card-media {
+    width: 100%;
+    aspect-ratio: 1525 / 2157;
+    height: auto;
+    flex: 0 0 auto;
+    background: var(--bg-primary);
+    padding: 0;
+}
+
+[data-product-section="books"] .product-card-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform var(--transition-slow);
+}
+
+[data-product-section="books"] .product-card:hover .product-card-media img {
+    transform: scale(1.04);
+}
+
+[data-product-section="books"] .product-card-body {
+    flex: 1 1 auto;
+    height: auto;
+    min-height: 0;
+    padding: 12px 14px;
+}
+
+@media (max-width: 1024px) {
+    [data-product-section="books"] .products-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
 @media (max-width: 768px) {
     .products-page-main {
         padding: calc(var(--header-h) + 16px) 0 18px;
@@ -337,5 +382,28 @@ body {
     .products-grid {
         grid-template-columns: 1fr;
         gap: 14px;
+    }
+
+    [data-product-section="books"] .products-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    [data-product-section="books"] .product-card {
+        aspect-ratio: auto;
+    }
+
+    [data-product-section="books"] .product-card-body {
+        padding: 10px 10px;
+    }
+
+    [data-product-section="books"] .product-card-title {
+        font-size: var(--font-sm);
+    }
+
+    [data-product-section="books"] .product-card-desc {
+        font-size: var(--font-xs);
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
     }
 }

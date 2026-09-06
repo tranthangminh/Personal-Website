@@ -1460,6 +1460,30 @@ a.skill-capsule-card:hover {
     word-break: break-word;
 }
 
+/* Books Column: Height increased ~50% for larger, clearer book cover display */
+.products-col-books .product-item-btn {
+    min-height: 78px;
+    padding: 10px 14px;
+    gap: 14px;
+}
+
+.products-col-books .product-item-btn-icon {
+    width: auto;
+    height: 56px;
+    min-width: unset;
+    min-height: unset;
+    aspect-ratio: 1525 / 2157;
+    object-fit: contain;
+    border-radius: 2px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+    flex-shrink: 0;
+}
+
+.products-col-books .product-item-btn:hover .product-item-btn-icon {
+    transform: scale(1.05);
+    transition: transform var(--transition-fast);
+}
+
 /* Mobile: 4 Rows */
 @media (max-width: 768px) {
     .products-showcase-page {
@@ -1492,6 +1516,16 @@ a.skill-capsule-card:hover {
     .product-item-btn {
         padding: 9px 10px;
         min-height: 44px;
+    }
+
+    .products-col-books .product-item-btn {
+        min-height: 66px;
+        padding: 9px 12px;
+        gap: 12px;
+    }
+
+    .products-col-books .product-item-btn-icon {
+        height: 48px;
     }
 }
 
