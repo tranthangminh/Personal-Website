@@ -8,22 +8,22 @@
     window.sharedI18n.registerTranslations('en', {
         meta: {
             home: {
-                title: 'Tran Thang Minh Profile'
+                title: 'Tran Thang Minh - Actor, 2D/3D Artist & Photographer'
             },
             actor: {
                 title: 'Actor - Tran Thang Minh'
             },
             photographer: {
-                title: 'Photography - Tran Thang Minh'
+                title: 'Photographer - Tran Thang Minh'
             },
             artist: {
                 title: 'Artist - Tran Thang Minh'
             },
             tools: {
-                title: 'Products - Tran Thang Minh'
+                title: 'Products & Creative Tools - Tran Thang Minh'
             },
             products: {
-                title: 'Products - Tran Thang Minh'
+                title: 'Products & Creative Tools - Tran Thang Minh'
             }
         },
         header: {

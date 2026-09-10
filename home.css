@@ -249,6 +249,21 @@ body {
     color: var(--text-primary);
 }
 
+.hero-job-title {
+    margin: 4px 0;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--text-primary);
+}
+
+.hero-brand-name {
+    margin: 4px 0 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
 /* ==========================================================================
    INTRO SECTION (2 COLUMNS: FLOW LIST 01-05 & SKILLS MATRIX)
    ========================================================================== */

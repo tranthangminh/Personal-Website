@@ -8,7 +8,7 @@
     window.sharedI18n.registerTranslations('vi', {
         meta: {
             home: {
-                title: 'Hồ Sơ Trần Thắng Minh'
+                title: 'Trần Thắng Minh - Diễn Viên, Họa Sĩ 2D/3D & Nhiếp Ảnh Gia'
             },
             actor: {
                 title: 'Diễn Viên - Trần Thắng Minh'
@@ -20,10 +20,10 @@
                 title: 'Họa Sĩ - Trần Thắng Minh'
             },
             tools: {
-                title: 'Sản Phẩm - Trần Thắng Minh'
+                title: 'Sản Phẩm & Tiện Ích Sáng Tạo - Trần Thắng Minh'
             },
             products: {
-                title: 'Sản Phẩm - Trần Thắng Minh'
+                title: 'Sản Phẩm & Tiện Ích Sáng Tạo - Trần Thắng Minh'
             }
         },
         header: {
